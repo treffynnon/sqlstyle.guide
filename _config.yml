@@ -1,6 +1,7 @@
 name:          SQL Style Guide by Simon Holywell
 description:   A consistent SQL style guide for greater readability and easier maintenance.
 url:           http://www.sqlstyle.guide
+port:          4040
 
 markdown:      rdiscount
 permalink:     pretty
