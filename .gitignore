@@ -1,0 +1,11 @@
+nbproject
+.ruby-version
+*.orig
+*.swp
+*~
+.DS_Store
+._*
+Thumbs.db
+
+_site
+_gh_pages
