@@ -25,7 +25,7 @@ SELECT first_name
 
 ### Reserved words
 
-Always use uppercase for the [reserved keywords](#keyword-reference) like
+Always use uppercase for the [reserved keywords](#reserved-keyword-reference) like
 `SELECT` and `WHERE`.
 
 It is best to avoid the abbreviated keywords and use the full length ones where
@@ -93,7 +93,7 @@ SELECT a.release_date,
 ### General
 
 * Ensure the name is unique and does not exist as a
-  [reserved keyword](#keyword-reference)
+  [reserved keyword](#reserved-keyword-reference)
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multibyte charset
 * Names must begin with a letter and may not end with an underscore
