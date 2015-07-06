@@ -2,6 +2,8 @@
 layout: nil
 ---
 
+{% assign primary_colour = '#DE1B1B' %}
+
 /*
 
 Begin styles from codeguide.co by @mdo
@@ -29,22 +31,28 @@ End styles from codeguide.co by @mdo
 
 */
 
+/*
+ * Page navigation
+ */
 
-
-
-#content {
-	padding: 2% 10%;
-    max-width: 48em;
-    margin: 0 auto;
+#page-nav {
+    bottom: 0.5em;
+    right: 0.5em;
+    position: fixed;
+    text-align: center;
+    font-weight: bold;
 }
 
+/*
+ * Typography
+ */
 h1 {
     font-family: 'Roboto Slab', serif;
     font-weight: 400;
 }
 
 h2 {
-	font-family: 'Roboto Slab', sans-serif;
+	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 	border-bottom: 0.25em solid #e2e2e2;
 	padding-bottom: 0.3em;
@@ -55,9 +63,45 @@ h3:before {
 	width: 1.5em;
 	display: inline-block;
 	margin-left: -1.5em;
-	color: #f46801;
+	color: #DE1B1B;
 	font-weight: normal;
 }
+
+a {
+    color: #333;
+    border-bottom: 1px solid {{ primary_colour }};
+    text-decoration: none;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.3s;
+}
+
+a:hover {
+    color: {{ primary_colour }};
+    border-color: #333;
+}
+
+header.top {
+    background: {{ primary_colour }};
+}
+
+header.top h1 {
+    color: #fff;
+}
+
+.wrap {
+	padding: 2% 10%;
+    max-width: 48em;
+    margin: 0 auto;
+}
+
+#content h1 {
+    display: none;
+}
+
+
 
 /* Syntax highlighting */
 code {
@@ -73,5 +117,6 @@ pre code {
 {% include highlight.hybrid.css %}
 
 .anchorjs-link {
-    color: #f46801;
+    color: {{ primary_colour }};
+    border: none;
 }
