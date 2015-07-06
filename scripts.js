@@ -19,7 +19,9 @@ $(document).ready(function(){
         var dest = 0;
         if(target) {
             var $target = $(target);
-            dest = $target.offset().top;
+            if($target.length) {
+                dest = $target.offset().top;
+            }
         }
 
         $('html, body').stop().animate({
