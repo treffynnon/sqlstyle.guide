@@ -6,4 +6,4 @@ layout: nil
 hljs.initHighlightingOnLoad();
 
 {% include anchor.min.js %}
-anchors.add();
+anchors.add('h2,h3,h4,h5,h6');

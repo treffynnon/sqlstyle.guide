@@ -20,7 +20,7 @@ html {
 body {
   margin: 0;
   font: 1rem/1.5 "PT Sans", sans-serif;
-  color: #5a5a5a;
+  color: #333;
 }
 
 /*
@@ -30,7 +30,41 @@ End styles from codeguide.co by @mdo
 */
 
 
+
+
+#content {
+	padding: 2% 10%;
+    max-width: 48em;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+}
+
+h2 {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 400;
+	border-bottom: 0.25em solid #e2e2e2;
+	padding-bottom: 0.3em;
+}
+
+h3:before {
+	content: '➤';
+	width: 1.5em;
+	display: inline-block;
+	margin-left: -1.5em;
+	color: #f46801;
+	font-weight: normal;
+}
+
 /* Syntax highlighting */
+code {
+    font-family: 'Droid Sans Mono', monospace;
+    font-size: 0.825em;
+    color: #666;
+}
 pre code {
     max-height: 450px;
     overflow-y: auto;
@@ -39,5 +73,5 @@ pre code {
 {% include highlight.hybrid.css %}
 
 .anchorjs-link {
-    color: #FF5231;
+    color: #f46801;
 }
