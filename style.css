@@ -70,4 +70,4 @@ End styles from codeguide.co by @mdo
 
 */
 
-{% include syntax.css %}
+{% include highlight.hybrid.css %}
