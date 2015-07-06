@@ -174,7 +174,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 
 ### Reserved keyword reference
 
-A list of ANSI SQL 92, ANSI SQL 99, ANSI SQL 2003, MySQL 3.23.x, MySQL 4.x, MySQL 5.x, PostGreSQL 8.1, MS SQL Server 2000, MS ODBC, Oracle 10.2 reserved keywords.
+A list of ANSI SQL 92, ANSI SQL 99, ANSI SQL 2003, MySQL 3.23.x, MySQL 4.x, MySQL 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC, Oracle 10.2 reserved keywords.
 
 ```sql
 A
