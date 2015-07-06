@@ -23,51 +23,15 @@ body {
   color: #5a5a5a;
 }
 
-
-/*
- * The Grid
- */
-
-.col {
-  padding: 2rem 1rem;
-}
-.col p {
-  max-width: 40rem;
-}
-.col + .col {
-  border-top: 1px solid #dfe1e8;
-  background-color: #f7f7f9;
-}
-@media (min-width: 38em) {
-  .col {
-    padding: 2rem;
-  }
-}
-@media (min-width: 48em) {
-  .row {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-  .col {
-    display: table-cell;
-    padding: 3rem;
-    vertical-align: top;
-  }
-  .col + .col {
-    border-top: 0;
-  }
-}
-
-.row {
-  border-bottom: 1px solid #dfe1e8;
-}
-
-
 /*
 
 End styles from codeguide.co by @mdo
 
 */
+
+pre code {
+    max-height: 450px;
+    overflow-y: auto;
+}
 
 {% include highlight.hybrid.css %}
