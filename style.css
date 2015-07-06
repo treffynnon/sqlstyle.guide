@@ -29,9 +29,15 @@ End styles from codeguide.co by @mdo
 
 */
 
+
+/* Syntax highlighting */
 pre code {
     max-height: 450px;
     overflow-y: auto;
 }
 
 {% include highlight.hybrid.css %}
+
+.anchorjs-link {
+    color: #FF5231;
+}
