@@ -63,7 +63,7 @@ h3:before {
 	width: 1.5em;
 	display: inline-block;
 	margin-left: -1.5em;
-	color: #DE1B1B;
+	color: {{ primary_colour }};
 	font-weight: normal;
 }
 
