@@ -3,6 +3,10 @@ description:   A consistent SQL style guide for greater readability and easier m
 url:           http://www.sqlstyle.guide
 port:          4040
 
-markdown:      rdiscount
+markdown:      kramdown
 permalink:     pretty
 highlighter:   pygments
+
+kramdown:
+    input: GFM
+    hard_wrap: false
