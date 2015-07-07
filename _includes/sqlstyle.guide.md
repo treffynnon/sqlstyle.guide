@@ -190,7 +190,10 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 * Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
   notation
 
-### Uniform postfixes
+### Uniform suffixes
+
+The following suffixes have a universal meaning ensuring the columns can be read
+and understood easily from SQL code. Use the correct suffix where appropriate.
 
 * `_id`—a unique identifier such as a column that is a primary key
 * `_status`—flag value or some other status of any type such as
@@ -204,7 +207,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 * `_size`—the size of something such as a file size or clothing
 * `_addr`—an address for the record could be physical or intangible such as `ip_addr`
 
-## Appendices
+## Appendix
 
 ### Reserved keyword reference
 
