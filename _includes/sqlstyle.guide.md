@@ -8,6 +8,11 @@ or fix bugs please open an [issue](#) or [pull request](#) on Git Hub.
 
 ## General
 
+### Do
+
+* Use consistent and descriptive identifiers and names
+* Make judicious use of white space to make code easer to read
+
 ### Avoid the use of
 
 * CamelCase—it is difficult to scan quickly
@@ -25,8 +30,8 @@ SELECT first_name
 
 ### Reserved words
 
-Always use uppercase for the [reserved keywords](#reserved-keyword-reference) like
-`SELECT` and `WHERE`.
+Always use uppercase for the [reserved keywords](#reserved-keyword-reference)
+like `SELECT` and `WHERE`.
 
 It is best to avoid the abbreviated keywords and use the full length ones where
 available (prefer `ABSOLUTE` to `ABS`).
@@ -40,9 +45,53 @@ SELECT model_num
  WHERE p.release_date > '2014-09-30';
 ```
 
+### White space
+
+To make the code easier to read it is important that the correct compliment of
+spaces is used. Do not crowd code or remove natural language spaces.
+
+Always include spaces (this is not an exhaustive list):
+
+* before and after equals (`=`)
+* after commas (`,`)
+* surrounding apostrophes (`'`) where not within parentheses or with a trailing
+  comma or semicolon
+
+Always include newlines/vertical space:
+
+* after semicolons to separate queries for easier reading
+* after each keyword definition
+* after a comma when separating multiple columns into logical groups
+* before `AND` or `OR`
+
+Keeping all the keywords aligned to the righthand side and the values left aligned
+creates a uniform gap down the middle of query. It makes it much easier to scan
+the query definition over quickly too.
+
+```sql
+-- No
+SELECT a.release_date,a.title,a.recording_date,a.production_date
+FROM albums AS a
+WHERE a.title='Charcoal Lane'OR
+      a.title='The New Danger';
+
+
+-- Yes
+SELECT a.title,
+       a.release_date, a.recording_date, a.production_date -- grouped dates together
+  FROM albums AS a
+ WHERE a.title = 'Charcoal Lane'
+    OR a.title = 'The New Danger';
+```
+
 ### Indentation
 
+To ensure that SQL is readable it is important that standards of indentation
+are followed.
+
 #### Joins
+
+Joins should be indented 
 
 ```sql
 SELECT r.last_name
@@ -70,45 +119,6 @@ SELECT r.last_name,
           FROM champions AS c
          WHERE YEAR(championship_date) > '2008'
            AND c.confirmed = 'Y');
-```
-
-### White space
-
-To make the code easier to read it is important that the correct compliment of
-spaces is used. Do not crowd code or remove natural spaces.
-
-Always include spaces (this is not an exhaustive list):
-
-* before and after equals (`=`)
-* after commas (`,`)
-* surrounding apostrophes (`'`) where not within parentheses or with a trailing
-  comma or semicolon
-
-Always include newlines/vertical space:
-
-* after semicolons to separate queries for easier reading
-* after each keyword definition
-* after the comma of each column in the list
-* before `AND` or `OR`
-
-Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of query. It makes it much easier to scan
-the query definition over quickly too.
-
-```sql
--- No
-SELECT a.release_date,a.title
-FROM albums AS a
-WHERE a.title='Charcoal Lane'OR
-      a.title='The New Danger';
-
-
--- Yes
-SELECT a.release_date,
-       a.title
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
 ```
 
 ## Naming conventions
