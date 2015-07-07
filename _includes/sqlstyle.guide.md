@@ -68,7 +68,7 @@ SELECT r.last_name,
  WHERE r.last_name IN
        (SELECT c.last_name
           FROM champions AS c
-         WHERE year > '2008'
+         WHERE YEAR(championship_date) > '2008'
            AND c.confirmed = 'Y');
 ```
 
