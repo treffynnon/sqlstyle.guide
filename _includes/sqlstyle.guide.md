@@ -42,11 +42,34 @@ SELECT model_num
 
 ### Indentation
 
-Use four (4) spaces all the way through all the time. This makes the most sense
-where there is a sub query.
+#### Joins
 
 ```sql
--- TODO: need an example
+SELECT r.last_name
+  FROM riders AS r
+       INNER JOIN bikes AS b
+       ON r.bike_vin_num = b.vin_num
+          AND b.engines > 2
+
+       INNER JOIN crew AS c
+       ON r.crew_chief_last_name = c.last_name
+          AND c.chief = 'Y';
+```
+
+#### Sub-queries
+
+```sql
+SELECT r.last_name,
+       (SELECT MAX(YEAR(championship_date))
+          FROM champions AS c
+         WHERE c.last_name = r.last_name
+           AND c.confirmed = 'Y') AS last_championship_year
+  FROM riders AS r
+ WHERE r.last_name IN
+       (SELECT c.last_name
+          FROM champions AS c
+         WHERE year > '2008'
+           AND c.confirmed = 'Y');
 ```
 
 ### White space
@@ -163,6 +186,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 * `_status`—flag value or some other status of any type such as
   `publication_status`
 * `_total`—the total or sum of a collection of values
+* `_num`—denotes the field contains any kind of number
 * `_name`—signifies a name such as `first_name`
 * `_seq`—contains a contiguous sequence of values
 * `_date`—denotes a column that contains the date of something
