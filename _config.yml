@@ -10,3 +10,4 @@ highlighter:   pygments
 kramdown:
     input: GFM
     hard_wrap: false
+    toc_levels: "2,3"
