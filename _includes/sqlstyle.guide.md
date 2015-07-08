@@ -114,7 +114,8 @@ are followed.
 
 #### Joins
 
-Joins should be indented to the other site of
+Joins should be indented to the other side of the river and grouped with a new
+line where necessary.
 
 ```sql
 SELECT r.last_name
@@ -130,6 +131,11 @@ SELECT r.last_name
 
 #### Sub-queries
 
+Sub-queries should also be aligned to the right side of the river and then laid
+out using the same style as any other query. Sometimes it will make sense to have
+the closing parenthesis on new line at the same character position as it's
+opening partner—this is especially true where you have nested sub-queries.
+
 ```sql
 SELECT r.last_name,
        (SELECT MAX(YEAR(championship_date))
@@ -143,6 +149,36 @@ SELECT r.last_name,
          WHERE YEAR(championship_date) > '2008'
            AND c.confirmed = 'Y');
 ```
+
+## Create syntax
+
+When declaring schema information it is also important to maintain human
+readable code. To facilitate this ensure the column definitions are ordered and
+grouped where it makes sense to do so.
+
+### Choosing data types
+
+* Where possible do not use vendor specific data types—these are not portable and
+  may not be available in older versions of the same vendor's software
+
+### Specifying default values
+
+* The default value must be the same type as the column—if a column is declared
+  a `DECIMAL` do not provide an `INTEGER` default value
+* Default values must follow the data type declaration and come before any
+  `NOT NULL` statement
+
+### Keys
+
+* Specify the primary key first right after the `CREATE TABLE` statement
+
+### Constraints
+
+* Constraints need to be defined beneath the column they correspond to
+* Use alphabetical order so `ON DELETE` comes before `ON UPDATE`
+* All constraints should be given a constraint except `UNIQUE`, `PRIMARY KEY`
+  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
+  intelligiable names automatically
 
 ## Naming conventions
 
