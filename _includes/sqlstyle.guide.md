@@ -2,9 +2,9 @@
 
 ## Overview
 
-You can use this set of guidelines, [fork them](#) or make your own - the
+You can use this set of guidelines, [fork them][fork] or make your own - the
 key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue](#) or [pull request](#) on Git Hub.
+or fix bugs please open an [issue][] or [pull request][pull] on Git Hub.
 
 ## General
 
@@ -32,7 +32,7 @@ SELECT first_name
 
 ### Reserved words
 
-Always use uppercase for the [reserved keywords](#reserved-keyword-reference)
+Always use uppercase for the [reserved keywords][reserved-keywords]
 like `SELECT` and `WHERE`.
 
 It is best to avoid the abbreviated keywords and use the full length ones where
@@ -50,14 +50,14 @@ SELECT model_num
 ### White space
 
 To make the code easier to read it is important that the correct compliment of
-spaces is used. Do not crowd code or remove natural language spaces.
+spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
 
 Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle make it easy for
+the same character boundary. This forms a river down the middle making it easy for
 the readers eye to scan over the code and separate the keywords from the
-implementation detail.
+implementation detail. Rivers are [bad in typography][rivers], but helpful here.
 
 ```sql
 SELECT f.average_height, f.average_diameter
@@ -149,7 +149,7 @@ SELECT r.last_name,
 ### General
 
 * Ensure the name is unique and does not exist as a
-  [reserved keyword](#reserved-keyword-reference)
+  [reserved keyword][reserved-keywords]
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multibyte charset
 * Names must begin with a letter and may not end with an underscore
@@ -1063,3 +1063,11 @@ YEAR_MONTH
 ZEROFILL
 ZONE
 ```
+
+[issue]: #
+[fork]: #
+[pull]: #
+[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+    "Practical Typography: one space between sentences"
+[reserved-keywords]: #reserved-keyword-reference
+    "Reserved keyword reference" 
