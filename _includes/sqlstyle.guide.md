@@ -11,7 +11,8 @@ or fix bugs please open an [issue](#) or [pull request](#) on Git Hub.
 ### Do
 
 * Use consistent and descriptive identifiers and names
-* Make judicious use of white space to make code easer to read
+* Make judicious use of white space and indentation to make code easer to read
+* 
 
 ### Avoid the use of
 
@@ -19,7 +20,8 @@ or fix bugs please open an [issue](#) or [pull request](#) on Git Hub.
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`
 * Plurals—use the more natural collective term instead
 * Quoted identifiers—if you must use them then stick to SQL92 double quotes for
-  portability
+  portability (you may need to configure your SQL server to support this depending
+  on vendor)
 
 ```sql
 SELECT first_name
@@ -50,33 +52,54 @@ SELECT model_num
 To make the code easier to read it is important that the correct compliment of
 spaces is used. Do not crowd code or remove natural language spaces.
 
-Always include spaces (this is not an exhaustive list):
+#### Spaces
+
+Spaces should be used to line up the code so that the root keywords all end on
+the same character boundary. This forms a river down the middle make it easy for
+the readers eye to scan over the code and separate the keywords from the
+implementation detail.
+
+```sql
+SELECT f.average_height, f.average_diameter
+  FROM flora AS f
+ WHERE f.species_name = 'Banksia'
+    OR f.species_name = 'Sheoak'
+    OR f.species_name = 'Wattle';
+```
+
+Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
+names and implementation specific details are left aligned.
+
+Although not exhaustive always include spaces:
 
 * before and after equals (`=`)
 * after commas (`,`)
 * surrounding apostrophes (`'`) where not within parentheses or with a trailing
   comma or semicolon
 
+```sql
+SELECT a.title, a.release_date, a.recording_date
+  FROM albums AS a
+ WHERE a.title = 'Charcoal Lane'
+    OR a.title = 'The New Danger';
+```
+
+#### Line spacing
+
 Always include newlines/vertical space:
 
+* before `AND` or `OR`
 * after semicolons to separate queries for easier reading
 * after each keyword definition
 * after a comma when separating multiple columns into logical groups
-* before `AND` or `OR`
+* to separate code into related sections, which helps to ease the readability of
+  large chunks of code
 
 Keeping all the keywords aligned to the righthand side and the values left aligned
 creates a uniform gap down the middle of query. It makes it much easier to scan
 the query definition over quickly too.
 
 ```sql
--- No
-SELECT a.release_date,a.title,a.recording_date,a.production_date
-FROM albums AS a
-WHERE a.title='Charcoal Lane'OR
-      a.title='The New Danger';
-
-
--- Yes
 SELECT a.title,
        a.release_date, a.recording_date, a.production_date -- grouped dates together
   FROM albums AS a
@@ -91,7 +114,7 @@ are followed.
 
 #### Joins
 
-Joins should be indented 
+Joins should be indented to the other site of
 
 ```sql
 SELECT r.last_name
