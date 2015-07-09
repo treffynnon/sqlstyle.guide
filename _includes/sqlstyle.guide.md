@@ -6,6 +6,16 @@ You can use this set of guidelines, [fork them][fork] or make your own - the
 key here is that you pick a style and stick to it. To suggest changes
 or fix bugs please open an [issue][] or [pull request][pull] on Git Hub.
 
+These guidelines are designed to be compatible with Joe Celko's [SQL Programming
+Style][celko] book to make adoption for teams already following that standard
+simple. This guide is a little more opinionated in some areas and in others a
+little more relaxed. It is certainly more succinct where [Celko's book][celko]
+contains anecdotes and reasoning behind each rule as thoughtful prose.
+
+You can easily include this guide in [Markdown format][dl-md] as a part of a
+project's code base or reference it here for anyone on the project to freely
+read—much harder with a physical book!
+
 ## General
 
 ### Do
@@ -28,7 +38,94 @@ SELECT first_name
   FROM staff;
 ```
 
-## Syntax
+## Naming conventions
+
+### General
+
+* Ensure the name is unique and does not exist as a
+  [reserved keyword][reserved-keywords].
+* Keep the length to a maximum of 30 bytes—in practice this is 30 characters
+  unless you are using multi-byte character set.
+* Names must begin with a letter and may not end with an underscore.
+* Only use letters, numbers and underscores in names.
+* Avoid the use of multiple consecutive underscores—these can be hard to read.
+* Use underscores where you would naturally include a space in name (first name
+  becomes `first_name`).
+* Avoid abbreviations and if you have to use them make sure they are commonly
+  understood.
+
+```sql
+SELECT first_name
+  FROM staff;
+```
+
+### Tables
+
+* Use a collective name or, less ideally, a plural form. For example (in order of
+  preference) staff and employees.
+* Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
+  notation.
+* Never give a table the same name as one of its columns.
+* Avoid, where possible, concatenating two table names together to create the name
+  of a relationship table. Rather than `car_mechanic` prefer `service`.
+
+```sql
+SELECT first_name
+  FROM staff;
+```
+
+### Columns
+
+* Always use the singular name.
+* Avoid simply using `id` as the primary identifier for the table.
+* Do not add a column with the same name as its table.
+* Always use lowercase except where it may make sense not to such as proper nouns.
+
+### Aliasing or correlations
+
+* Should relate in some way to the object or expression they are aliasing.
+* As rule of thumb the correlation name should be the first letter of each word
+  in the object's name.
+* If there is already a correlation with same name then append a number.
+* Always include the `AS` keyword—makes it easier to read as it is explicit.
+* For computed data (`SUM()` or `AVG()`) use the name you would give it were it
+  a column defined in the schema.
+
+```sql
+SELECT first_name AS fn
+  FROM staff AS s1
+  JOIN students AS s2
+    ON s2.mentor_id = s1.staff_num;
+
+SELECT SUM(s.monitor_tally) AS monitor_total
+  FROM staff AS s;
+```
+
+### Stored procedures
+
+* The name must contain a verb.
+* Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
+  notation.
+
+### Uniform suffixes
+
+The following suffixes have a universal meaning ensuring the columns can be read
+and understood easily from SQL code. Use the correct suffix where appropriate.
+
+* `_id`—a unique identifier such as a column that is a primary key.
+* `_status`—flag value or some other status of any type such as
+  `publication_status`.
+* `_total`—the total or sum of a collection of values.
+* `_num`—denotes the field contains any kind of number.
+* `_name`—signifies a name such as `first_name`.
+* `_seq`—contains a contiguous sequence of values.
+* `_date`—denotes a column that contains the date of something.
+* `_tally`—a count.
+* `_size`—the size of something such as a file size or clothing.
+* `_addr`—an address for the record could be physical or intangible such as
+  `ip_addr`.
+
+## Query syntax
 
 ### Reserved words
 
@@ -75,7 +172,7 @@ Although not exhaustive always include spaces:
 * before and after equals (`=`)
 * after commas (`,`)
 * surrounding apostrophes (`'`) where not within parentheses or with a trailing
-  comma or semicolon
+  comma or semicolon.
 
 ```sql
 SELECT a.title, a.release_date, a.recording_date
@@ -93,7 +190,7 @@ Always include newlines/vertical space:
 * after each keyword definition
 * after a comma when separating multiple columns into logical groups
 * to separate code into related sections, which helps to ease the readability of
-  large chunks of code
+  large chunks of code.
 
 Keeping all the keywords aligned to the righthand side and the values left aligned
 creates a uniform gap down the middle of query. It makes it much easier to scan
@@ -175,123 +272,68 @@ Indent column definitions by four (4) spaces within the `CREATE` definition.
 
 ### Constraints and keys
 
+Constraints and their subset, keys, are a very important component of any
+database definition. They can quickly become very difficult to read and reason
+about though so it is important that a standard set of guidelines are followed.
+
+#### Choosing keys
+
+Deciding the column(s) that will form the keys in the definition should be a 
+carefully considered activity as it will effect performance and data integrity.
+
+1. The key should be unique to some degree.
+2. Consistency in data type for the value across the schema and a lower likelihood
+   of this changing.
+3. Can the value be validated against standard format? Encouraging conformity to
+   point 2.
+4. Keeping the key as simple as possible whilst not being scared to use compound
+   keys where necessary.
+
+It is a reasoned and considered balancing act to be performed at the definition
+of a database. Should requirements evolve in the future it is possible to make
+changes to the definitions to keep them up to date.
+
+#### Defining constraints
+
+Once the keys are decided it is possible to define them in the system using
+constraints.
+
+* All tables must have at least one key to be useful.
 * Specify the primary key first right after the `CREATE TABLE` statement.
-* All tables must have at least one key to be useful
 * Constraints should be defined directly beneath the column they correspond to.
-  If it is a multi-column constraint then consider putting it at close to both
+  Indent the constraint so that it aligns to the right of the column name.
+* If it is a multi-column constraint then consider putting it as close to both
   column definitions as possible and where this is difficult as a last resort
-  include them at the end of the `CREATE TABLE` definition. If it is a table level
-  constraint that applies to the entire table then it should also appear the end.
+  include them at the end of the `CREATE TABLE` definition.
+* If it is a table level constraint that applies to the entire table then it
+  should also appear at the end.
 * Use alphabetical order so `ON DELETE` comes before `ON UPDATE`.
 * All constraints should be given a custom name except `UNIQUE`, `PRIMARY KEY`
-  and `FOREIGN KEY` where the database vendor will generally supply sufficiently.
+  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
   intelligible names automatically.
 * Use `LIKE` and `SIMILAR TO` constraints to ensure the integrity of strings
-  where the format is known
+  where the format is known.
 * Where the ultimate range of a numerical value is known it must be written as a
   range `CHECK()` to prevent incorrect values entering the database or the silent
   truncation of data too large to fit the column definition. In the least it
   should check that the value is greater than zero in most cases.
 * `CHECK()` constraints should be kept in separate clauses to ease debugging.
 * If it make sense to do so align each aspect of the query on the same character
-  position. For example all `NOT NULL` definitons should start at the same
+  position. For example all `NOT NULL` definitions should start at the same
   character position.
 
-```SQL
+```sql
 CREATE TABLE staff (
     PRIMARY KEY (staff_num),
     staff_num      INT(5)       NOT NULL,
     first_name     VARCHAR(100) NOT NULL,
     pens_in_drawer INT(2)       NOT NULL,
-    CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
+                   CONSTRAINT pens_in_drawer_range
+                   CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
 );
 ```
 
-## Naming conventions
 
-### General
-
-* Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords]
-* Keep the length to a maximum of 30 bytes—in practice this is 30 characters
-  unless you are using multibyte charset
-* Names must begin with a letter and may not end with an underscore
-* Only use letters, numbers and underscores in names
-* Avoid the use of multiple consecutive underscores—these can be hard to read
-* Use underscores where you would naturally include a space in name (first name
-  becomes `first_name`)
-* Avoid abbreviations and if you have to use them make sure they are commonly
-  understood
-
-```sql
-SELECT first_name
-  FROM staff;
-```
-
-### Tables
-
-* Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) staff and employees.
-* Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
-  notation
-* Never give a table the same name as one of its columns
-* Avoid, where possible, concatenating two table names together to create the name
-  of a relationship table. Rather than `car_mechanic` prefer `service`
-
-```sql
-SELECT first_name
-  FROM staff;
-```
-
-### Columns
-
-* Always use the singular name
-* Avoid simply using `id` as the primary identifier for the table
-* Do not add a column with the same name as its table
-* Always use lowercase except where it may make sense not to such as proper nouns
-
-### Aliasing or correlations
-
-* Should relate in some way to the object or expression they are aliasing
-* As rule of thumb the correlation name should be the first letter of each word
-  in the object's name
-* If there is already a correlation with same name then append a number
-* Always include the `AS` keyword—makes it easier to read as it is explicit
-* For computed data (`SUM()` or `AVG()`) use the name you would give it were it
-  a column defined in the schema
-
-```sql
-SELECT first_name AS fn
-  FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
-
-SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
-```
-
-### Stored procedures
-
-* The name must contain a verb
-* Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
-  notation
-
-### Uniform suffixes
-
-The following suffixes have a universal meaning ensuring the columns can be read
-and understood easily from SQL code. Use the correct suffix where appropriate.
-
-* `_id`—a unique identifier such as a column that is a primary key
-* `_status`—flag value or some other status of any type such as
-  `publication_status`
-* `_total`—the total or sum of a collection of values
-* `_num`—denotes the field contains any kind of number
-* `_name`—signifies a name such as `first_name`
-* `_seq`—contains a contiguous sequence of values
-* `_date`—denotes a column that contains the date of something
-* `_tally`—a count
-* `_size`—the size of something such as a file size or clothing
-* `_addr`—an address for the record could be physical or intangible such as `ip_addr`
 
 ## Appendix
 
@@ -1130,6 +1172,10 @@ ZONE
 [issue]: #
 [fork]: #
 [pull]: #
+[celko]: http://www.amazon.com/gp/product/0120887975/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0120887975&linkCode=as2&tag=fuph-20&linkId=7PF4X6KIAMWYYT7Z
+    "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/master/_includes/sqlstyle.guide.md
+    "Download the guide in Markdown format"
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
