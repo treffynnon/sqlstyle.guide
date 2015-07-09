@@ -298,7 +298,15 @@ changes to the definitions to keep them up to date.
 Once the keys are decided it is possible to define them in the system using
 constraints.
 
-* All tables must have at least one key to be useful.
+##### General
+
+* Tables must have at least one key to be complete and useful.
+* Constraints should be given a custom name excepting `UNIQUE`, `PRIMARY KEY`
+  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
+  intelligible names automatically.
+
+##### Layout and order
+
 * Specify the primary key first right after the `CREATE TABLE` statement.
 * Constraints should be defined directly beneath the column they correspond to.
   Indent the constraint so that it aligns to the right of the column name.
@@ -307,10 +315,13 @@ constraints.
   include them at the end of the `CREATE TABLE` definition.
 * If it is a table level constraint that applies to the entire table then it
   should also appear at the end.
-* Use alphabetical order so `ON DELETE` comes before `ON UPDATE`.
-* All constraints should be given a custom name except `UNIQUE`, `PRIMARY KEY`
-  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
-  intelligible names automatically.
+* Use alphabetical order where `ON DELETE` comes before `ON UPDATE`.
+* If it make sense to do so align each aspect of the query on the same character
+  position. For example all `NOT NULL` definitions should start at the same
+  character position.
+
+##### Validation
+
 * Use `LIKE` and `SIMILAR TO` constraints to ensure the integrity of strings
   where the format is known.
 * Where the ultimate range of a numerical value is known it must be written as a
@@ -318,9 +329,8 @@ constraints.
   truncation of data too large to fit the column definition. In the least it
   should check that the value is greater than zero in most cases.
 * `CHECK()` constraints should be kept in separate clauses to ease debugging.
-* If it make sense to do so align each aspect of the query on the same character
-  position. For example all `NOT NULL` definitions should start at the same
-  character position.
+
+##### Example
 
 ```sql
 CREATE TABLE staff (
