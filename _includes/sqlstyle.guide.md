@@ -7,8 +7,8 @@ key here is that you pick a style and stick to it. To suggest changes
 or fix bugs please open an [issue][] or [pull request][pull] on Git Hub.
 
 These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams already following that standard
-simple. This guide is a little more opinionated in some areas and in others a
+Style][celko] book to make adoption for teams who have already read that book
+easier. This guide is a little more opinionated in some areas and in others a
 little more relaxed. It is certainly more succinct where [Celko's book][celko]
 contains anecdotes and reasoning behind each rule as thoughtful prose.
 
