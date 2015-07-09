@@ -20,18 +20,28 @@ read—much harder with a physical book!
 
 ### Do
 
-* Use consistent and descriptive identifiers and names
-* Make judicious use of white space and indentation to make code easer to read
-* 
+* Use consistent and descriptive identifiers and names.
+* Make judicious use of white space and indentation to make code easer to read.
+* Store [ISO-8601][iso-8601] compliant time and date information
+  `YYYY-MM-DD HH:MM:SS.SSSSS`.
+* Try to use only standard SQL functions instead of vendor specific functions for
+  reasons of portability.
+* Keep code succinct and devoid of redundant SQL—unnecessary quoting or
+  parentheses or `WHERE` clauses that can otherwise be derived.
+* Include comments in SQL code where necessary. Use the C style opening `/*` and
+  closing `*/` where possible otherwise preceed comments with `--` and finish
+  them with a new line.
 
-### Avoid the use of
+### Avoid
 
-* CamelCase—it is difficult to scan quickly
-* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`
-* Plurals—use the more natural collective term instead
+* CamelCase—it is difficult to scan quickly.
+* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
+* Plurals—use the more natural collective term instead.
 * Quoted identifiers—if you must use them then stick to SQL92 double quotes for
   portability (you may need to configure your SQL server to support this depending
-  on vendor)
+  on vendor).
+* Object oriented design principles should not be applied to SQL or database
+  structures.
 
 ```sql
 SELECT first_name
@@ -247,6 +257,28 @@ SELECT r.last_name,
            AND c.confirmed = 'Y');
 ```
 
+### Preferred formalisms
+
+* Make use of `BETWEEN` where possible instead of combining multiple statements
+  with `AND`.
+* Similarly use `IN()` instead of multiple `OR` clauses.
+* Where a value needs to be interpreted before leaving the database use the `CASE`
+  expression. `CASE` statements can be nested to form more complex logical structures.
+* Avoid the use of `UNION` clauses and temporary tables where possible. If the
+  schema can be optimised to remove the reliance on these features then it most
+  likely should be.
+
+```sql
+SELECT CASE postcode
+       WHEN 'BN1' THEN 'Brighton'
+       WHEN 'EH1' THEN 'Edinburgh'
+       END AS city
+  FROM office_locations
+ WHERE country = 'United Kingdom'
+   AND opening_time BETWEEN 8 AND 9
+   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+```
+
 ## Create syntax
 
 When declaring schema information it is also important to maintain human
@@ -343,6 +375,20 @@ CREATE TABLE staff (
 );
 ```
 
+### Designs to avoid
+
+* Object oriented design principles do not effectively translate to relational
+  database designs—avoid this pitfall.
+* Placing the value in one column and the units in another column. The column
+  should make the units self evident to prevent the requirement to combine
+  columns again later in the application. Use `CHECK()` to ensure valid data is
+  inserted into the column.
+* [EAV (Entity Attribute Value)][eav] tables—use a specialist product intended for
+  handling such schema-less data instead.
+* Splitting up data that should be in one table across many because of arbitrary
+  concerns such as time-based archiving or location in a multi-national
+  organisation. Later queries must then work across multiple tables with `UNION`
+  rather than just simply querying one table.
 
 
 ## Appendix
@@ -1186,7 +1232,11 @@ ZONE
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
 [dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/master/_includes/sqlstyle.guide.md
     "Download the guide in Markdown format"
+[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
+    "Wikipedia: ISO 8601"
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference" 
+[eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+    "Wikipedia: Entity–attribute–value model"
