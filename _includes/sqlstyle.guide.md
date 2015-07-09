@@ -156,29 +156,56 @@ When declaring schema information it is also important to maintain human
 readable code. To facilitate this ensure the column definitions are ordered and
 grouped where it makes sense to do so.
 
+Indent column definitions by four (4) spaces within the `CREATE` definition.
+
 ### Choosing data types
 
 * Where possible do not use vendor specific data types—these are not portable and
-  may not be available in older versions of the same vendor's software
+  may not be available in older versions of the same vendor's software.
+* Only use `REAL` or `FLOAT` types where it is strictly necessary for floating
+  point mathematics otherwise prefer `NUMERIC` and `DECIMAL` at all times. Floating
+  point rounding errors are a nuisance!
 
 ### Specifying default values
 
 * The default value must be the same type as the column—if a column is declared
-  a `DECIMAL` do not provide an `INTEGER` default value
+  a `DECIMAL` do not provide an `INTEGER` default value.
 * Default values must follow the data type declaration and come before any
-  `NOT NULL` statement
+  `NOT NULL` statement.
 
-### Keys
+### Constraints and keys
 
-* Specify the primary key first right after the `CREATE TABLE` statement
+* Specify the primary key first right after the `CREATE TABLE` statement.
+* All tables must have at least one key to be useful
+* Constraints should be defined directly beneath the column they correspond to.
+  If it is a multi-column constraint then consider putting it at close to both
+  column definitions as possible and where this is difficult as a last resort
+  include them at the end of the `CREATE TABLE` definition. If it is a table level
+  constraint that applies to the entire table then it should also appear the end.
+* Use alphabetical order so `ON DELETE` comes before `ON UPDATE`.
+* All constraints should be given a custom name except `UNIQUE`, `PRIMARY KEY`
+  and `FOREIGN KEY` where the database vendor will generally supply sufficiently.
+  intelligible names automatically.
+* Use `LIKE` and `SIMILAR TO` constraints to ensure the integrity of strings
+  where the format is known
+* Where the ultimate range of a numerical value is known it must be written as a
+  range `CHECK()` to prevent incorrect values entering the database or the silent
+  truncation of data too large to fit the column definition. In the least it
+  should check that the value is greater than zero in most cases.
+* `CHECK()` constraints should be kept in separate clauses to ease debugging.
+* If it make sense to do so align each aspect of the query on the same character
+  position. For example all `NOT NULL` definitons should start at the same
+  character position.
 
-### Constraints
-
-* Constraints need to be defined beneath the column they correspond to
-* Use alphabetical order so `ON DELETE` comes before `ON UPDATE`
-* All constraints should be given a constraint except `UNIQUE`, `PRIMARY KEY`
-  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
-  intelligiable names automatically
+```SQL
+CREATE TABLE staff (
+    PRIMARY KEY (staff_num),
+    staff_num      INT(5)       NOT NULL,
+    first_name     VARCHAR(100) NOT NULL,
+    pens_in_drawer INT(2)       NOT NULL,
+    CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
+);
+```
 
 ## Naming conventions
 
