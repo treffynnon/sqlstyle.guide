@@ -85,10 +85,31 @@ a:hover {
 
 header.top {
     background: {{ primary_colour }};
+    color: #333;
 }
 
 header.top h1 {
     color: #fff;
+    margin-bottom: 0;
+}
+
+header.top p.author {
+    margin-top: 0;
+}
+
+header.top a {
+    color: #333;
+    border-color: #333;
+}
+
+header.top a:hover {
+    border: none;
+    text-decoration: none;
+}
+
+header.top p.twitter {
+    float: right;
+    margin-top: -3em;
 }
 
 .wrap {

@@ -12,9 +12,13 @@ easier. This guide is a little more opinionated in some areas and in others a
 little more relaxed. It is certainly more succinct where [Celko's book][celko]
 contains anecdotes and reasoning behind each rule as thoughtful prose.
 
-You can easily include this guide in [Markdown format][dl-md] as a part of a
+It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book!
+read—much harder with a physical book
+
+SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+Attribution-ShareAlike 4.0 International License][licence].
+Based on a work at [http://www.sqlstyle.guide][self].
 
 ## General
 
@@ -44,8 +48,16 @@ read—much harder with a physical book!
   structures.
 
 ```sql
-SELECT first_name
-  FROM staff;
+SELECT file_hash,  -- stored ssdeep hash
+  FROM file_system
+ WHERE file_name = '.vimrc';
+```
+```sql
+/* Updating the file record after writing to the file */
+UPDATE file_system
+   SET file_modified_date = '1980-02-22 13:19:01.00000',
+       file_size = 209732
+ WHERE file_name = '.vimrc';
 ```
 
 ## Naming conventions
@@ -205,6 +217,18 @@ Always include newlines/vertical space:
 Keeping all the keywords aligned to the righthand side and the values left aligned
 creates a uniform gap down the middle of query. It makes it much easier to scan
 the query definition over quickly too.
+
+```sql
+INSERT INTO albums (title, release_date, recording_date)
+VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
+       ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
+```
+
+```sql
+UPDATE albums
+   SET release_date = '1990-01-01 01:01:01.00000'
+ WHERE title = 'The New Danger';
+```
 
 ```sql
 SELECT a.title,
@@ -1225,6 +1249,8 @@ ZEROFILL
 ZONE
 ```
 
+[simon]: https://www.simonholywell.com/
+    "SimonHolywell.com"
 [issue]: #
 [fork]: #
 [pull]: #
@@ -1240,3 +1266,7 @@ ZONE
     "Reserved keyword reference" 
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
+[self]: http://www.sqlstyle.guide
+    "SQL style guide by Simon Holywell"
+[licence]: http://creativecommons.org/licenses/by-sa/4.0/
+    "Creative Commons Attribution-ShareAlike 4.0 International License"
