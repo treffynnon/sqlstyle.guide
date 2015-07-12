@@ -14,7 +14,7 @@ contains anecdotes and reasoning behind each rule as thoughtful prose.
 
 It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book
+read—much harder with a physical book.
 
 SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
@@ -25,12 +25,12 @@ Based on a work at [http://www.sqlstyle.guide][self].
 ### Do
 
 * Use consistent and descriptive identifiers and names.
-* Make judicious use of white space and indentation to make code easer to read.
+* Make judicious use of white space and indentation to make code easier to read.
 * Store [ISO-8601][iso-8601] compliant time and date information
-  `YYYY-MM-DD HH:MM:SS.SSSSS`.
+  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
 * Try to use only standard SQL functions instead of vendor specific functions for
   reasons of portability.
-* Keep code succinct and devoid of redundant SQL—unnecessary quoting or
+* Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
   parentheses or `WHERE` clauses that can otherwise be derived.
 * Include comments in SQL code where necessary. Use the C style opening `/*` and
   closing `*/` where possible otherwise preceed comments with `--` and finish
@@ -40,7 +40,8 @@ Based on a work at [http://www.sqlstyle.guide][self].
 
 * CamelCase—it is difficult to scan quickly.
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
-* Plurals—use the more natural collective term instead.
+* Plurals—use the more natural collective term where possible instead. For example
+  `staff` instead of `employees` or `people` instead of `individuals`.
 * Quoted identifiers—if you must use them then stick to SQL92 double quotes for
   portability (you may need to configure your SQL server to support this depending
   on vendor).
@@ -71,8 +72,8 @@ UPDATE file_system
 * Names must begin with a letter and may not end with an underscore.
 * Only use letters, numbers and underscores in names.
 * Avoid the use of multiple consecutive underscores—these can be hard to read.
-* Use underscores where you would naturally include a space in name (first name
-  becomes `first_name`).
+* Use underscores where you would naturally include a space in the name (first
+  name becomes `first_name`).
 * Avoid abbreviations and if you have to use them make sure they are commonly
   understood.
 
@@ -84,23 +85,18 @@ SELECT first_name
 ### Tables
 
 * Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) staff and employees.
+  preference) `staff` and `employees`.
 * Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
   notation.
-* Never give a table the same name as one of its columns.
+* Never give a table the same name as one of its columns and vice versa.
 * Avoid, where possible, concatenating two table names together to create the name
   of a relationship table. Rather than `car_mechanic` prefer `service`.
-
-```sql
-SELECT first_name
-  FROM staff;
-```
 
 ### Columns
 
 * Always use the singular name.
 * Avoid simply using `id` as the primary identifier for the table.
-* Do not add a column with the same name as its table.
+* Do not add a column with the same name as its table and vice versa.
 * Always use lowercase except where it may make sense not to such as proper nouns.
 
 ### Aliasing or correlations
@@ -118,7 +114,8 @@ SELECT first_name AS fn
   FROM staff AS s1
   JOIN students AS s2
     ON s2.mentor_id = s1.staff_num;
-
+```
+```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
   FROM staff AS s;
 ```
@@ -264,7 +261,7 @@ SELECT r.last_name
 
 Sub-queries should also be aligned to the right side of the river and then laid
 out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on new line at the same character position as it's
+the closing parenthesis on a new line at the same character position as it's
 opening partner—this is especially true where you have nested sub-queries.
 
 ```sql
@@ -338,10 +335,10 @@ Deciding the column(s) that will form the keys in the definition should be a
 carefully considered activity as it will effect performance and data integrity.
 
 1. The key should be unique to some degree.
-2. Consistency in data type for the value across the schema and a lower likelihood
-   of this changing.
-3. Can the value be validated against standard format? Encouraging conformity to
-   point 2.
+2. Consistency in terms of data type for the value across the schema and a lower
+   likelihood of this changing in the future.
+3. Can the value be validated against a standard format (such as one published by
+   ISO)? Encouraging conformity to point 2.
 4. Keeping the key as simple as possible whilst not being scared to use compound
    keys where necessary.
 
@@ -352,7 +349,7 @@ changes to the definitions to keep them up to date.
 #### Defining constraints
 
 Once the keys are decided it is possible to define them in the system using
-constraints.
+constraints along with field value validation.
 
 ##### General
 
@@ -372,9 +369,10 @@ constraints.
 * If it is a table level constraint that applies to the entire table then it
   should also appear at the end.
 * Use alphabetical order where `ON DELETE` comes before `ON UPDATE`.
-* If it make sense to do so align each aspect of the query on the same character
-  position. For example all `NOT NULL` definitions should start at the same
-  character position.
+* If it make senses to do so align each aspect of the query on the same character
+  position. For example all `NOT NULL` definitions could start at the same
+  character position. This is not hard and fat, but it certainly makes the code
+  much easier to scan and read.
 
 ##### Validation
 
@@ -419,7 +417,7 @@ CREATE TABLE staff (
 
 ### Reserved keyword reference
 
-A list of ANSI SQL 92, ANSI SQL 99, ANSI SQL 2003, MySQL 3.23.x, MySQL 4.x, MySQL 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC, Oracle 10.2 reserved keywords.
+A list of ANSI SQL (92, 99 and 2003), MySQL 3 to 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC and Oracle 10.2 reserved keywords.
 
 ```sql
 A

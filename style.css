@@ -129,6 +129,38 @@ ul#markdown-toc {
   -webkit-column-gap: 1em;
      -moz-column-gap: 1em;
           column-gap: 1em;
+          
+    margin-bottom: 2.8em;
+}
+
+.foot hr {
+    font-family: 'Roboto Slab', serif;
+    padding: 0;
+    border: none;
+    border-top: 0.1em solid #E2E2E2;
+    color: #E2E2E2;
+    text-align: center;
+}
+.foot hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.925em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+
+.foot .buttons {
+    margin-top: 3em;
+}
+.quick-links {
+    list-style: none;
+    margin-left: 0;
+    text-align: center;
+}
+.quick-links li {
+    display: inline;
 }
 
 /* Syntax highlighting */
