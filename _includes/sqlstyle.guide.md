@@ -102,9 +102,9 @@ SELECT first_name
 ### Aliasing or correlations
 
 * Should relate in some way to the object or expression they are aliasing.
-* As rule of thumb the correlation name should be the first letter of each word
+* As a rule of thumb the correlation name should be the first letter of each word
   in the object's name.
-* If there is already a correlation with same name then append a number.
+* If there is already a correlation with the same name then append a number.
 * Always include the `AS` keyword—makes it easier to read as it is explicit.
 * For computed data (`SUM()` or `AVG()`) use the name you would give it were it
   a column defined in the schema.
@@ -371,7 +371,7 @@ constraints along with field value validation.
 * Use alphabetical order where `ON DELETE` comes before `ON UPDATE`.
 * If it make senses to do so align each aspect of the query on the same character
   position. For example all `NOT NULL` definitions could start at the same
-  character position. This is not hard and fat, but it certainly makes the code
+  character position. This is not hard and fast, but it certainly makes the code
   much easier to scan and read.
 
 ##### Validation
