@@ -112,6 +112,13 @@ header.top p.twitter {
     margin-top: -3em;
 }
 
+@media (max-width: 28.75em) {
+    header.top p.twitter {
+        float: none;
+        margin-top: 0;
+    }
+}
+
 .wrap {
 	padding: 2% 10%;
     max-width: 48em;
