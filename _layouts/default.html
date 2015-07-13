@@ -4,17 +4,52 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-        <title>{{ site.name }}</title>
+        <title property="og:title">{{ site.name }}</title>
         <link href="http://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab|Droid+Sans+Mono" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style.css">
+
+        <meta content="website" property="og:type">
+        <meta content="http://www.sqlstyle.guide/" property="og:url">
+        <meta content="0001-01-01 00:00:00 +0000 UTC" property="og:updated_time">
+        <meta content="https://www.facebook.com/holywell" property="article:author">
+        <meta content="https://www.facebook.com/holywell" property="article:publisher">
+        <meta content="0001-01-01 00:00:00 +0000 UTC" property="article:modified_time">
+        <meta content="" property="article:section">
+        <meta content="A code style guide for SQL code to ensure legible and maintainable projects." itemprop="description" name="description" property="og:description">
+        <meta content="sql, style guide, code style guide, simon holywell, holywell" itemprop="keywords" name="keywords">
+        <meta content="summary" name="twitter:card"></meta>
+        <meta content="SQL style guide by Simon Holywell" name="twitter:title">
+        <meta content="A code style guide for SQL code to ensure legible and maintainable projects." name="twitter:description">
+        <meta content="@treffynnon" name="twitter:site">
+        <meta content="@treffynnon" name="twitter:creator">
+        <meta content="sqlstyle.guide" name="twitter:domain">
+
+        <link href="http://plus.google.com/+SimonHolywell" rel="author">
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-65071829-1', 'auto');
+            ga('send', 'pageview');
+        </script>
     </head>
-    <body>
+    <body itemscope itemtype="http://schema.org/TechArticle">
         {% include head.html %}
         <div id="content" class="wrap">
             {{ content }}
         </div>
         {% include foot.html %}
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <script>!function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, "script", "twitter-wjs");</script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="scripts.js"></script>
     </body>
