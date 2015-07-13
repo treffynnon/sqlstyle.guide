@@ -4,7 +4,7 @@
 
 You can use this set of guidelines, [fork them][fork] or make your own - the
 key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][] or [pull request][pull] on Git Hub.
+or fix bugs please open an [issue][] or [pull request][pull] on GitHub.
 
 These guidelines are designed to be compatible with Joe Celko's [SQL Programming
 Style][celko] book to make adoption for teams who have already read that book
@@ -1249,12 +1249,15 @@ ZONE
 
 [simon]: https://www.simonholywell.com/
     "SimonHolywell.com"
-[issue]: #
-[fork]: #
-[pull]: #
+[issue]: https://github.com/treffynnon/sqlstyle.guide/issues
+    "SQL style guide issues on GitHub"
+[fork]: https://github.com/treffynnon/sqlstyle.guide/fork
+    "Fork SQL style guide on GitHub"
+[pull]: https://github.com/treffynnon/sqlstyle.guide/pulls/
+    "SQL style guide pull requests on GitHub"
 [celko]: http://www.amazon.com/gp/product/0120887975/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0120887975&linkCode=as2&tag=fuph-20&linkId=7PF4X6KIAMWYYT7Z
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/master/_includes/sqlstyle.guide.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
