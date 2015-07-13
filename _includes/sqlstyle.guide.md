@@ -1247,7 +1247,7 @@ ZEROFILL
 ZONE
 ```
 
-[simon]: https://www.simonholywell.com/
+[simon]: https://www.simonholywell.com/?utm_source=sqlstyle.guide&utm_medium=link&utm_campaign=md-document
     "SimonHolywell.com"
 [issue]: https://github.com/treffynnon/sqlstyle.guide/issues
     "SQL style guide issues on GitHub"
