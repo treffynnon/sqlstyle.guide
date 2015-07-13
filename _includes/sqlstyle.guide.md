@@ -95,7 +95,7 @@ SELECT first_name
 ### Columns
 
 * Always use the singular name.
-* Avoid simply using `id` as the primary identifier for the table.
+* Where possible avoid simply using `id` as the primary identifier for the table.
 * Do not add a column with the same name as its table and vice versa.
 * Always use lowercase except where it may make sense not to such as proper nouns.
 
