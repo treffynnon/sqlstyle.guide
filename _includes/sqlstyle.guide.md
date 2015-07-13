@@ -49,7 +49,7 @@ Based on a work at [http://www.sqlstyle.guide][self].
   structures.
 
 ```sql
-SELECT file_hash,  -- stored ssdeep hash
+SELECT file_hash  -- stored ssdeep hash
   FROM file_system
  WHERE file_name = '.vimrc';
 ```
