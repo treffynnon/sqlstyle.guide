@@ -88,8 +88,8 @@ FROM staff;
 ```sql
 SELECT first_name AS fn
 FROM staff AS s1
-JOIN students AS s2
-  ON s2.mentor_id = s1.staff_num;
+  JOIN students AS s2
+    ON s2.mentor_id = s1.staff_num;
 ```
 ```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
@@ -220,16 +220,15 @@ This allows the reader to quickly scan for the important building blocks of the 
 
 #### Joins
 
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+Joins should be indented 2 spaces right from the `FROM` keyword
 
 Single line `JOIN`s are fine for simple situations
 
 ```sql
 SELECT r.last_name
 FROM riders AS r
-     INNER JOIN bikes b ON r.bike_vin_num = b.vin_num
-     INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
+  INNER JOIN bikes b ON r.bike_vin_num = b.vin_num
+  INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
 ```
 
 Multi line JOINs should be indented the same as base keywords:
@@ -237,9 +236,9 @@ Multi line JOINs should be indented the same as base keywords:
 ```sql
 SELECT r.last_name
 FROM riders AS r
-     INNER JOIN bikes b
-             ON r.bike_vin_num = b.vin_num
-            AND r.bike_lane = r.lane
+  INNER JOIN bikes b
+          ON r.bike_vin_num = b.vin_num
+         AND r.bike_lane = r.lane
 ```
 
 #### WITH statements (postgres only)
@@ -250,9 +249,7 @@ Indent them until the closing parentheses.
 WITH my_tmp_table AS (
   SELECT r.last_name
   FROM riders AS r
-       INNER JOIN bikes b
-               ON r.bike_vin_num = b.vin_num
-              AND r.bike_lane = r.lane
+    INNER JOIN bikes b ON r.bike_vin_num = b.vin_num
 )
 
 SELECT *
