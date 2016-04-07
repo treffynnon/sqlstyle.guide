@@ -11,6 +11,10 @@ far more important that we have _any_ agreed upon style than that we all like it
 the style guide.**  Reading queries is tough enough already without figuring out
 that you prefer a different indentation style.
 
+Original SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+Attribution-ShareAlike 4.0 International License][licence].
+Based on a work at [http://www.sqlstyle.guide][self].
+
 ## General
 
 ### Do
