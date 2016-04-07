@@ -280,6 +280,35 @@ WHERE r.last_name IN
           AND c.confirmed = 'Y');
 ```
 
+#### Case statements (PostGres)
+
+`CASE` and `END` should have the same left justification.
+
+`WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
+
+```sql
+SELECT CASE WHEN x > y AND x < z
+              THEN 'x more than y but less than z'
+            WHEN x > y AND x > z
+              THEN 'x more than y and more than z'
+            ELSE
+              'x and y not related'
+       END AS city
+FROM office_locations
+```
+
+#### Case statements (MySql)
+
+```sql
+SELECT CASE postcode
+         WHEN 'BN1'
+           THEN 'Brighton'
+         WHEN 'EH1'
+           THEN 'Edinburgh'
+       END AS city
+FROM office_locations
+```
+
 ### Preferred formalisms
 
 * Make use of `BETWEEN` where possible instead of combining multiple statements
@@ -292,9 +321,10 @@ WHERE r.last_name IN
   likely should be.
 
 ```sql
-SELECT CASE postcode
-       WHEN 'BN1' THEN 'Brighton'
-       WHEN 'EH1' THEN 'Edinburgh'
+SELECT CASE postcode WHEN 'BN1'
+                       THEN 'Brighton'
+                     WHEN 'EH1'
+                       THEN 'Edinburgh'
        END AS city
 FROM office_locations
 WHERE country = 'United Kingdom'
