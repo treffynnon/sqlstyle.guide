@@ -105,6 +105,10 @@ FROM staff AS s;
 
 ### Uniform suffixes
 
+* `is_` - for booleans
+
+### Uniform suffixes
+
 The following suffixes have a universal meaning ensuring the columns can be read
 and understood easily from SQL code. Use the correct suffix where appropriate.
 
