@@ -1,6 +1,6 @@
 # SQL style guide
 
-**[Read the guide](includes/sqlstyle.guide.md)**
+**[Read the guide](_includes/sqlstyle.guide.md)**
 
 ---
 
