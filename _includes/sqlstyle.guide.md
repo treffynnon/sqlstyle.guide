@@ -7,9 +7,10 @@ These are guidelines to help you write SQL queries that will be easier to read.
 Remember that even if you hate a given style at first, generally speaking it is
 far more important that we have _any_ agreed upon style than that we all like it.
 
-**Queries submitted to the Data Engineering or Data Science teams _must_ follow
-the style guide.**  Reading queries is tough enough already without figuring out
-that you prefer a different indentation style.
+Queries submitted to the Data teams should follow the style guide, and queries starkly
+contrasting to, or ignorant of, these guidelines may be asked to be reformatted and
+resubmitted. Feel free to ask about style rationale, or pose a question how you can make
+your query (or often taking a step back, question) adhere.
 
 Original SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
@@ -64,13 +65,9 @@ FROM staff;
 
 ### Tables
 
-* Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) `staff` and `employees`.
 * Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
   notation.
 * Never give a table the same name as one of its columns and vice versa.
-* Avoid, where possible, concatenating two table names together to create the name
-  of a relationship table. Rather than `cars_mechanics` prefer `services`.
 
 ### Columns
 
@@ -245,11 +242,11 @@ FROM riders AS r
          AND r.bike_lane = r.lane
 ```
 
-#### WITH statements (postgres only)
+#### WITH statements (PostgreSQL only)
 
 Indent them until the closing parentheses.
 
-```
+```sql
 WITH my_tmp_table AS (
   SELECT r.last_name
   FROM riders AS r
@@ -262,30 +259,39 @@ FROM my_tmp_table
 
 #### Sub-queries
 
+In PostgreSQL you should be doing subqueries with `WITH` clauses.
+
 Sub-queries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as it's
-opening partner—this is especially true where you have nested sub-queries.
+out using the same style as a `WITH` statement w/r/t parentheses.
 
 ```sql
 SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
+       (
+         SELECT MAX(YEAR(championship_date))
+           FROM champions AS c
          WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
+           AND c.confirmed = 'Y'
+        ) AS last_championship_year
 FROM riders AS r
 WHERE r.last_name IN
-      (SELECT c.last_name
-         FROM champions AS c
+      (
+        SELECT c.last_name
+          FROM champions AS c
         WHERE YEAR(championship_date) > '2008'
-          AND c.confirmed = 'Y');
+          AND c.confirmed = 'Y'
+       )
 ```
 
-#### Case statements (PostGres)
+#### Case statements (PostreSQL)
 
-`CASE` and `END` should have the same left justification.
+`CASE` and `END` can either be inline:
 
-`WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
+```sql
+SELECT CASE WHEN x > y THEN 1 ELSE 0 END
+FROM table
+```
+
+or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
 
 ```sql
 SELECT CASE WHEN x > y AND x < z
@@ -322,10 +328,11 @@ FROM office_locations
   likely should be.
 
 ```sql
-SELECT CASE postcode WHEN 'BN1'
-                       THEN 'Brighton'
-                     WHEN 'EH1'
-                       THEN 'Edinburgh'
+SELECT CASE postcode
+         WHEN 'BN1'
+           THEN 'Brighton'
+         WHEN 'EH1'
+           THEN 'Edinburgh'
        END AS city
 FROM office_locations
 WHERE country = 'United Kingdom'
