@@ -103,9 +103,9 @@ FROM staff AS s;
 * Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
   notation.
 
-### Uniform suffixes
+### Uniform prefixes
 
-* `is_` - for booleans
+* `is_` - denotes a boolean
 
 ### Uniform suffixes
 
