@@ -46,8 +46,8 @@ Based on a work at [http://www.sqlstyle.guide][self].
 
 ### General
 
-* Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords].
+* Ensure the name is unique and does not exist as a [MySQLreserved keyword][reserved-keywords]
+  or [Redshift reserved keyword](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 * Avoid abbreviations and if you have to use them make sure they are commonly
   understood.
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
@@ -228,8 +228,8 @@ Single line `JOIN`s are fine for simple situations
 ```sql
 SELECT r.last_name
 FROM riders AS r
-  INNER JOIN bikes b ON r.bike_vin_num = b.vin_num
-  INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
+  INNER JOIN bikes AS b ON r.bike_vin_num = b.vin_num
+  INNER JOIN crew AS c ON r.crew_chief_last_name = c.last_name
 ```
 
 Multi line JOINs should be indented the same as base keywords:
@@ -237,9 +237,11 @@ Multi line JOINs should be indented the same as base keywords:
 ```sql
 SELECT r.last_name
 FROM riders AS r
-  INNER JOIN bikes b
+  INNER JOIN bikes AS b
           ON r.bike_vin_num = b.vin_num
          AND r.bike_lane = r.lane
+  INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
+WHERE id = 5
 ```
 
 #### WITH statements (PostgreSQL only)
@@ -250,11 +252,18 @@ Indent them until the closing parentheses.
 WITH my_tmp_table AS (
   SELECT r.last_name
   FROM riders AS r
-    INNER JOIN bikes b ON r.bike_vin_num = b.vin_num
+    INNER JOIN bikes AS b ON r.bike_vin_num = b.vin_num
+  WHERE id = 10
+),
+
+my_other_tmp_table AS (
+  SELECT last_name
+  FROM staff
 )
 
 SELECT *
 FROM my_tmp_table
+  JOIN my_other_tmp_table ON my_other_tmp_table.last_name = my_tmp_table.last_name
 ```
 
 #### Sub-queries
@@ -294,12 +303,13 @@ FROM table
 or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
 
 ```sql
-SELECT CASE WHEN x > y AND x < z
-              THEN 'x more than y but less than z'
-            WHEN x > y AND x > z
-              THEN 'x more than y and more than z'
-            ELSE
-              'x and y not related'
+SELECT CASE
+         WHEN x > y AND x < z
+           THEN 'x more than y but less than z'
+         WHEN x > y AND x > z
+           THEN 'x more than y and more than z'
+         ELSE
+           'x and y not related'
        END AS city
 FROM office_locations
 ```
