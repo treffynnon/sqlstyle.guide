@@ -2,21 +2,17 @@
 
 ## Overview
 
-You can use this set of guidelines, [fork them][fork] or make your own - the
-key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][] or [pull request][pull] on GitHub.
+These are guidelines to help you write SQL queries that will be easier to read.
 
-These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams who have already read that book
-easier. This guide is a little more opinionated in some areas and in others a
-little more relaxed. It is certainly more succinct where [Celko's book][celko]
-contains anecdotes and reasoning behind each rule as thoughtful prose.
+Remember that even if you hate a given style at first, generally speaking it is
+far more important that we have _any_ agreed upon style than that we all like it.
 
-It is easy to include this guide in [Markdown format][dl-md] as a part of a
-project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book.
+Queries submitted to the Data teams should follow the style guide, and queries starkly
+contrasting to, or ignorant of, these guidelines may be asked to be reformatted and
+resubmitted. Feel free to ask about style rationale, or pose a question how you can make
+your query (or often taking a step back, question) adhere.
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+Original SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [http://www.sqlstyle.guide][self].
 
@@ -45,28 +41,15 @@ Based on a work at [http://www.sqlstyle.guide][self].
 * Quoted identifiers—if you must use them then stick to SQL92 double quotes for
   portability (you may need to configure your SQL server to support this depending
   on vendor).
-* Object oriented design principles should not be applied to SQL or database
-  structures.
-
-```sql
-SELECT file_hash  -- stored ssdeep hash
-  FROM file_system
- WHERE file_name = '.vimrc';
-```
-```sql
-/* Updating the file record after writing to the file */
-UPDATE file_system
-   SET file_modified_date = '1980-02-22 13:19:01.00000',
-       file_size = 209732
- WHERE file_name = '.vimrc';
-```
 
 ## Naming conventions
 
 ### General
 
-* Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords].
+* Ensure the name is unique and does not exist as a [MySQLreserved keyword][reserved-keywords]
+  or [Redshift reserved keyword](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
+* Avoid abbreviations and if you have to use them make sure they are commonly
+  understood.
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
@@ -74,23 +57,17 @@ UPDATE file_system
 * Avoid the use of multiple consecutive underscores—these can be hard to read.
 * Use underscores where you would naturally include a space in the name (first
   name becomes `first_name`).
-* Avoid abbreviations and if you have to use them make sure they are commonly
-  understood.
 
 ```sql
 SELECT first_name
-  FROM staff;
+FROM staff;
 ```
 
 ### Tables
 
-* Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) `staff` and `employees`.
 * Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
   notation.
 * Never give a table the same name as one of its columns and vice versa.
-* Avoid, where possible, concatenating two table names together to create the name
-  of a relationship table. Rather than `cars_mechanics` prefer `services`.
 
 ### Columns
 
@@ -111,13 +88,13 @@ SELECT first_name
 
 ```sql
 SELECT first_name AS fn
-  FROM staff AS s1
+FROM staff AS s1
   JOIN students AS s2
     ON s2.mentor_id = s1.staff_num;
 ```
 ```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
+FROM staff AS s;
 ```
 
 ### Stored procedures
@@ -126,19 +103,24 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 * Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
   notation.
 
+### Uniform prefixes
+
+* `is_` - denotes a boolean
+
 ### Uniform suffixes
 
 The following suffixes have a universal meaning ensuring the columns can be read
 and understood easily from SQL code. Use the correct suffix where appropriate.
 
 * `_id`—a unique identifier such as a column that is a primary key.
+* `_at`-denotes a column that contains the time of something.
+* `_date`—denotes a column that contains the date of something.
 * `_status`—flag value or some other status of any type such as
   `publication_status`.
 * `_total`—the total or sum of a collection of values.
 * `_num`—denotes the field contains any kind of number.
 * `_name`—signifies a name such as `first_name`.
 * `_seq`—contains a contiguous sequence of values.
-* `_date`—denotes a column that contains the date of something.
 * `_tally`—a count.
 * `_size`—the size of something such as a file size or clothing.
 * `_addr`—an address for the record could be physical or intangible such as
@@ -159,8 +141,8 @@ exists performing the same function. This helps to make code more portable.
 
 ```sql
 SELECT model_num
-  FROM phones AS p
- WHERE p.release_date > '2014-09-30';
+FROM phones AS p
+WHERE p.release_date > '2014-09-30';
 ```
 
 ### White space
@@ -169,22 +151,6 @@ To make the code easier to read it is important that the correct compliment of
 spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
-
-Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle making it easy for
-the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
-
-```sql
-SELECT f.average_height, f.average_diameter
-  FROM flora AS f
- WHERE f.species_name = 'Banksia'
-    OR f.species_name = 'Sheoak'
-    OR f.species_name = 'Wattle';
-```
-
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
 
 Although not exhaustive always include spaces:
 
@@ -195,9 +161,9 @@ Although not exhaustive always include spaces:
 
 ```sql
 SELECT a.title, a.release_date, a.recording_date
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+FROM albums AS a
+WHERE a.title = 'Charcoal Lane'
+   OR a.title = 'The New Danger';
 ```
 
 #### Line spacing
@@ -205,6 +171,7 @@ SELECT a.title, a.release_date, a.recording_date
 Always include newlines/vertical space:
 
 * before `AND` or `OR`
+* after WITH subqueries
 * after semicolons to separate queries for easier reading
 * after each keyword definition
 * after a comma when separating multiple columns into logical groups
@@ -230,9 +197,9 @@ UPDATE albums
 ```sql
 SELECT a.title,
        a.release_date, a.recording_date, a.production_date -- grouped dates together
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+FROM albums AS a
+WHERE a.title = 'Charcoal Lane'
+   OR a.title = 'The New Danger';
 ```
 
 ### Indentation
@@ -240,42 +207,127 @@ SELECT a.title,
 To ensure that SQL is readable it is important that standards of indentation
 are followed.
 
+**ONLY** the fundamental keywords - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `LIMIT`,
+and `ORDER BY`should be fully left justified.  Other clauses should be indented to the end of
+that keyword.
+
+```sql
+SELECT first_name,
+       last_name,
+       is_still_tippin_on_four_fours,
+       is_still_wrapped_in_four_vogues
+FROM rappers
+WHERE first_name = 'Mike'
+  AND last_name = 'Jones'
+```
+
+This allows the reader to quickly scan for the important building blocks of the query.
+
 #### Joins
 
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+Joins should be indented 2 spaces right from the `FROM` keyword
+
+Single line `JOIN`s are fine for simple situations
 
 ```sql
 SELECT r.last_name
-  FROM riders AS r
-       INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engines > 2
+FROM riders AS r
+  INNER JOIN bikes AS b ON r.bike_vin_num = b.vin_num
+  INNER JOIN crew AS c ON r.crew_chief_last_name = c.last_name
+```
 
-       INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+Multi line JOINs should be indented the same as base keywords:
+
+```sql
+SELECT r.last_name
+FROM riders AS r
+  INNER JOIN bikes AS b
+          ON r.bike_vin_num = b.vin_num
+         AND r.bike_lane = r.lane
+  INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
+WHERE id = 5
+```
+
+#### WITH statements (PostgreSQL only)
+
+Indent them until the closing parentheses.
+
+```sql
+WITH my_tmp_table AS (
+  SELECT r.last_name
+  FROM riders AS r
+    INNER JOIN bikes AS b ON r.bike_vin_num = b.vin_num
+  WHERE id = 10
+),
+
+my_other_tmp_table AS (
+  SELECT last_name
+  FROM staff
+)
+
+SELECT *
+FROM my_tmp_table
+  JOIN my_other_tmp_table ON my_other_tmp_table.last_name = my_tmp_table.last_name
 ```
 
 #### Sub-queries
 
+In PostgreSQL you should be doing subqueries with `WITH` clauses.
+
 Sub-queries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as it's
-opening partner—this is especially true where you have nested sub-queries.
+out using the same style as a `WITH` statement w/r/t parentheses.
 
 ```sql
 SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
+       (
+         SELECT MAX(YEAR(championship_date))
+           FROM champions AS c
          WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
-  FROM riders AS r
- WHERE r.last_name IN
-       (SELECT c.last_name
+           AND c.confirmed = 'Y'
+       ) AS last_championship_year
+FROM riders AS r
+WHERE r.last_name IN
+      (
+        SELECT c.last_name
           FROM champions AS c
-         WHERE YEAR(championship_date) > '2008'
-           AND c.confirmed = 'Y');
+        WHERE YEAR(championship_date) > '2008'
+          AND c.confirmed = 'Y'
+      )
+```
+
+#### Case statements (PostreSQL)
+
+`CASE` and `END` can either be inline:
+
+```sql
+SELECT CASE WHEN x > y THEN 1 ELSE 0 END
+FROM table
+```
+
+or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
+
+```sql
+SELECT CASE
+         WHEN x > y AND x < z
+           THEN 'x more than y but less than z'
+         WHEN x > y AND x > z
+           THEN 'x more than y and more than z'
+         ELSE
+           'x and y not related'
+       END AS city
+FROM office_locations
+```
+
+#### Case statements (MySql)
+
+```sql
+SELECT CASE postcode
+         WHEN 'BN1'
+           THEN 'Brighton'
+         WHEN 'EH1'
+           THEN 'Edinburgh'
+       END AS city
+FROM office_locations
 ```
 
 ### Preferred formalisms
@@ -291,13 +343,15 @@ SELECT r.last_name,
 
 ```sql
 SELECT CASE postcode
-       WHEN 'BN1' THEN 'Brighton'
-       WHEN 'EH1' THEN 'Edinburgh'
+         WHEN 'BN1'
+           THEN 'Brighton'
+         WHEN 'EH1'
+           THEN 'Edinburgh'
        END AS city
-  FROM office_locations
- WHERE country = 'United Kingdom'
-   AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+FROM office_locations
+WHERE country = 'United Kingdom'
+  AND opening_time BETWEEN 8 AND 9
+  AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
 
 ## Create syntax
@@ -331,7 +385,7 @@ about though so it is important that a standard set of guidelines are followed.
 
 #### Choosing keys
 
-Deciding the column(s) that will form the keys in the definition should be a 
+Deciding the column(s) that will form the keys in the definition should be a
 carefully considered activity as it will effect performance and data integrity.
 
 1. The key should be unique to some degree.
@@ -1264,7 +1318,7 @@ ZONE
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference" 
+    "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
 [self]: http://www.sqlstyle.guide
