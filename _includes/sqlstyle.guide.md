@@ -5,7 +5,9 @@
 These are guidelines to help you write SQL queries that will be easier to read.
 
 Remember that even if you hate a given style at first, generally speaking it is
-far more important that we have _any_ agreed upon style than that we all like it.
+far more important that we have _any_ agreed upon style than that we all like it, 
+and furthermore the odds are that you will eventually learn to like it once you
+start to follow it.
 
 Queries submitted to the Data teams should follow the style guide, and queries starkly
 contrasting to, or ignorant of, these guidelines may be asked to be reformatted and
