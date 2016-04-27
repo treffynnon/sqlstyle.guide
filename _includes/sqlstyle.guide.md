@@ -149,7 +149,7 @@ WHERE p.release_date > '2014-09-30';
 
 ### White space
 
-To make the code easier to read it is important that the correct compliment of
+To make the code easier to read it is important that the correct amount of
 spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
