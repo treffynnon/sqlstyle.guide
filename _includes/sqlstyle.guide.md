@@ -117,6 +117,7 @@ and understood easily from SQL code. Use the correct suffix where appropriate.
 * `_id`—a unique identifier such as a column that is a primary key.
 * `_at`-denotes a column that contains the time of something.
 * `_date`—denotes a column that contains the date of something.
+* `_pct`—percent
 * `_status`—flag value or some other status of any type such as
   `publication_status`.
 * `_total`—the total or sum of a collection of values.
