@@ -180,9 +180,9 @@ Always include newlines/vertical space:
 * to separate code into related sections, which helps to ease the readability of
   large chunks of code.
 
-Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of query. It makes it much easier to scan
-the query definition over quickly too.
+Keeping all the dependent keywords (e.g. `ON` depends on `JOIN`, `AND` depends on `WHERE`,
+`SET` depends on `UPDATE` right aligned with the top level keywords helps make it clear
+all the lines are part of the same clause.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -193,7 +193,7 @@ VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000
 ```sql
 UPDATE albums
    SET release_date = '1990-01-01 01:01:01.00000'
- WHERE title = 'The New Danger';
+WHERE title = 'The New Danger';
 ```
 
 ```sql
