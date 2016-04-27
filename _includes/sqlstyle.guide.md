@@ -172,11 +172,11 @@ WHERE a.title = 'Charcoal Lane'
 
 Always include newlines/vertical space:
 
+* after `WITH` subqueries
+* after a comma (e.g. between elements of a `SELECT`)
 * before `AND` or `OR`
-* after WITH subqueries
 * after semicolons to separate queries for easier reading
 * after each keyword definition
-* after a comma when separating multiple columns into logical groups
 * to separate code into related sections, which helps to ease the readability of
   large chunks of code.
 
@@ -198,7 +198,9 @@ WHERE title = 'The New Danger';
 
 ```sql
 SELECT a.title,
-       a.release_date, a.recording_date, a.production_date -- grouped dates together
+       a.release_date, 
+       a.recording_date, 
+       a.production_date
 FROM albums AS a
 WHERE a.title = 'Charcoal Lane'
    OR a.title = 'The New Danger';
@@ -238,7 +240,7 @@ FROM riders AS r
   INNER JOIN crew AS c ON r.crew_chief_last_name = c.last_name
 ```
 
-Multi line JOINs should be indented the same as base keywords:
+Multi line JOINs should be indented as per the dependent keywords rule:
 
 ```sql
 SELECT r.last_name
@@ -274,10 +276,10 @@ FROM my_tmp_table
 
 #### Sub-queries
 
-In PostgreSQL you should be doing subqueries with `WITH` clauses.
+In PostgreSQL you should probably be doing subqueries with `WITH` clauses.
 
-Sub-queries should also be aligned to the right side of the river and then laid
-out using the same style as a `WITH` statement w/r/t parentheses.
+Sub-queries should be left aligned 2 spaces to the right of the opening parentheses and then
+laid out using the same style as a `WITH` statement w/r/t parentheses.
 
 ```sql
 SELECT r.last_name,
@@ -299,14 +301,14 @@ WHERE r.last_name IN
 
 #### Case statements (PostreSQL)
 
-`CASE` and `END` can either be inline:
+`CASE` and `END` can either be inline if they are less than 80 characters:
 
 ```sql
 SELECT CASE WHEN x > y THEN 1 ELSE 0 END
 FROM table
 ```
 
-or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
+Or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
 
 ```sql
 SELECT CASE
@@ -336,7 +338,7 @@ FROM office_locations
 
 * Make use of `BETWEEN` where possible instead of combining multiple statements
   with `AND`.
-* Similarly use `IN()` instead of multiple `OR` clauses.
+* Similarly use `IN()` instead of multiple `OR` clauses - though note that MySQL is **really bad** at optimizing `IN` even with an obvious index, so use your discretion depending on what type of server you are querying and how big the table is.
 * Where a value needs to be interpreted before leaving the database use the `CASE`
   expression. `CASE` statements can be nested to form more complex logical structures.
 * Avoid the use of `UNION` clauses and temporary tables where possible. If the
@@ -366,6 +368,7 @@ Indent column definitions by four (4) spaces within the `CREATE` definition.
 
 ### Choosing data types
 
+* Use 6 decimal places on dollars (not cents!) for storing currency information, e.g. `DECIMAL(20,6)`.
 * Where possible do not use vendor specific data types—these are not portable and
   may not be available in older versions of the same vendor's software.
 * Only use `REAL` or `FLOAT` types where it is strictly necessary for floating
@@ -409,6 +412,7 @@ constraints along with field value validation.
 
 ##### General
 
+* Avoid explicit foreign keys; they are usually more trouble than they are worth.
 * Tables must have at least one key to be complete and useful.
 * Constraints should be given a custom name excepting `UNIQUE`, `PRIMARY KEY`
   and `FOREIGN KEY` where the database vendor will generally supply sufficiently
