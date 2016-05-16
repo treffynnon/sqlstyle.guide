@@ -36,18 +36,6 @@ Based on a work at [http://www.sqlstyle.guide][self].
   closing `*/` where possible otherwise preceed comments with `--` and finish
   them with a new line.
 
-### Avoid
-
-* CamelCase—it is difficult to scan quickly.
-* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
-* Plurals—use the more natural collective term where possible instead. For example
-  `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
-  portability (you may need to configure your SQL server to support this depending
-  on vendor).
-* Object oriented design principles should not be applied to SQL or database
-  structures.
-
 ```sql
 SELECT file_hash  -- stored ssdeep hash
   FROM file_system
@@ -60,6 +48,18 @@ UPDATE file_system
        file_size = 209732
  WHERE file_name = '.vimrc';
 ```
+
+### Avoid
+
+* CamelCase—it is difficult to scan quickly.
+* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
+* Plurals—use the more natural collective term where possible instead. For example
+  `staff` instead of `employees` or `people` instead of `individuals`.
+* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
+  portability (you may need to configure your SQL server to support this depending
+  on vendor).
+* Object oriented design principles should not be applied to SQL or database
+  structures.
 
 ## Naming conventions
 
