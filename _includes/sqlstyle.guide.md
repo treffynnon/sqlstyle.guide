@@ -153,6 +153,37 @@ WHERE p.release_date > '2014-09-30';
 To make the code easier to read it is important that the correct amount of
 spacing is used. Do not crowd code or remove natural language spaces.
 
+### Indentation
+
+To ensure that SQL is readable it is important that standards of indentation
+are followed.
+
+**ONLY** the fundamental keywords - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `LIMIT`,
+and `ORDER BY`should be fully left justified.
+
+For single `SELECT`s, you can use the single line form:
+
+```sql
+SELECT first_name
+FROM rappers
+```
+
+If you are `SELECT`ing more than one column, place all selects on their own line indented 2
+spaces in a block after the `SELECT` keyword.
+
+```sql
+SELECT
+  first_name,
+  last_name,
+  is_still_tippin_on_four_fours,
+  is_still_wrapped_in_four_vogues
+FROM rappers
+WHERE first_name = 'Mike'
+  AND last_name = 'Jones'
+```
+
+This allows the reader to quickly scan for the important building blocks of the query.
+
 #### Spaces
 
 Although not exhaustive always include spaces:
@@ -201,46 +232,15 @@ WHERE title = 'The New Danger';
 ```
 
 ```sql
-SELECT a.title,
-       a.release_date,
-       a.recording_date,
-       a.production_date
+SELECT
+  a.title,
+  a.release_date,
+  a.recording_date,
+  a.production_date
 FROM albums AS a
 WHERE a.title = 'Charcoal Lane'
    OR a.title = 'The New Danger';
 ```
-
-### Indentation
-
-To ensure that SQL is readable it is important that standards of indentation
-are followed.
-
-**ONLY** the fundamental keywords - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `LIMIT`,
-and `ORDER BY`should be fully left justified.
-
-For single `SELECT`s, you can use the single line form:
-
-```sql
-SELECT first_name
-FROM rappers
-```
-
-If you are `SELECT`ing more than one column, place all selects on their own line indented 2
-spaces in a block after the `SELECT` keyword.
-
-```sql
-SELECT
-  first_name,
-  last_name,
-  is_still_tippin_on_four_fours,
-  is_still_wrapped_in_four_vogues
-FROM rappers
-WHERE first_name = 'Mike'
-  AND last_name = 'Jones'
-```
-
-This allows the reader to quickly scan for the important building blocks of the query.
-
 
 #### Joins
 
