@@ -291,8 +291,8 @@ FROM my_tmp_table
 
 #### Sub-queries
 
-In PostgreSQL you should be doing subqueries with `WITH` clauses and avoiding the use of inline
-subqueries.
+In PostgreSQL you should probably be writing subqueries with `WITH` clauses and mostly avoiding the
+use of inline subqueries.
 
 In MySQL or other query engines that do not support `WITH`, sub-queries should be left aligned 2
 spaces to the right of the opening parentheses and then laid out using the same style as a `WITH`
