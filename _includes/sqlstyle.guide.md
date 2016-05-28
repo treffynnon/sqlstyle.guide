@@ -5,7 +5,7 @@
 These are guidelines to help you write SQL queries that will be easier to read.
 
 Remember that even if you hate a given style at first, generally speaking it is
-far more important that we have _any_ agreed upon style than that we all like it, 
+far more important that we have _any_ agreed upon style than that we all like it,
 and furthermore the odds are that you will eventually learn to like it once you
 start to follow it.
 
@@ -153,6 +153,37 @@ WHERE p.release_date > '2014-09-30';
 To make the code easier to read it is important that the correct amount of
 spacing is used. Do not crowd code or remove natural language spaces.
 
+### Indentation
+
+To ensure that SQL is readable it is important that standards of indentation
+are followed.
+
+**ONLY** the fundamental keywords - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `LIMIT`,
+and `ORDER BY`should be fully left justified.
+
+For single `SELECT`s, you can use the single line form:
+
+```sql
+SELECT first_name
+FROM rappers
+```
+
+If you are `SELECT`ing more than one column, place all selects on their own line indented 2
+spaces in a block after the `SELECT` keyword.
+
+```sql
+SELECT
+  first_name,
+  last_name,
+  is_still_tippin_on_four_fours,
+  is_still_wrapped_in_four_vogues
+FROM rappers
+WHERE first_name = 'Mike'
+  AND last_name = 'Jones'
+```
+
+This allows the reader to quickly scan for the important building blocks of the query.
+
 #### Spaces
 
 Although not exhaustive always include spaces:
@@ -163,7 +194,10 @@ Although not exhaustive always include spaces:
   comma or semicolon.
 
 ```sql
-SELECT a.title, a.release_date, a.recording_date
+SELECT
+  a.title,
+  a.release_date,
+  a.recording_date
 FROM albums AS a
 WHERE a.title = 'Charcoal Lane'
    OR a.title = 'The New Danger';
@@ -198,35 +232,15 @@ WHERE title = 'The New Danger';
 ```
 
 ```sql
-SELECT a.title,
-       a.release_date, 
-       a.recording_date, 
-       a.production_date
+SELECT
+  a.title,
+  a.release_date,
+  a.recording_date,
+  a.production_date
 FROM albums AS a
 WHERE a.title = 'Charcoal Lane'
    OR a.title = 'The New Danger';
 ```
-
-### Indentation
-
-To ensure that SQL is readable it is important that standards of indentation
-are followed.
-
-**ONLY** the fundamental keywords - `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `LIMIT`,
-and `ORDER BY`should be fully left justified.  Other clauses should be indented to the end of
-that keyword.
-
-```sql
-SELECT first_name,
-       last_name,
-       is_still_tippin_on_four_fours,
-       is_still_wrapped_in_four_vogues
-FROM rappers
-WHERE first_name = 'Mike'
-  AND last_name = 'Jones'
-```
-
-This allows the reader to quickly scan for the important building blocks of the query.
 
 #### Joins
 
@@ -277,27 +291,30 @@ FROM my_tmp_table
 
 #### Sub-queries
 
-In PostgreSQL you should probably be doing subqueries with `WITH` clauses.
+In PostgreSQL you should probably be writing subqueries with `WITH` clauses and mostly avoiding the
+use of inline subqueries.
 
-Sub-queries should be left aligned 2 spaces to the right of the opening parentheses and then
-laid out using the same style as a `WITH` statement w/r/t parentheses.
+In MySQL or other query engines that do not support `WITH`, sub-queries should be left aligned 2
+spaces to the right of the opening parentheses and then laid out using the same style as a `WITH`
+statement w/r/t parentheses.
 
 ```sql
-SELECT r.last_name,
-       (
-         SELECT MAX(YEAR(championship_date))
-           FROM champions AS c
-         WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y'
-       ) AS last_championship_year
+SELECT
+  r.last_name,
+  (
+    SELECT MAX(YEAR(championship_date))
+    FROM champions AS c
+    WHERE c.last_name = r.last_name
+      AND c.confirmed = 'Y'
+  ) AS last_championship_year
 FROM riders AS r
 WHERE r.last_name IN
-      (
-        SELECT c.last_name
-          FROM champions AS c
-        WHERE YEAR(championship_date) > '2008'
-          AND c.confirmed = 'Y'
-      )
+  (
+    SELECT c.last_name
+    FROM champions AS c
+    WHERE YEAR(championship_date) > '2008'
+      AND c.confirmed = 'Y'
+  )
 ```
 
 #### Case statements (PostreSQL)
