@@ -257,12 +257,12 @@ SELECT r.last_name
           AND c.chief = 'Y';
 ```
 
-#### Sub-queries
+#### Subqueries
 
-Sub-queries should also be aligned to the right side of the river and then laid
+Subqueries should also be aligned to the right side of the river and then laid
 out using the same style as any other query. Sometimes it will make sense to have
 the closing parenthesis on a new line at the same character position as it's
-opening partner—this is especially true where you have nested sub-queries.
+opening partner—this is especially true where you have nested subqueries.
 
 ```sql
 SELECT r.last_name,
