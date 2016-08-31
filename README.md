@@ -21,7 +21,12 @@ There is a Gemfile supplied so you just need to follow the
 
 To then run it locally `bundle exec jekyll serve`
 
+## Projects known to be implementing the guide
 
+If your project uses this styleguide and you'd like to be mentioned in this readme then
+please open a pull request adding it below in alphabetical order.
+
+* [Stock Talk](https://github.com/nigelgilbert/stock-talk) - a realtime dashboard that displays the stock data of the most Tweeted Nasdaq companies.
 
 [md-lang]: http://daringfireball.net/projects/markdown/
 [jekyll]: http://jekyllrb.com/
