@@ -9,7 +9,7 @@ port:          4040
 
 markdown:      kramdown
 permalink:     pretty
-highlighter:   pygments
+highlighter:   rouge
 
 kramdown:
     input: GFM
