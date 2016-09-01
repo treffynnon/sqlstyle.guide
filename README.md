@@ -24,9 +24,21 @@ To then run it locally `bundle exec jekyll serve`
 ## Projects known to be implementing the guide
 
 If your project uses this styleguide and you'd like to be mentioned in this readme then
-please open a pull request adding it below in alphabetical order.
+please open a pull request adding it below in alphabetical order with a URL and short
+description.
 
 * [Stock Talk](https://github.com/nigelgilbert/stock-talk) - a realtime dashboard that displays the stock data of the most Tweeted Nasdaq companies.
+
+## Notable forks of the guide
+
+These are based on, but deviate in some way from sqlstyle.guide.
+
+If you have forked this styleguide and you'd like to be mentioned in this readme then
+please open a pull request adding it below in alphabetical order with a URL and short
+description of your deviance.
+
+* [Lumos Labs](https://github.com/lumoslabs/sqlstyle.guide) - removed the river, Redshift, etc. [www](http://engineering.lumosity.com/sqlstyle.guide)
+
 
 [md-lang]: http://daringfireball.net/projects/markdown/
 [jekyll]: http://jekyllrb.com/
