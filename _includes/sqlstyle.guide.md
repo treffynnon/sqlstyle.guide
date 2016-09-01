@@ -1255,7 +1255,7 @@ ZONE
     "Fork SQL style guide on GitHub"
 [pull]: https://github.com/treffynnon/sqlstyle.guide/pulls/
     "SQL style guide pull requests on GitHub"
-[celko]: http://www.amazon.com/gp/product/0120887975/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0120887975&linkCode=as2&tag=fuph-20&linkId=7PF4X6KIAMWYYT7Z
+[celko]: https://www.amazon.com/gp/product/0120887975/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=treffynnon-20&linkId=9c88eac8cd420e979675c815771313d5
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
 [dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
     "Download the guide in Markdown format"
