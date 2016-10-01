@@ -1,5 +1,7 @@
 # SQL style guide
 
+## [Beginner's Version of This Guide / Quick Start](https://docs.google.com/document/d/1qcrQHw2QCUnpbY4epipYstIaBD0IF9HCTmSa7pVKmN4/edit)
+
 ## Overview
 
 These are guidelines to help you write SQL queries that will be easier to read.
