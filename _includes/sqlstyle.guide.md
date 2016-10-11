@@ -33,7 +33,7 @@ Based on a work at [http://www.sqlstyle.guide][self].
 * Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
   parentheses or `WHERE` clauses that can otherwise be derived.
 * Include comments in SQL code where necessary. Use the C style opening `/*` and
-  closing `*/` where possible otherwise preceed comments with `--` and finish
+  closing `*/` where possible otherwise precede comments with `--` and finish
   them with a new line.
 
 ```sql
