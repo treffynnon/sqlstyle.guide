@@ -106,8 +106,8 @@ SELECT first_name
   in the object's name.
 * If there is already a correlation with the same name then append a number.
 * Always include the `AS` keyword—makes it easier to read as it is explicit.
-* For computed data (`SUM()` or `AVG()`) use the name you would give it were it
-  a column defined in the schema.
+* For computed columns (`SUM()` or `AVG()`) name the column the same as if it 
+  was defined in the schema.
 
 ```sql
 SELECT first_name AS fn
