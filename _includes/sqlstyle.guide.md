@@ -328,7 +328,7 @@ SELECT CASE WHEN x > y THEN 1 ELSE 0 END
 FROM table
 ```
 
-Or should have the same left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
+Or WHEN/END should have 2 space left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
 
 ```sql
 SELECT CASE
@@ -338,7 +338,9 @@ SELECT CASE
            THEN 'x more than y and more than z'
          ELSE
            'x and y not related'
-       END AS city
+         END AS city,
+       street_address,
+       phone_number
 FROM office_locations
 ```
 
@@ -350,7 +352,9 @@ SELECT CASE postcode
            THEN 'Brighton'
          WHEN 'EH1'
            THEN 'Edinburgh'
-       END AS city
+         END AS city,
+       street_address,
+       phone_number
 FROM office_locations
 ```
 
@@ -371,7 +375,7 @@ SELECT CASE postcode
            THEN 'Brighton'
          WHEN 'EH1'
            THEN 'Edinburgh'
-       END AS city
+         END AS city
 FROM office_locations
 WHERE country = 'United Kingdom'
   AND opening_time BETWEEN 8 AND 9
