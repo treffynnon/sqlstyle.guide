@@ -331,30 +331,32 @@ FROM table
 Or WHEN/END should have 2 space left justification, and `WHEN`/`THEN` should be indented the same as the `ELSE`/`value`.
 
 ```sql
-SELECT CASE
-         WHEN x > y AND x < z
-           THEN 'x more than y but less than z'
-         WHEN x > y AND x > z
-           THEN 'x more than y and more than z'
-         ELSE
-           'x and y not related'
-         END AS city,
-       street_address,
-       phone_number
+SELECT
+  CASE
+    WHEN x > y AND x < z
+      THEN 'x more than y but less than z'
+    WHEN x > y AND x > z
+      THEN 'x more than y and more than z'
+    ELSE
+      'x and y not related'
+    END AS city,
+  street_address,
+  phone_number
 FROM office_locations
 ```
 
 #### Case statements (MySql)
 
 ```sql
-SELECT CASE postcode
-         WHEN 'BN1'
-           THEN 'Brighton'
-         WHEN 'EH1'
-           THEN 'Edinburgh'
-         END AS city,
-       street_address,
-       phone_number
+SELECT
+  CASE postcode
+    WHEN 'BN1'
+      THEN 'Brighton'
+    WHEN 'EH1'
+      THEN 'Edinburgh'
+    END AS city,
+  street_address,
+  phone_number
 FROM office_locations
 ```
 
@@ -370,12 +372,13 @@ FROM office_locations
   likely should be.
 
 ```sql
-SELECT CASE postcode
-         WHEN 'BN1'
-           THEN 'Brighton'
-         WHEN 'EH1'
-           THEN 'Edinburgh'
-         END AS city
+SELECT
+  CASE postcode
+    WHEN 'BN1'
+      THEN 'Brighton'
+    WHEN 'EH1'
+      THEN 'Edinburgh'
+    END AS city
 FROM office_locations
 WHERE country = 'United Kingdom'
   AND opening_time BETWEEN 8 AND 9
