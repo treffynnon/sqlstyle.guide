@@ -38,7 +38,7 @@ Based on a work at [http://www.sqlstyle.guide][self].
 SELECT 
   file_hash  -- stored ssdeep hash
 FROM 
-    file_system
+  file_system
 WHERE 
   file_name = '.vimrc';
 ```
