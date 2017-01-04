@@ -1,4 +1,4 @@
-# SQL style guide
+# SQL style guide For Microsoft SQL Server
 
 **[Read the guide](https://sqlserverio.github.io/sqlstyle.guide/)**
 
