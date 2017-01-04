@@ -1,10 +1,8 @@
-name:          SQL style guide by Simon Holywell
-description:   A consistent code style guide for SQL to ensure legible and maintainable projects
+name:          SQL Server style guide by Wesley Brown
+description:   A consistent code style guide for SQL specific to SQL Server to ensure legible and maintainable projects
 
-ga_ua_code: UA-65071829-1
-
-url:           http://www.sqlstyle.guide
-domain:        sqlstyle.guide
+url:           https://sqlserverio.github.io/sqlstyle.guide/
+domain:        sqlserverio.github.io
 port:          4040
 
 markdown:      kramdown
