@@ -16,7 +16,7 @@ It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
 read—much harder with a physical book.
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+The origional SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [http://www.sqlstyle.guide][self].
 
@@ -28,8 +28,6 @@ Based on a work at [http://www.sqlstyle.guide][self].
 * Make judicious use of white space and indentation to make code easier to read.
 * Store [ISO-8601][iso-8601] compliant time and date information
   (`YYYY-MM-DD HH:MM:SS.SSSSS`).
-* Try to use only standard SQL functions instead of vendor specific functions for
-  reasons of portability.
 * Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
   parentheses or `WHERE` clauses that can otherwise be derived.
 * Include comments in SQL code where necessary. Use the C style opening `/*` and
@@ -37,16 +35,22 @@ Based on a work at [http://www.sqlstyle.guide][self].
   them with a new line.
 
 ```sql
-SELECT file_hash  -- stored ssdeep hash
-  FROM file_system
- WHERE file_name = '.vimrc';
+SELECT 
+  file_hash  -- stored ssdeep hash
+FROM 
+    file_system
+WHERE 
+  file_name = '.vimrc';
 ```
 ```sql
 /* Updating the file record after writing to the file */
-UPDATE file_system
-   SET file_modified_date = '1980-02-22 13:19:01.00000',
-       file_size = 209732
- WHERE file_name = '.vimrc';
+UPDATE 
+  file_system
+SET 
+  file_modified_date = '1980-02-22 13:19:01.00000',
+  file_size = 209732
+WHERE 
+  file_name = '.vimrc';
 ```
 
 ### Avoid
@@ -55,9 +59,7 @@ UPDATE file_system
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
 * Plurals—use the more natural collective term where possible instead. For example
   `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
-  portability (you may need to configure your SQL server to support this depending
-  on vendor).
+* Quoted identifiers—if you must use them then stick to SQL Server's [] instead of SET QUOTED_IDENTIFIER ON to escape reserved words or words with invalid characters in them.
 * Object oriented design principles should not be applied to SQL or database
   structures.
 
@@ -78,8 +80,10 @@ UPDATE file_system
   understood.
 
 ```sql
-SELECT first_name
-  FROM staff;
+SELECT 
+  first_name
+FROM 
+  staff;
 ```
 
 ### Tables
@@ -110,14 +114,20 @@ SELECT first_name
   a column defined in the schema.
 
 ```sql
-SELECT first_name AS fn
-  FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
+SELECT 
+  first_name AS fn
+FROM 
+  staff AS s1
+INNER JOIN 
+  students AS s2
+ON 
+  s2.mentor_id = s1.staff_num;
 ```
 ```sql
-SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
+SELECT 
+  SUM(s.monitor_tally) AS monitor_total
+FROM 
+  staff AS s;
 ```
 
 ### Stored procedures
@@ -154,13 +164,33 @@ like `SELECT` and `WHERE`.
 It is best to avoid the abbreviated keywords and use the full length ones where
 available (prefer `ABSOLUTE` to `ABS`).
 
-Do not use database server specific keywords where an ANSI SQL keyword already
-exists performing the same function. This helps to make code more portable.
+Do not user SQL ANSI 89 syntax anywhere even if the resulting query returns the
+same results to cut down on confusion and keep the code intent clear
 
 ```sql
-SELECT model_num
-  FROM phones AS p
- WHERE p.release_date > '2014-09-30';
+SELECT 
+  a.person_id, 
+  b.address_id, 
+  b.address_1
+FROM 
+  person a, address b
+where 
+  a.person_id = b.address_id
+```
+
+Instead favor SQL ANSI 92
+
+```sql
+SELECT 
+  a.person_id, 
+  b.address_id, 
+  b.address_1
+FROM 
+  person a
+INNER JOIN 
+  address b
+on 
+  a.person_id = b.address_id
 ```
 
 ### White space
@@ -170,21 +200,23 @@ spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
 
-Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle making it easy for
-the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
+Spaces should be used to line up the code so that the root keywords all start on
+the same character boundary.
 
 ```sql
-SELECT f.average_height, f.average_diameter
-  FROM flora AS f
- WHERE f.species_name = 'Banksia'
-    OR f.species_name = 'Sheoak'
-    OR f.species_name = 'Wattle';
+SELECT 
+  f.average_height, f.average_diameter
+FROM 
+  flora AS f
+WHERE
+  f.species_name = 'Banksia'
+OR 
+  f.species_name = 'Sheoak'
+OR 
+  f.species_name = 'Wattle';
 ```
 
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
+Notice that `SELECT`, `FROM`, etc. are all left aligned and are on their own line.
 
 Although not exhaustive always include spaces:
 
@@ -194,10 +226,16 @@ Although not exhaustive always include spaces:
   comma or semicolon.
 
 ```sql
-SELECT a.title, a.release_date, a.recording_date
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+  a.title, 
+  a.release_date, 
+  a.recording_date
+FROM 
+  albums AS a
+WHERE 
+  a.title = 'Charcoal Lane'
+OR 
+  a.title = 'The New Danger';
 ```
 
 #### Line spacing
@@ -216,23 +254,32 @@ creates a uniform gap down the middle of query. It makes it much easier to scan
 the query definition over quickly too.
 
 ```sql
-INSERT INTO albums (title, release_date, recording_date)
-VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
-       ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
+INSERT INTO 
+  albums (title, release_date, recording_date)
+VALUES 
+  ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
+  ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
 ```
 
 ```sql
-UPDATE albums
-   SET release_date = '1990-01-01 01:01:01.00000'
- WHERE title = 'The New Danger';
+UPDATE 
+  albums
+SET 
+  release_date = '1990-01-01 01:01:01.00000'
+ WHERE 
+  title = 'The New Danger';
 ```
 
 ```sql
-SELECT a.title,
-       a.release_date, a.recording_date, a.production_date -- grouped dates together
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+   a.title,
+   a.release_date, a.recording_date, a.production_date -- grouped dates together
+FROM 
+  albums AS a
+WHERE 
+  a.title = 'Charcoal Lane'
+OR 
+  a.title = 'The New Danger';
 ```
 
 ### Indentation
@@ -242,40 +289,58 @@ are followed.
 
 #### Joins
 
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+Joins should follow the same indentation as normal. 
+Again, fully expand key words prefer INNER JOIN over JOIN.
 
 ```sql
-SELECT r.last_name
-  FROM riders AS r
-       INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engines > 2
-
-       INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+SELECT 
+  r.last_name
+FROM 
+  riders AS r
+INNER JOIN 
+  bikes AS b
+ON 
+  r.bike_vin_num = b.vin_num
+AND 
+  b.engines > 2
+INNER JOIN 
+  crew AS c
+ON 
+  r.crew_chief_last_name = c.last_name
+AND 
+  c.chief = 'Y';
 ```
 
 #### Subqueries
 
-Subqueries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as it's
-opening partner—this is especially true where you have nested subqueries.
-
+Subqueries should follow the same alignment rules with the query beginning on the line after the open parenthesis.
 ```sql
-SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
-         WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
-  FROM riders AS r
- WHERE r.last_name IN
-       (SELECT c.last_name
-          FROM champions AS c
-         WHERE YEAR(championship_date) > '2008'
-           AND c.confirmed = 'Y');
+SELECT 
+  r.last_name,
+  (
+    SELECT 
+      MAX(YEAR(championship_date))
+    FROM 
+      champions AS c
+    WHERE 
+      c.last_name = r.last_name
+    AND 
+      c.confirmed = 'Y'
+  ) AS last_championship_year
+FROM 
+  riders AS r
+WHERE 
+  r.last_name IN
+(
+  SELECT 
+    c.last_name
+  FROM 
+    champions AS c
+  WHERE 
+    YEAR(championship_date) > '2008'
+  AND 
+    c.confirmed = 'Y'
+);
 ```
 
 ### Preferred formalisms
@@ -290,14 +355,19 @@ SELECT r.last_name,
   likely should be.
 
 ```sql
-SELECT CASE postcode
-       WHEN 'BN1' THEN 'Brighton'
-       WHEN 'EH1' THEN 'Edinburgh'
-       END AS city
-  FROM office_locations
- WHERE country = 'United Kingdom'
-   AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+SELECT 
+  CASE postcode
+    WHEN 'BN1' THEN 'Brighton'
+    WHEN 'EH1' THEN 'Edinburgh'
+  END AS city
+FROM 
+  office_locations
+WHERE 
+  country = 'United Kingdom'
+AND 
+  opening_time BETWEEN 8 AND 9
+AND 
+  postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
 
 ## Create syntax
@@ -310,8 +380,6 @@ Indent column definitions by four (4) spaces within the `CREATE` definition.
 
 ### Choosing data types
 
-* Where possible do not use vendor specific data types—these are not portable and
-  may not be available in older versions of the same vendor's software.
 * Only use `REAL` or `FLOAT` types where it is strictly necessary for floating
   point mathematics otherwise prefer `NUMERIC` and `DECIMAL` at all times. Floating
   point rounding errors are a nuisance!
@@ -354,6 +422,7 @@ constraints along with field value validation.
 ##### General
 
 * Tables must have at least one key to be complete and useful.
+* This key should be made the clustered index unless there is a more suitable candidate.
 * Constraints should be given a custom name excepting `UNIQUE`, `PRIMARY KEY`
   and `FOREIGN KEY` where the database vendor will generally supply sufficiently
   intelligible names automatically.
@@ -411,13 +480,15 @@ CREATE TABLE staff (
   concerns such as time-based archiving or location in a multi-national
   organisation. Later queries must then work across multiple tables with `UNION`
   rather than just simply querying one table.
+  Prefer table partitioning if possible.
 
 
 ## Appendix
 
 ### Reserved keyword reference
 
-A list of ANSI SQL (92, 99 and 2003), MySQL 3 to 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC and Oracle 10.2 reserved keywords.
+A list of SQL Server 2008 and above reserved keywords.
+[Reserved Keywords] [sql-server-reserved-keywords]
 
 ```sql
 A
@@ -1209,65 +1280,214 @@ UTC_DATE
 UTC_TIME
 UTC_TIMESTAMP
 VACUUM
-VALID
-VALIDATE
-VALIDATOR
-VALUE
+ADD
+ALL
+ALTER
+AND
+ANY
+AS
+ASC
+AUTHORIZATION
+BACKUP
+BEGIN
+BETWEEN
+BREAK
+BROWSE
+BULK
+BY
+CASCADE
+CASE
+CHECK
+CHECKPOINT
+CLOSE
+CLUSTERED
+COALESCE
+COLLATE
+COLUMN
+COMMIT
+COMPUTE
+CONSTRAINT
+CONTAINS
+CONTAINSTABLE
+CONTINUE
+CONVERT
+CREATE
+CROSS
+CURRENT
+CURRENT_DATE
+CURRENT_TIME
+CURRENT_TIMESTAMP
+CURRENT_USER
+CURSOR
+DATABASE
+DBCC
+DEALLOCATE
+DECLARE
+DEFAULT
+DELETE
+DENY
+DESC
+DISK
+DISTINCT
+DISTRIBUTED
+DOUBLE
+DROP
+DUMP
+ELSE
+END
+ERRLVL
+ESCAPE
+EXCEPT
+EXEC
+EXECUTE
+EXISTS
+EXIT
+EXTERNAL
+FETCH
+FILE
+FILLFACTOR
+FOR
+FOREIGN
+FREETEXT
+FREETEXTTABLE
+FROM
+FULL
+FUNCTION
+GOTO
+GRANT
+GROUP
+HAVING
+HOLDLOCK
+IDENTITY
+IDENTITY_INSERT
+IDENTITYCOL
+IF
+IN
+INDEX
+INNER
+INSERT
+INTERSECT
+INTO
+IS
+JOIN
+KEY
+KILL
+LEFT
+LIKE
+LINENO
+LOAD
+MERGE
+NATIONAL
+NOCHECK
+NONCLUSTERED
+NOT
+NULL
+NULLIF
+OF
+OFF
+OFFSETS
+ON
+OPEN
+OPENDATASOURCE
+OPENQUERY
+OPENROWSET
+OPENXML
+OPTION
+OR
+ORDER
+OUTER
+OVER
+PERCENT
+PIVOT
+PLAN
+PRECISION
+PRIMARY
+PRINT
+PROC
+PROCEDURE
+PUBLIC
+RAISERROR
+READ
+READTEXT
+RECONFIGURE
+REFERENCES
+REPLICATION
+RESTORE
+RESTRICT
+RETURN
+REVERT
+REVOKE
+RIGHT
+ROLLBACK
+ROWCOUNT
+ROWGUIDCOL
+RULE
+SAVE
+SCHEMA
+SECURITYAUDIT
+SELECT
+SEMANTICKEYPHRASETABLE
+SEMANTICSIMILARITYDETAILSTABLE
+SEMANTICSIMILARITYTABLE
+SESSION_USER
+SET
+SETUSER
+SHUTDOWN
+SOME
+STATISTICS
+SYSTEM_USER
+TABLE
+TABLESAMPLE
+TEXTSIZE
+THEN
+TO
+TOP
+TRAN
+TRANSACTION
+TRIGGER
+TRUNCATE
+TRY_CONVERT
+TSEQUAL
+UNION
+UNIQUE
+UNPIVOT
+UPDATE
+UPDATETEXT
+USE
+USER
 VALUES
-VAR_POP
-VAR_SAMP
-VARBINARY
-VARCHAR
-VARCHAR2
-VARCHARACTER
-VARIABLE
-VARIABLES
 VARYING
-VERBOSE
 VIEW
-VOLATILE
 WAITFOR
 WHEN
-WHENEVER
 WHERE
 WHILE
-WIDTH_BUCKET
-WINDOW
 WITH
-WITHIN
-WITHOUT
-WORK
-WRITE
+WITHIN GROUP
 WRITETEXT
-X509
-XOR
-YEAR
-YEAR_MONTH
-ZEROFILL
-ZONE
 ```
 
 [simon]: https://www.simonholywell.com/?utm_source=sqlstyle.guide&utm_medium=link&utm_campaign=md-document
     "SimonHolywell.com"
-[issue]: https://github.com/treffynnon/sqlstyle.guide/issues
-    "SQL style guide issues on GitHub"
-[fork]: https://github.com/treffynnon/sqlstyle.guide/fork
-    "Fork SQL style guide on GitHub"
-[pull]: https://github.com/treffynnon/sqlstyle.guide/pulls/
-    "SQL style guide pull requests on GitHub"
+[issue]: https://github.com/SQLServerIO/sqlstyle.guide/issues
+    "SQL Server style guide issues on GitHub"
+[fork]: https://github.com/SQLServerIO/sqlstyle.guide/fork
+    "Fork SQL Server style guide on GitHub"
+[pull]: https://github.com/SQLServerIO/sqlstyle.guide/pulls/
+    "SQL Server style guide pull requests on GitHub"
 [celko]: https://www.amazon.com/gp/product/0120887975/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=treffynnon-20&linkId=9c88eac8cd420e979675c815771313d5
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
+[dl-md]: https://raw.githubusercontent.com/SQLServerIO/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
-    "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference" 
+    "Reserved keyword reference"
+[sql-server-reserved-keywords] https://msdn.microsoft.com/en-us/library/ms189822.aspx
+    "Microsoft: SQL Server keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[self]: http://www.sqlstyle.guide
-    "SQL style guide by Simon Holywell"
+[self]: https://sqlserverio.github.com/sqlstyle.guide
+    "SQL Server style guide by Wes Brown"
 [licence]: http://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
