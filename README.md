@@ -27,6 +27,8 @@ If your project uses this styleguide and you'd like to be mentioned in this read
 please open a pull request adding it below in alphabetical order with a URL and short
 description.
 
+* [BEdita](https://github.com/bedita/bedita) - a Symfony based PHP CMF
+* [SQLQuery.jl](https://github.com/yeesian/SQLQuery.jl) - A Julia lang package for representing sql queries, and converting them to valid SQL statements
 * [Stock Talk](https://github.com/nigelgilbert/stock-talk) - a realtime dashboard that displays the stock data of the most Tweeted Nasdaq companies.
 
 ## Notable forks of the guide
