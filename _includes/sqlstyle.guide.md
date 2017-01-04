@@ -1483,7 +1483,7 @@ WRITETEXT
     "Wikipedia: ISO 8601"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference"
-[sql-server-reserved-keywords] https://msdn.microsoft.com/en-us/library/ms189822.aspx
+[sql-server-reserved-keywords]: https://msdn.microsoft.com/en-us/library/ms189822.aspx
     "Microsoft: SQL Server keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
