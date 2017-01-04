@@ -24,7 +24,7 @@ To then run it locally `bundle exec jekyll serve`
 [md-lang]: http://daringfireball.net/projects/markdown/
 [jekyll]: http://jekyllrb.com/
 [gh-pages]: https://pages.github.com/
-[md]: https://github.com/treffynnon/sqlstyle.guide/blob/gh-pages/_includes/sqlstyle.guide.md
+[md]: https://github.com/SQLServerIO/sqlstyle.guide/blob/gh-pages/_includes/sqlstyle.guide.md
 [gh-pages-help]: https://help.github.com/articles/using-jekyll-with-pages/#installing-jekyll
 
 Original SQL style guide by Simon Holywell is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. Based on a work at http://www.sqlstyle.guide.
