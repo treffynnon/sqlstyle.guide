@@ -1,0 +1,3 @@
+# SQL style guide - Japanese translation
+
+...content goes here...
