@@ -40,7 +40,6 @@ please open a pull request adding it below in alphabetical order with a URL and 
 description of your deviance.
 
 * [Lumos Labs](https://github.com/lumoslabs/sqlstyle.guide) - removed the river, Redshift, etc. [www](http://engineering.lumosity.com/sqlstyle.guide)
-* [nkurigit](https://github.com/nkurigit/sqlstyle.guide) - for Japanese translation
 
 
 [md-lang]: http://daringfireball.net/projects/markdown/

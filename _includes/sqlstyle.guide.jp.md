@@ -2,12 +2,16 @@
 <div lang="ja">
 # SQLスタイルガイド（日本語訳）
 
-**日本語訳について**[^japanese]
+***
 
-[^japanese]: [Simon Holywell][simon]氏による[SQL Style Guide][self]の日本語訳です。日本語訳についての責は翻訳者である久利史之が負います。日本語訳は誤訳や[原文の最新版][self]に追随していない恐れがあります。誤訳や改善点があれば、[日本語訳レポジトリ][repo-jp]にPull RequestまたはIssueを登録するか、[twitter][twitter-jp]にてお知らせください。<br>この翻訳は[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence]下に提供されています。
+**日本語訳について**  
 
-[repo-jp]: https://github.com/nkurigit/sqlstyle.guide
+日本語訳は誤訳や[原文の最新版][self]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-jp]でお知らせください。  
+翻訳: 久利史之 [@nkuritw][twitter-jp]
+
 [twitter-jp]: https://twitter.com/nkuritw
+
+***
 
 ## 概要
 
@@ -59,7 +63,7 @@ UPDATE file_system
 * 桁数を最大30バイトにする。実務的にはマルチバイト文字セットを除き30文字である。
 * 名前は文字で始めなければならずアンダースコアでは終わらない方が良い。
 * 名前には英字、数字、アンダースコアのみを使用する。
-* 複数の連続したアンダースコアの使用を避ける。- 読取るのが難しくなる。
+* 複数の連続したアンダースコアの使用を避ける。読取るのが難しくなる。
 * 名前にスペースを含めるのが自然な場合はアンダースコアを使用する。（first nameは`first_name`）
 * 略語を避ける。略語を使う必要がある場合は、一般的に通じるものであることを確認する。
 
@@ -68,23 +72,23 @@ SELECT first_name
   FROM staff;
 ```
 
-### テーブル
+### 表
 
 * 集合名詞を使用するか、望ましくはないが、複数形を使用する。例えば、`employees`より`staff`が望ましい。
 * `tbl`などの接頭辞やハンガリアン記法による接頭辞を付けない。
-* テーブルに列の名前と同じ名前を付けない。その逆も同様である。
-* 関連付けするテーブルの名前に2つのテーブル名を連結した名前を付けないようにする。`cars_mechanics`より`services`が望ましい。
+* 表に列の名前と同じ名前を付けない。その逆も同様である。
+* 関連付けする表の名前に2つの表名を連結した名前を付けないようにする。`cars_mechanics`より`services`が望ましい。
 
 ### 列
 
 * 常に単数形の名前を使用する。
 * 主キーに単純に`id`を使うのは極力避ける。
-* テーブルと同じ名前の列を追加しない。逆もまた同様である。
+* 表と同じ名前の列を追加しない。逆もまた同様である。
 * 固有名詞など意味のある場合を除いて、常に小文字を使用する。
 
 ### 別名、相関名
 
-* 何らからの方法でオブジェクトまたはその別名へ関連付けをすべきである。
+* 何らかの方法でオブジェクトまたはその別名へ関連付けをすべきである。
 * 大雑把な方法として相関名はオブジェクト名の先頭文字を使う。
 * すでに同じ相関名がある場合は数値を追加する。
 * 常に`AS`キーワードを記載する。明示的であれば読みやすくなる。
@@ -101,17 +105,17 @@ SELECT SUM(s.monitor_tally) AS monitor_total
   FROM staff AS s;
 ```
 
-### ストアドプロシージャ
+### ストアド・プロシージャ
 
 * 名前に動詞を含める。
 * `sp_`またはそのような説明的接頭辞やハンガリアン記法を含めない。
 
 ### 統一的接尾辞
 
-以下の接尾辞は普遍的な意味を持ち、SQLコードから容易に列を読み取り理解できるようにしてくれる。適切な箇所で正しい接尾辞を使用すること。
+以下の接尾辞は一般的意味を持ち、SQLコードから列を読み取り理解しやすくする。適切な箇所で正しい接尾辞を使用すること。
 
 * `_id` - 主キーである列など一意の識別子。
-* `_status` - flag値または任意のタイプの状況を表す（例: 公開状況）。
+* `_status` - flag値または任意のタイプの状況を表す（例: publication_status）。
 * `_total` - 値の集合の合計または総計。
 * `_num` - フィールドに数値が含まれていることを表す。
 * `_name` - first_nameのように名前を強調する。
@@ -121,7 +125,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 * `_size` - ファイルサイズや衣類などのサイズ。
 * `_addr` - 有形無形のデータのアドレス（例: ip_addr)。
 
-## クエリ構文
+## 問合せ文
 
 ### 予約語
 
@@ -137,7 +141,7 @@ SELECT model_num
  WHERE p.release_date > '2014-09-30';
 ```
 
-### 余白
+### 空白類
 
 コードを読みやすくするには、適切にスペースを補完することが重要である。コードを密集させたり、自然言語にあるスペースを削除したりしてはならない。
 
@@ -145,14 +149,26 @@ SELECT model_num
 
 スペースを活用し、基底のキーワードがすべて同じ位置で終わるようにコードを整列させる。これは途中で「リバー」[^river]を形作り、コードの見通しを良くし、実装の詳細からキーワードを分離することを容易にする。「リバー」は[タイポグラフィ（欧文組版）では望ましくない][rivers]とされるが、役に立つ。
 
-[^river]: [訳注 ]行を跨ったスペースの繋がり。横方向への視線の動きを妨げるため欧文組版では望ましくないとされる。
+[^river]: [訳注] 行をまたがったスペースのつながり。横方向への視線の動きを妨げるため欧文組版では望ましくないとされる。
 
 ```sql
-SELECT f.average_height, f.average_diameter
-  FROM flora AS f
- WHERE f.species_name = 'Banksia'
-    OR f.species_name = 'Sheoak'
-    OR f.species_name = 'Wattle';
+(SELECT f.species_name,
+        AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
+   FROM flora AS f
+  WHERE f.species_name = 'Banksia'
+     OR f.species_name = 'Sheoak'
+     OR f.species_name = 'Wattle'
+  GROUP BY f.species_name, f.observation_date)
+
+  UNION ALL
+
+(SELECT b.species_name,
+        AVG(b.height) AS average_height, AVG(b.diameter) AS average_diameter
+   FROM botanic_garden_flora AS b
+  WHERE b.species_name = 'Banksia'
+     OR b.species_name = 'Sheoak'
+     OR b.species_name = 'Wattle'
+  GROUP BY b.species_name, b.observation_date)
 ```
 
 `SELECT`、`FROM`、その他キーワードはすべて右揃えされ、列名や実装の詳細は左揃えされている点に注意する。
@@ -175,12 +191,12 @@ SELECT a.title, a.release_date, a.recording_date
 以下のものは常に改行や空行を入れる。
 
 * `AND`または`OR`の前
-* セミコロンの後。クエリを分けて読みやすくするため。
+* セミコロンの後。問合せを分けて読みやすくするため。
 * キーワードの定義後。
 * 複数の列を論理的なグループに分けたコンマの後。
 * コードを関連するセクション単位に分離する場合。これはひとまとまりの大きなコードの可読性を向上させる。
 
-すべてのキーワードを右に寄せ、値を左揃えにすると、クエリの中程に一様に縦の空間ができる。これもクエリの定義を素早く把握するのに大きく役立つ。
+すべてのキーワードを右に寄せ、値を左揃えにすると、問合せ文の中程に一様に縦の空間ができる。これも問合せの定義を素早く把握するのに大きく役立つ。
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -222,9 +238,9 @@ SELECT r.last_name
           AND c.chief = 'Y';
 ```
 
-#### サブクエリ
+#### 副問合せ
 
-サブクエリもまた「リバー」の右側に配置し、他のクエリと同じスタイルを使用してレイアウトすべきである。閉じ括弧を新しい行の開き括弧と同じ文字位置に配置することが有効な場合もある。- 特にネストされたサブクエリの場合に有効である。
+副問合せもまた「リバー」の右側に配置し、他の問合せと同じスタイルを使用してレイアウトすべきである。閉じ括弧を新しい行の開き括弧と同じ文字位置に配置することが有効な場合もある。特にネストされた副問合せの場合に有効である。
 
 ```sql
 SELECT r.last_name,
@@ -245,7 +261,7 @@ SELECT r.last_name,
 * 複数の`AND`を組み合わせる代わりに`BETWEEN`を使用する。
 * 同様に複数のOR句を使用する代わりに`IN()`句を使用する。
 * 使用するデータベースに接続した状態で値を変換する必要がある場合には`CASE`式を使う。`CASE`式はネストしてより複雑な論理構造を形成することができる。
-* `UNION`節および一時テーブルは極力避ける。これらの機能へ依存しないようにスキーマを最適化できる場合はそうした方が良い。
+* `UNION`節および一時表は極力避ける。これらの機能へ依存しないようにスキーマを最適化できる場合はそうした方が良い。
 
 ```sql
 SELECT CASE postcode
@@ -266,7 +282,7 @@ SELECT CASE postcode
 
 ### データ型の選択
 
-* できるだけベンダー固有のデータ型は使用しないようにする。 - これらは移植性がないだけでなく、同じベンダーのソフトウェアの古いバージョンでは使用できない可能性がある。
+* できるだけベンダー固有のデータ型は使用しないようにする。 これらは移植性がないだけでなく、同じベンダーのソフトウェアの古いバージョンでは使用できない可能性がある。
 * 浮動小数点による計算がどうしても必要な場合のみ`REAL`または`FLOAT`型を使い、それ以外は常に`NUMERIC`と`DECIMAL`型が望ましい。浮動小数点の丸め誤差は煩わしい。
 
 ### デフォルト値の指定
@@ -295,7 +311,7 @@ SELECT CASE postcode
 
 ##### 通則
 
-* テーブルには、完全で有用なキーが少なくとも1つ必要である。
+* 表には、完全で有用なキーが少なくとも1つ必要である。
 * `UNIQUE`、`PRIMARY KEY`、`FOREIGN KEY`と言ったデータベースベンダーが自動で付与する自明のものを除き、制約には独自の名称を付与する。
 
 ##### レイアウトと順序
@@ -303,9 +319,9 @@ SELECT CASE postcode
 * `CREATE TABLE`文の直後に`PRIMARY KEY`を定める。
 * 制約は、対応する列の直下に定義します。列名の右に揃うようにインデントする。
 * 複数列制約であれば、可能な限り両方の列定義に近くに配置することを検討する。それが困難な場合は、最後の手段として`CREATE TABLE`定義の最後に含める。
-* テーブル全体に適用されるテーブルレベルの制約であればそれも最後に表示する。
+* 表全体に適用される表レベルの制約であればそれも最後に表示する。
 * アルファベット順を使用する。`ON DELETE`は`ON UPDATE`の前に来る。
-* 必要に応じクエリの各要素を同じ文字位置に揃える。例えば、`NOT NULL`の定義はすべて同じ文字位置から開始する。これは絶対必要というわけではないがコードを見通し良く読みやすくする。
+* 必要に応じ問合せの各要素を同じ文字位置に揃える。例えば、`NOT NULL`の定義はすべて同じ文字位置から開始する。これは絶対必要というわけではないがコードを見通し良く読みやすくする。
 
 ##### 検証
 
@@ -328,10 +344,10 @@ CREATE TABLE staff (
 
 ### 非推奨設計
 
-* オブジェクト指向設計原則は、リレーショナルデータベース設計へ効果的に変換されない。- この落とし穴を避ける。
+* オブジェクト指向設計原則は、リレーショナルデータベース設計へ効果的に変換されない。この落とし穴を避ける。
 * ある列に値を配置し、別の列に単位があること。その列の単位が自明となるようにし、アプリケーションで列を再度結合する必要性をなくすべきである。その列に挿入されたデータの有効性を確保するため`CHECK()`制約を使用する。
-* EAV（エンティティ アトリビュート）テーブル。- そのようなスキーマレスデータを扱うための専用製品を使用する。。
-* 本来1つにまとめるべきデータを時間単位のアーカイブや多国籍企業の所在地といった任意の問題により多数のテーブルに分割すること。1つのテーブルを照会する単純なクエリの代わりに`UNION`句により複数のテーブルにまたがったクエリを作成する必要が出てくる。
+* EAV（エンティティ・アトリビュート）表。そのようなスキーマレスデータを扱うための専用製品を使用する。
+* 本来1つにまとめるべきデータを時間単位のアーカイブや多国籍企業の所在地といった任意の問題により多数の表に分割すること。1つの表を照会する単純な問合せの代わりに`UNION`句により複数の表にまたがった問合せを作成する必要が出てくる。
 
 ## 付録
 
@@ -1179,9 +1195,9 @@ ZONE
     "SQL style guide pull requests on GitHub"
 [celko]: https://www.amazon.co.jp/Celkos-Programming-Kaufmann-Management-Systems/dp/0120887975
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/nkurigit/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.jp.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.jp.md
     "Download the guide in Markdown format"
-[iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
+[iso-8601]: https://ja.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
