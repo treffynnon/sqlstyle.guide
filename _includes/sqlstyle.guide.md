@@ -188,7 +188,7 @@ This allows the reader to quickly scan for the important building blocks of the 
 
 #### Spaces
 
-Although not exhaustive always include spaces:
+Always include spaces:
 
 * before and after equals (`=`)
 * after commas (`,`)
@@ -244,7 +244,7 @@ WHERE a.title = 'Charcoal Lane'
    OR a.title = 'The New Danger';
 ```
 
-#### Joins
+#### JOINs
 
 Joins should be indented 2 spaces right from the `FROM` keyword
 
@@ -268,6 +268,36 @@ FROM riders AS r
   INNER JOIN crew c ON r.crew_chief_last_name = c.last_name
 WHERE id = 5
 ```
+
+#### Boolean Expressions
+
+Complicated boolean expressions can be extremely hard to read.  To help with this, left justify boolean subclauses
+such that the whitespace indicates the current block and the boolean `AND`/`OR` are justified the same as the
+expressions they apply to.
+
+```sql
+SELECT first_name
+FROM rappers
+WHERE
+  (
+    first_name = 'Mike'
+    AND
+    last_name = 'Jones'
+  )
+  OR
+  (
+    was_tipping = 1
+    AND
+    is_still_tippin_on_four_fours = 1
+    AND
+    (
+      is_still_wrapped_in_four_vogues = 1
+      OR
+      is_wood_grain_gripping = 0
+    )
+  )
+```
+
 
 #### WITH statements (PostgreSQL only)
 
