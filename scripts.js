@@ -15,7 +15,7 @@ $(document).ready(function(){
     $('a[href^="#"]').on('click',function (e) {
         e.preventDefault();
 
-        var target = this.hash;
+        var target = this.hash.replace(/:/g,'\\$&');
         var dest = 0;
         if(target) {
             var $target = $(target);
