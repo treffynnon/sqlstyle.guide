@@ -1,6 +1,6 @@
 # SQL style guide
 
-**[Read the guide](http://www.sqlstyle.guide)**
+**[☛ Read the guide](http://www.sqlstyle.guide)**
 
 ---
 
@@ -20,6 +20,13 @@ There is a Gemfile supplied so you just need to follow the
 [GitHub Pages documentation][gh-pages-help] to install the dependencies.
 
 To then run it locally `bundle exec jekyll serve`
+
+## Translations of the guide
+
+If you would like to translate the guide then please open a pull request or open an issue
+if you need some help getting it setup.
+
+* [Japanese/日本語](http://www.sqlstyle.guide/jp/) by [nkurigit](https://github.com/nkurigit)
 
 ## Projects known to be implementing the guide
 
