@@ -1,6 +1,15 @@
 <footer class="foot wrap">
     <hr/>
-    <p>Translations: <a href="{{ site.url }}">English</a> &middot; <a href="{{ site.url}}/jp">日本語</a></p>
+    <nav class="translation-nav">
+        <span>Translations:</span>
+        <a href="{{ site.url }}" itemprop="availableLanguage" itemscope itemtype="http://schema.org/Language">
+            <span itemprop="name" alternateName="en">English</span>
+        </a>
+        ·
+        <a href="{{ site.url }}/jp" itemprop="availableLanguage" itemscope itemtype="http://schema.org/Language">
+            <span itemprop="name" alternateName="ja">日本語</span>
+        </a>
+    </nav>
     <p>
         This guide is being discussed on Hacker News [
             <a href="https://news.ycombinator.com/item?id=9941150">1</a>,

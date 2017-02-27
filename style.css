@@ -83,6 +83,27 @@ a:hover {
     border-color: #333;
 }
 
+#translation-bar {
+    background: linear-gradient(top,  #444,  #111);
+    background: -ms-linear-gradient(top,  #444,  #111);
+    background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#111));
+    background: -moz-linear-gradient(top,  #444,  #111);
+    text-align: right;
+    color: #999;
+}
+
+#translation-bar .wrap {
+    padding: .5% 10%;
+}
+
+#translation-bar nav {
+    font-size: .7em;
+}
+
+#translation-bar a {
+    color: inherit;
+}
+
 header.top {
     background: {{ primary_colour }};
     color: #333;
