@@ -6,10 +6,10 @@
 
 **日本語訳について**  
 
-日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-jp]でお知らせください。  
-翻訳: 久利史之 [@nkuritw][twitter-jp]
+日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-ja]でお知らせください。  
+翻訳: 久利史之 [@nkuritw][twitter-ja]
 
-[twitter-jp]: https://twitter.com/nkuritw
+[twitter-ja]: https://twitter.com/nkuritw
 
 ***
 
@@ -1195,7 +1195,7 @@ ZONE
     "SQL style guide pull requests on GitHub"
 [celko]: https://www.amazon.co.jp/Celkos-Programming-Kaufmann-Management-Systems/dp/0120887975
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.jp.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.ja.md
     "Download the guide in Markdown format"
 [iso-8601]: https://ja.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"

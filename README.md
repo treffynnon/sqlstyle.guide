@@ -26,7 +26,7 @@ To then run it locally `bundle exec jekyll serve`
 If you would like to translate the guide then please open a pull request or open an issue
 if you need some help getting it setup.
 
-* [Japanese/日本語](http://www.sqlstyle.guide/jp/) by [nkurigit](https://github.com/nkurigit)
+* [Japanese/日本語](http://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
 * [Simplified Chinese/简体中文](http://www.sqlstyle.guide/zh/) by 
   [wontoncoder](https://github.com/wontoncoder)
 

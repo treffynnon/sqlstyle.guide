@@ -15,3 +15,6 @@ kramdown:
     input: GFM
     hard_wrap: false
     toc_levels: "2,3"
+
+gems:
+    - jekyll-redirect-from
