@@ -6,13 +6,13 @@
 
 ## Overview 综述
 
-你可以直接使用这些指导方针，或者[fork][fork]后创建自己的版本——最重要的是选择一套方针并严格遵守它。欢迎通过提交[issue][]或[pull request][pull]来提交建议或修复bug。
+你可以直接使用这些指导方针，或者[fork][fork]后创建自己的版本——最重要的是选择一套方针并严格遵守它。欢迎通过提交[issue][issue]或[pull request][pull]来提交建议或修复bug。
 
 为了让阅读了Joe Celko的《[SQL ProgrammingStyle][celko]》的团队能更容易采用这套规则， 这套原则被设计成与该书的兼容的形式。该指南在某些领域严格一些，在另一些领域松懈一些。 当然该指南比Celko的书更简洁一些，因为Celko的书包含了一些趣闻和每一条原则后的理由。
 
 将该文档的[Markdown format][dl-md]格式添加到项目代码库中或将该页面的链接发送给所有项目的参与者要比传阅实体书容易得多。
 
-[Simon Holywell][simon]所著的《SQL样式指南》以[署名-相同方式共享 4.0 国际协议][licence-zh]发布，改编自[http://www.sqlstyle.guide][self]。
+[Simon Holywell][simon]所著的《SQL样式指南》以[署名-相同方式共享 4.0 国际协议][licence-zh]发布，改编自[http://www.sqlstyle.guide][sqlstyleguide]。
 
 ## General 一般原则
 
