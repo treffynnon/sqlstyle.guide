@@ -141,11 +141,23 @@ SELECT model_num
 用空格使根关键字都结束在同一列上。在代码中形成一个从上到下的“川流”，这样帮助读者快速扫描代码并将关键字和实现细节分开。川流在排版时应该避免，但是对书写SQL语句是有帮助的。
 
 ```sql
-SELECT f.average_height, f.average_diameter
-  FROM flora AS f
- WHERE f.species_name = 'Banksia'
-    OR f.species_name = 'Sheoak'
-    OR f.species_name = 'Wattle';
+(SELECT f.species_name,
+        AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
+   FROM flora AS f
+  WHERE f.species_name = 'Banksia'
+     OR f.species_name = 'Sheoak'
+     OR f.species_name = 'Wattle'
+  GROUP BY f.species_name, f.observation_date)
+
+  UNION ALL
+
+(SELECT b.species_name,
+        AVG(b.height) AS average_height, AVG(b.diameter) AS average_diameter
+   FROM botanic_garden_flora AS b
+  WHERE b.species_name = 'Banksia'
+     OR b.species_name = 'Sheoak'
+     OR b.species_name = 'Wattle'
+  GROUP BY b.species_name, b.observation_date)
 ```
 
 注意`WHERE`和`FROM`等关键字，都右对齐，而真实的列名都左对齐。
@@ -1186,6 +1198,6 @@ ZONE
     "Wikipedia: Entity–attribute–value model"
 [self]: http://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
-[licence]: http://creativecommons.org/licenses/by-sa/4.0/
-    "Creative Commons Attribution-ShareAlike 4.0 International License"
+[licence-zh]: https://creativecommons.org/licenses/by-sa/4.0/deed.zh
+    "署名-相同方式共享 4.0 国际"
 </div>
