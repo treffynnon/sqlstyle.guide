@@ -16,7 +16,7 @@ It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
 read—much harder with a physical book.
 
-The origional SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+The original SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [http://www.sqlstyle.guide][self].
 
@@ -1487,7 +1487,7 @@ WRITETEXT
     "Microsoft: SQL Server keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[self]: https://sqlserverio.github.com/sqlstyle.guide
-    "SQL Server style guide by Wes Brown"
+[self]: http://www.sqlstyle.guide
+    "SQL Server style guide by Simon Holywell"
 [licence]: http://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
