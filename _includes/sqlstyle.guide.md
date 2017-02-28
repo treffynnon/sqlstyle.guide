@@ -18,7 +18,7 @@ read—much harder with a physical book.
 
 SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
-Based on a work at [http://www.sqlstyle.guide][self].
+Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
 
 ## General
 
@@ -1279,7 +1279,7 @@ ZONE
     "Reserved keyword reference" 
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[self]: http://www.sqlstyle.guide
+[sqlstyleguide]: http://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence]: http://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
