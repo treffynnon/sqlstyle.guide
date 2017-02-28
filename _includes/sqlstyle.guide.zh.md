@@ -2,7 +2,7 @@
 <div lang="zh">
 # SQL style guide SQL样式指南
 
-这篇文档翻译自以[署名-相同方式共享 4.0 国际协议][licence-zh]发布的[http://www.sqlstyle.guide][self]，译文以原文同样的协议发布。
+这篇文档翻译自以[署名-相同方式共享 4.0 国际协议][licence-zh]发布的[http://www.sqlstyle.guide][sqlstyleguide]，译文以原文同样的协议发布。
 
 ## Overview 综述
 
@@ -1196,7 +1196,7 @@ ZONE
     "Reserved keyword reference" 
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[self]: http://www.sqlstyle.guide
+[sqlstyleguide]: http://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence-zh]: https://creativecommons.org/licenses/by-sa/4.0/deed.zh
     "署名-相同方式共享 4.0 国际"

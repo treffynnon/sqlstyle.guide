@@ -6,7 +6,7 @@
 
 **日本語訳について**  
 
-日本語訳は誤訳や[原文の最新版][self]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-jp]でお知らせください。  
+日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-jp]でお知らせください。  
 翻訳: 久利史之 [@nkuritw][twitter-jp]
 
 [twitter-jp]: https://twitter.com/nkuritw
@@ -21,7 +21,7 @@
 
 このガイドの[Markdown版][dl-md]を活用すれば、紙の本では難しいプロジェクトのコード規約に含めたり、プロジェクトの参加者がその場で参照し自由に読んだりすることが容易になります。 
 
-SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence]の下にあります。原本は[http://www.sqlstyle.guide][self]です。
+SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[http://www.sqlstyle.guide][self]です。
 
 ## 全般
 
@@ -1205,8 +1205,8 @@ ZONE
     "Reserved keyword reference" 
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity-attribute-value model"
-[self]: http://www.sqlstyle.guide
+[sqlstyleguide]: http://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
-[licence]: https://creativecommons.org/licenses/by-sa/4.0/deed.ja
+[licence-ja]: https://creativecommons.org/licenses/by-sa/4.0/deed.ja
     "Creative Commons Attribution-ShareAlike 4.0 International License"
 </div>
