@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en-au">
+<html lang="{{ page.lang }}">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-        <title property="og:title">{{ site.name }}</title>
+        <title property="og:title">{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.name }}</title>
         <link href="http://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab|Droid+Sans+Mono" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ site.url }}/style.css">
 
@@ -18,7 +18,7 @@
         <meta content="{{ site.description }}" itemprop="description" name="description" property="og:description">
         <meta content="sql, style guide, code style guide, simon holywell, holywell" itemprop="keywords" name="keywords" property="article:tag">
         <meta content="summary" name="twitter:card">
-        <meta content="{{ site.name }}" name="twitter:title">
+        <meta content="{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.name }}" name="twitter:title">
         <meta content="{{ site.description }}" name="twitter:description">
         <meta content="@treffynnon" name="twitter:site">
         <meta content="@treffynnon" name="twitter:creator">
@@ -26,8 +26,9 @@
 
         <link href="http://plus.google.com/+SimonHolywell" rel="author">
 
-        <link rel="alternate" hreflang="x-default" href="{{ site.url }}">
-        <link rel="alternate" hreflang="en" href="{{ site.url }}">
+        <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
+        <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+        <link rel="alternate" hreflang="en" href="{{ site.url }}/">
         <link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/">
         <link rel="alternate" hreflang="zh" href="{{ site.url }}/zh/">
     </head>
@@ -37,7 +38,7 @@
         <meta itemprop="audience" content="SQL programmers">
         <meta itemprop="license" content="http://creativecommons.org/licenses/by-sa/4.0/">
         <meta itemprop="version" content="1.0.0">
-        <meta itemprop="proficiencyLevel" content="Beginer">
+        <meta itemprop="proficiencyLevel" content="Beginner">
         <meta itemprop="dependencies" content="SQL knowledge">
         <meta itemprop="copyrightHolder" content="Simon Holywell">
         {% include head.html %}
