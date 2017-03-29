@@ -15,11 +15,11 @@
         <meta content="https://www.facebook.com/holywell" property="article:publisher">
         <meta content="{{ site.time | date_to_xmlschema }}" property="article:modified_time">
         <meta content="" property="article:section">
-        <meta content="{{ site.description }}" itemprop="description" name="description" property="og:description">
+        <meta content="{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.description }}" itemprop="description" name="description" property="og:description">
         <meta content="sql, style guide, code style guide, simon holywell, holywell" itemprop="keywords" name="keywords" property="article:tag">
         <meta content="summary" name="twitter:card">
         <meta content="{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.name }}" name="twitter:title">
-        <meta content="{{ site.description }}" name="twitter:description">
+        <meta content="{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.description }}" name="twitter:description">
         <meta content="@treffynnon" name="twitter:site">
         <meta content="@treffynnon" name="twitter:creator">
         <meta content="{{ site.domain }}" name="twitter:domain">
