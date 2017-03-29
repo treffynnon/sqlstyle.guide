@@ -4,7 +4,7 @@
 
 You can use this set of guidelines, [fork them][fork] or make your own - the
 key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][] or [pull request][pull] on GitHub.
+or fix bugs please open an [issue][issue] or [pull request][pull] on GitHub.
 
 These guidelines are designed to be compatible with Joe Celko's [SQL Programming
 Style][celko] book to make adoption for teams who have already read that book

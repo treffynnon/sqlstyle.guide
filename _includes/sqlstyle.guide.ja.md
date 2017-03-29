@@ -6,7 +6,7 @@
 
 **日本語訳について**  
 
-日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][]または[pull request][pull]を使用するか、[Twitter][twitter-ja]でお知らせください。  
+日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][issue]または[pull request][pull]を使用するか、[Twitter][twitter-ja]でお知らせください。  
 翻訳: 久利史之 [@nkuritw][twitter-ja]
 
 [twitter-ja]: https://twitter.com/nkuritw
@@ -21,7 +21,7 @@
 
 このガイドの[Markdown版][dl-md]を活用すれば、紙の本では難しいプロジェクトのコード規約に含めたり、プロジェクトの参加者がその場で参照し自由に読んだりすることが容易になります。 
 
-SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[http://www.sqlstyle.guide][self]です。
+SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[http://www.sqlstyle.guide][sqlstyleguide]です。
 
 ## 全般
 
