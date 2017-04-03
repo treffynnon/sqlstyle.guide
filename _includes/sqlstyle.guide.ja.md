@@ -1,5 +1,3 @@
-{::options parse_block_html="true" /}
-<div lang="ja">
 # SQLスタイルガイド（日本語訳）
 
 ***
@@ -1209,4 +1207,3 @@ ZONE
     "SQL style guide by Simon Holywell"
 [licence-ja]: https://creativecommons.org/licenses/by-sa/4.0/deed.ja
     "Creative Commons Attribution-ShareAlike 4.0 International License"
-</div>
