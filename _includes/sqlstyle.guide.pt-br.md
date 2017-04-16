@@ -22,21 +22,22 @@ O Guia De Estilo SQL por [Simon Holywell][simon] é licenciaso sob a
 [Creative Commons Attribution-ShareAlike 4.0 International License][licence].
 Baseado no trabalho em [http://www.sqlstyle.guide][sqlstyleguide].
 
-## General
+## Geral
 
-### Do
+### Faça
 
-* Use consistent and descriptive identifiers and names.
-* Make judicious use of white space and indentation to make code easier to read.
-* Store [ISO-8601][iso-8601] compliant time and date information
-  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
-* Try to use only standard SQL functions instead of vendor specific functions for
-  reasons of portability.
-* Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
-  parentheses or `WHERE` clauses that can otherwise be derived.
-* Include comments in SQL code where necessary. Use the C style opening `/*` and
-  closing `*/` where possible otherwise precede comments with `--` and finish
-  them with a new line.
+* Utilize identificadores e nomes consistentes e descritivos.
+* Faça uso criterioso de espaços em branco e indentação para tornar o código
+mais fácil de ler.
+* Armazene informações de data e hora compatíveis com [ISO-8601][iso-8601]
+(`YYYY-MM-DD HH:MM:SS.SSSSS`).
+* Por questões de portabilidade, tente utilizar apenas funções SQL padrão ao
+invés de funções específicas de servidores SQL de empresas.
+* Mantenha o código sucinto e desprovido de SQL redundante - como adição de
+aspas e parênteses desencessários, ou cláusulas WHERE que podem ser derivadas.
+* Inclua comentários no código SQL quando necessário. Utilize o estilo C abrindo
+com `/*` e fechando com `*/` onde possível. Onde não for possível, preceda os
+comentários com `--` e termine com uma nova linha.
 
 ```sql
 SELECT file_hash  -- stored ssdeep hash
@@ -51,17 +52,17 @@ UPDATE file_system
  WHERE file_name = '.vimrc';
 ```
 
-### Avoid
+### Evite
 
-* CamelCase—it is difficult to scan quickly.
-* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
-* Plurals—use the more natural collective term where possible instead. For example
-  `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
-  portability (you may need to configure your SQL server to support this depending
-  on vendor).
-* Object oriented design principles should not be applied to SQL or database
-  structures.
+* CamelCase—é dificil para efetuar buscas rapidamente.
+* Prefixos descritivos ou notação Húngara como `sp_` ou `tbl`.
+* Plurais—utilize um termo coletivo onde possível. Por exemplo,
+  `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
+* Identificadores entre aspas-se você precisar utilizá-los, então utilize a as
+  aspas duplas SQL92 por questões de portabilidade (dependendo da desenvolvedora,
+  pode ser necessário configurar seu servidor SQL para suportar isso).
+* Princípios de design orientado a objetos não devem ser aplicados ao SQL ou
+  a estrutura de bancos de dados.
 
 ## Naming conventions
 
