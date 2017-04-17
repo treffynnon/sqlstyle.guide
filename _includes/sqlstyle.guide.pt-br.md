@@ -64,36 +64,39 @@ UPDATE file_system
 * Princípios de design orientado a objetos não devem ser aplicados ao SQL ou
   a estrutura de bancos de dados.
 
-## Naming conventions
+## Convenções de nomenclatura
 
-### General
+### Geral
 
-* Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords].
-* Keep the length to a maximum of 30 bytes—in practice this is 30 characters
-  unless you are using multi-byte character set.
-* Names must begin with a letter and may not end with an underscore.
-* Only use letters, numbers and underscores in names.
-* Avoid the use of multiple consecutive underscores—these can be hard to read.
-* Use underscores where you would naturally include a space in the name (first
-  name becomes `first_name`).
-* Avoid abbreviations and if you have to use them make sure they are commonly
-  understood.
+* Tenha certeza que o nome é único e não existe como uma
+  [palavra reservada][reserved-keywords].
+* Mantenha o comprimento até um tamanho máximo de 30 bytes-na prática isso são
+  30 caracateres, a não ser que você esteja utilizando um conjunto de
+  caracateres multi-byte.
+* Nomes devem começar com uma letra e não devem terminar com underscore.  
+* Utilize apenas letras, números e underscores em nomes.
+* Evite o uso de multiplos underscores consecutivos-eles podem ser dificeis de
+se ler.
+* Utilize underscores onde você normalemnte incluiria um espaço no nome
+  (primeiro nome se torna `primeiro_nome`).
+* Evite abreviações. Se você precisar utilizá-las, tenha certeza de que elas
+  serão amplamente compreendidas.
 
 ```sql
 SELECT first_name
   FROM staff;
 ```
 
-### Tables
+### Tabelas
 
-* Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) `staff` and `employees`.
-* Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
-  notation.
-* Never give a table the same name as one of its columns and vice versa.
-* Avoid, where possible, concatenating two table names together to create the name
-  of a relationship table. Rather than `cars_mechanics` prefer `services`.
+* Utilize um nome coletivo ou de forma menos ideal, uma forma plural. Por exemplo,
+  (em ordem de preferência) `pessoal` e `empregados`.
+* Não utilize prefixos com `tbl` ou qualquer outro prefixo descritivo ou notação
+  Húngara.
+* Nunca dê a uma tabela o mesmo nome de uma das suas colunas e vice versa.
+* Evite, quando possível, concatenar dois nomes de tabelas para criar o nome de
+  uma tabela de relacionamento. Ao invés de utilizar `mecanicos_de_carro`,
+  prefira `serviços`.
 
 ### Columns
 
