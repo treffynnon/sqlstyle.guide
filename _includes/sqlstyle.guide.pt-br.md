@@ -349,28 +349,28 @@ Indente definições de coluna com quatro (4) espaços dentro da definição `CR
 * Valores padrão devem seguir a mesma declaração do tipo de dados e vir antes
   de qualquer `NOT NULL`.
 
-### Constraints and keys
+### Constraints e keys
 
-Constraints and their subset, keys, are a very important component of any
-database definition. They can quickly become very difficult to read and reason
-about though so it is important that a standard set of guidelines are followed.
+Constraints e keys são compnentes muito importantes em qualquer definição de
+banco de dados. Elas podem rapidamente se tornarem dificeis de se ler e desenvolver
+um raciocínio, então é importante seguir um conjunto de diretrizes.
 
-#### Choosing keys
+#### Escolhendo keys
 
-Deciding the column(s) that will form the keys in the definition should be a
-carefully considered activity as it will effect performance and data integrity.
+Deve-se decidir cuidadosamente a(s) coluna(s) que servirão como keys na definição,
+já que afetará o desempenho e a integridade dos dados.
 
-1. The key should be unique to some degree.
-2. Consistency in terms of data type for the value across the schema and a lower
-   likelihood of this changing in the future.
-3. Can the value be validated against a standard format (such as one published by
-   ISO)? Encouraging conformity to point 2.
-4. Keeping the key as simple as possible whilst not being scared to use compound
-   keys where necessary.
+1. A key deve ser única em algum nível.
+2. O tipo de dado para o valor deve ser consistente através do schema e ter
+   baixa probabilidade de ser alterado no futuro.
+3. O valor pode ser validado em relação a um formato padrão (como os publicados
+   pela ISO)? Incentiva-se a conformidade com o ponto 2.
+4. Mantenha a key o mais simples possível, sem medo de utilizar keys compostas
+   se necessário.
 
-It is a reasoned and considered balancing act to be performed at the definition
-of a database. Should requirements evolve in the future it is possible to make
-changes to the definitions to keep them up to date.
+Tratam-se de atos de equilíbrio a serem efetuados na definição de um banco de
+dados. Se os requisitos evoluírem no futuro, é possível fazer alterações nas
+definições para mantê-las atualizadas.
 
 #### Defining constraints
 
