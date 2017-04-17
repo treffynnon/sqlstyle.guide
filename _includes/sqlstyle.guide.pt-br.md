@@ -96,24 +96,28 @@ SELECT first_name
 * Nunca dê a uma tabela o mesmo nome de uma das suas colunas e vice versa.
 * Evite, quando possível, concatenar dois nomes de tabelas para criar o nome de
   uma tabela de relacionamento. Ao invés de utilizar `mecanicos_de_carro`,
-  prefira `serviços`.
+  prefira `servicos`.
 
-### Columns
+### Colunas
 
-* Always use the singular name.
-* Where possible avoid simply using `id` as the primary identifier for the table.
-* Do not add a column with the same name as its table and vice versa.
-* Always use lowercase except where it may make sense not to such as proper nouns.
 
-### Aliasing or correlations
+* Sempre utilize nomes no singular.
+* Quando possível, evite simplesmente usar `id` como o identificador primário
+  da tabela.
+* Não adicione uma coluna com o mesmo nome da tabela e vice versa.
+* Sempre utilize caixa baixa, exceto onde fizer sentido a sua utilização.
+  Como em nomes próprios.
 
-* Should relate in some way to the object or expression they are aliasing.
-* As a rule of thumb the correlation name should be the first letter of each word
-  in the object's name.
-* If there is already a correlation with the same name then append a number.
-* Always include the `AS` keyword—makes it easier to read as it is explicit.
-* For computed data (`SUM()` or `AVG()`) use the name you would give it were it
-  a column defined in the schema.
+### Aliasing ou correlações
+
+* Deve se relacionar de alguma forma com o objeto ou expressão em que o aliasing
+  está sendo aplicado.
+* Como regra geral, o nome da correlação deve ser a primeira letra de cada palavra
+  do nome do objeto.
+* Se já existe uma correlação com o mesmo nome, acrescente um número.
+* Sempre inclua a palavra-chave `AS`-torna mais fácil de ler, pois é explícito.
+* Para dados computados (`SUM()` ou `AVG()`), utilize o nome que você daria se
+  fosse uma coluna definida no schema.
 
 ```sql
 SELECT first_name AS fn
@@ -128,27 +132,27 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 
 ### Stored procedures
 
-* The name must contain a verb.
-* Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
-  notation.
+* O nome deve conter um verbo.
+* Não adicione `sp_` ou qualquer outro prefixo descritivo ou
+  notação Húngara.
 
-### Uniform suffixes
+### Sufixos uniformes
 
-The following suffixes have a universal meaning ensuring the columns can be read
-and understood easily from SQL code. Use the correct suffix where appropriate.
+Os sufixos seguintes tem sentido universal, garantindo que as colunas possam ser
+lidas e compreendedidas facilmente no código SQL. Utilize os sufixos corretos
+onde for apropriado.
 
-* `_id`—a unique identifier such as a column that is a primary key.
-* `_status`—flag value or some other status of any type such as
-  `publication_status`.
-* `_total`—the total or sum of a collection of values.
-* `_num`—denotes the field contains any kind of number.
-* `_name`—signifies a name such as `first_name`.
+* `_id`—um identificador único, como uma coluna que é a chave primária.
+* `_status`—flag value ou outro status de qualquer tipo, como `publication_status`.
+* `_total`—o total ou a soma de uma coleção de valores.
+* `_num`—indica que o campo contém qualquer tipo de número.
+* `_name`—significa um nome, como `first_name`.
+* `_seq`—contém uma sequência contígua de valores.
 * `_seq`—contains a contiguous sequence of values.
-* `_date`—denotes a column that contains the date of something.
-* `_tally`—a count.
-* `_size`—the size of something such as a file size or clothing.
-* `_addr`—an address for the record could be physical or intangible such as
-  `ip_addr`.
+* `_date`—indica uma coluna que contém a data de alguma coisa.
+* `_tally`—uma contagem.
+* `_size`—o tamanho de algo, como o tamanho de um arquivo ou de uma roupa.
+* `_addr`—um endereço. Pode ser físico ou intangível, como por exemplo `ip_addr`.
 
 ## Query syntax
 
