@@ -372,45 +372,47 @@ Tratam-se de atos de equilíbrio a serem efetuados na definição de um banco de
 dados. Se os requisitos evoluírem no futuro, é possível fazer alterações nas
 definições para mantê-las atualizadas.
 
-#### Defining constraints
+#### Definindo constraints
 
-Once the keys are decided it is possible to define them in the system using
-constraints along with field value validation.
+Uma vez que as keys foram decididas, é possível definí-las no sistema
+utilizando constraints juntamente com validação do valor do campo.
 
-##### General
+##### Geral
 
-* Tables must have at least one key to be complete and useful.
-* Constraints should be given a custom name excepting `UNIQUE`, `PRIMARY KEY`
-  and `FOREIGN KEY` where the database vendor will generally supply sufficiently
-  intelligible names automatically.
+* Tabelas precisam ter pelo menos uma key para ser completa e utilizável.
+* Constraints devem ter um nome personalizado exceto `UNIQUE`, `PRIMARY KEY`
+  e `FOREIGN KEY`, onde o fornecedor do banco de dados comumente gera nomes
+  iteligíveis automaticamente.
 
-##### Layout and order
+##### Layout e ordenação
 
-* Specify the primary key first right after the `CREATE TABLE` statement.
-* Constraints should be defined directly beneath the column they correspond to.
-  Indent the constraint so that it aligns to the right of the column name.
-* If it is a multi-column constraint then consider putting it as close to both
-  column definitions as possible and where this is difficult as a last resort
-  include them at the end of the `CREATE TABLE` definition.
-* If it is a table level constraint that applies to the entire table then it
-  should also appear at the end.
-* Use alphabetical order where `ON DELETE` comes before `ON UPDATE`.
-* If it make senses to do so align each aspect of the query on the same character
-  position. For example all `NOT NULL` definitions could start at the same
-  character position. This is not hard and fast, but it certainly makes the code
-  much easier to scan and read.
+* Especifique a primary key primeiro, logo após a declaração `CREATE TABLE`.
+* Constraints devem ser definidas diretamente abaixo da coluna correspondente.
+  Indente a constraint alinhada à direita do nome da coluna.
+* Se é uma constraint que se refere a múltiplas colunas, considere colocá-la
+  o mais próximo possível a definição das colunas. Se for complicado fazer isso,
+  como último recurso as inclua no fim da declaração `CREATE TABLE`.
+* Se for uma constraint que se aplica a toda a tabela, ela também deve aparecer
+  no fim.
+* Utilize ordem alfabética, onde `ON DELETE` vem antes de `ON UPDATE`.
+* Se fizer sentido, alinhe cada aspecto da query na mesma posição de caracteres.
+  Por exemplo, todas as definições `NOT NULL` poderiam começar na mesma posição
+  de caracteres. Isso não é difícil nem rápido, mas certamente torna o código
+  muito mais fácil de se examinar e ler.
 
-##### Validation
+##### Validação
 
-* Use `LIKE` and `SIMILAR TO` constraints to ensure the integrity of strings
-  where the format is known.
-* Where the ultimate range of a numerical value is known it must be written as a
-  range `CHECK()` to prevent incorrect values entering the database or the silent
-  truncation of data too large to fit the column definition. In the least it
-  should check that the value is greater than zero in most cases.
-* `CHECK()` constraints should be kept in separate clauses to ease debugging.
+* Utilize as constraints `LIKE` e `SIMILAR TO` para garantir a integridade de
+  strings de formato é conhecido.
+* Onde a extensão final de um valor numérico é conhecido, é sabido que deve-se
+  escrever como uma extensão `CHECK()` para evitar que valores incorretos entrem
+  no banco de dados, ou que o truncamento silencioso dos dados seja muito grande
+  para ajustar-se ao tamanho definido na coluna. No mínimo, deve-se verificar
+  na maioria dos casos se o valor é maior que zero.
+* Constraints `CHECK()` devem ser mantidas em cláusulas separadas para facilitar
+  o debugging.
 
-##### Example
+##### Exemplo
 
 ```sql
 CREATE TABLE staff (
@@ -423,27 +425,27 @@ CREATE TABLE staff (
 );
 ```
 
-### Designs to avoid
+### Designs a se evitar
 
-* Object oriented design principles do not effectively translate to relational
-  database designs—avoid this pitfall.
-* Placing the value in one column and the units in another column. The column
-  should make the units self evident to prevent the requirement to combine
-  columns again later in the application. Use `CHECK()` to ensure valid data is
-  inserted into the column.
-* [EAV (Entity Attribute Value)][eav] tables—use a specialist product intended for
-  handling such schema-less data instead.
-* Splitting up data that should be in one table across many because of arbitrary
-  concerns such as time-based archiving or location in a multi-national
-  organisation. Later queries must then work across multiple tables with `UNION`
-  rather than just simply querying one table.
+* Princípios de design orientado a objetos não se traduzem efetivamente aos designs
+  de bancos de dados relacionais—evite essa armadilha.
+* Colocar o valor em uma coluna e suas unidades em outra coluna. A coluna deve
+  tornar as unidades evidentes para evitar a necessidade de se combinar colunas
+  novamente mais tarde na aplicação. Utilize `CHECK()` para garantir que dados
+  válidos sejam inseridos na coluna.
+* Tabelas [EAV (Entity Attribute Value)][eav]—utilize um produto especializado
+  em para manipular esses dados sem schema.
+* Divisão de dados que devem estar em uma tabela em muitas, por preocupações
+  arbritárias, como arquivamento baseado em tempo ou localização em uma orgnização
+  multinacional. As consultas posteriores devem trabalhar com múltiplas tabelas
+  utilizando `UNION` ao invés de simplesmente consultar uma única tabela.
 
+## Apêndice
 
-## Appendix
+### Referência de palavras-chave reservadas
 
-### Reserved keyword reference
-
-A list of ANSI SQL (92, 99 and 2003), MySQL 3 to 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC and Oracle 10.2 reserved keywords.
+Uma lista de palavras-chave reservadas. ANSI SQL (92, 99 and 2003),
+MySQL 3 até 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC e Oracle 10.2.
 
 ```sql
 A
