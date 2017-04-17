@@ -182,12 +182,10 @@ naturais da linguagem.
 
 #### Espaços
 
-Espaços devem ser utilizados para alinhar o código, de forma que as palavras-chaves
-raíz terminem sempre no mesmo limite de caracteres. Isso forma um rio no meio,
-tornando fácil para os leitores baterem o olho, visualizar o código e separar as
-palavras-chave dos detalhes de implementação. Rios são [ruins na tipografia][rivers],
-mas úteis aqui.
-
+Espaços devem ser utilizados para alinhar o código, de forma que as palavras-chave
+terminem sempre no mesmo limite de caracteres. Isso forma um rio tipográfico,
+tornando fácil bater olho, visualizar o código e separar as palavras-chave dos
+detalhes de implementação. Rios são [ruins na tipografia][rivers], mas úteis aqui.
 
 ```sql
 (SELECT f.species_name,
@@ -209,16 +207,16 @@ mas úteis aqui.
   GROUP BY b.species_name, b.observation_date)
 ```
 
-Notuqe que o `SELECT`, `FROM`, etc. estão todos a direita, alinhados, enquanto
+Note que o `SELECT`, `FROM`, etc. estão todos a direita, alinhados, enquanto
 os nomes das colunas em si e os detalhes específicos de implementação estão
 alinhados à esquerda.
 
-Although not exhaustive always include spaces:
+Sempre inclua espaços:
 
-* before and after equals (`=`)
-* after commas (`,`)
-* surrounding apostrophes (`'`) where not within parentheses or with a trailing
-  comma or semicolon.
+* antes de depois do símbolo igual (`=`)
+* depois de vírgulas (`,`)
+* ao redor de apóstrofes (`'`) caso não estejam entre parênteses, com uma vírgula
+  ou ponto e vírgula.
 
 ```sql
 SELECT a.title, a.release_date, a.recording_date
@@ -227,20 +225,20 @@ SELECT a.title, a.release_date, a.recording_date
     OR a.title = 'The New Danger';
 ```
 
-#### Line spacing
+#### Espaçamento de linhas
 
-Always include newlines/vertical space:
+Sempre inclua novas linhas/espaço vertical:
 
-* before `AND` or `OR`
-* after semicolons to separate queries for easier reading
-* after each keyword definition
-* after a comma when separating multiple columns into logical groups
-* to separate code into related sections, which helps to ease the readability of
-  large chunks of code.
+* antes de `AND` ou `OR`
+* depois de vírgulas, separando as queries para uma leitura mais fácil
+* depois de cada definição de palavras-chave
+* depois de um ponto, quando seperando múltiplas colunas em grupos lógicos
+* para separar código em seções relacionadas, o que ajuda na legibilidade de
+  grandes pedaços de código.
 
-Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of query. It makes it much easier to scan
-the query definition over quickly too.
+Manter todas as palavras-chave alinhadas ao lado direito e os valores alinhados
+ao lado esquerdo, cria uma lacuna no meio da query. Isso torna muito mais fácil
+e rápido a análise da definição da query.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -262,15 +260,15 @@ SELECT a.title,
     OR a.title = 'The New Danger';
 ```
 
-### Indentation
+### Indentação
 
-To ensure that SQL is readable it is important that standards of indentation
-are followed.
+Para garantir que o SQL fique legível, é importante que padrões de indentação
+sejam seguidos.
 
 #### Joins
 
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+Joins devem ser indentados do outro lado do rio e agrupados com uma nova linha
+quando necessário.
 
 ```sql
 SELECT r.last_name
@@ -286,10 +284,10 @@ SELECT r.last_name
 
 #### Subqueries
 
-Subqueries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as it's
-opening partner—this is especially true where you have nested subqueries.
+Subqueries também devem ser alinhadas do lado direito do rio e então seguir o
+mesmo estilo de qualquer outra query. As vezes faz sentido ter o parêntese de
+fechamento em uma nova linha na mesma posição que o parêntese de abertura foi
+definido—isso é especialmente importante onde você tem subqueries aninhadas.
 
 ```sql
 SELECT r.last_name,
@@ -305,16 +303,16 @@ SELECT r.last_name,
            AND c.confirmed = 'Y');
 ```
 
-### Preferred formalisms
+### Formalismos preferidos
 
-* Make use of `BETWEEN` where possible instead of combining multiple statements
-  with `AND`.
-* Similarly use `IN()` instead of multiple `OR` clauses.
-* Where a value needs to be interpreted before leaving the database use the `CASE`
-  expression. `CASE` statements can be nested to form more complex logical structures.
-* Avoid the use of `UNION` clauses and temporary tables where possible. If the
-  schema can be optimised to remove the reliance on these features then it most
-  likely should be.
+* Faça uso de `BETWEEN` onde possível, ao invés de combinar múltplos `AND`.
+* De forma similar, utilize `IN()` ao invés de múltiplas cláusulas `OR`.
+* Onde um valor precisa ser interpretado antes de ser retornado pelo banco de
+  dados, use a expressão `CASE`. Cláusulas `CASE` podem ser aninhadas para formar
+  estruturas lógicas mais complexas.
+* Evite o uso de cláusulas  `UNION` e tabelas temporários quando possível. Se
+  o schema pode ser otimizado, removendo a dependência desses recursos, então
+  é provável que essa otimização deve ser feita.
 
 ```sql
 SELECT CASE postcode
