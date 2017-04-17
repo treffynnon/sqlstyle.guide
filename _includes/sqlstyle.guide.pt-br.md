@@ -325,28 +325,29 @@ SELECT CASE postcode
    AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
 
-## Create syntax
+## Sintaxe Create
 
-When declaring schema information it is also important to maintain human
-readable code. To facilitate this ensure the column definitions are ordered and
-grouped where it makes sense to do so.
+Enquanto declarando informação do schema, é importante manter código legível
+por humanos. Para facilitar isso, tenha certeza que as definições das colunas
+estão ordenadas e agrupadas onde fizer sentido.
 
-Indent column definitions by four (4) spaces within the `CREATE` definition.
+Indente definições de coluna com quatro (4) espaços dentro da definição `CREATE`.
 
-### Choosing data types
+### Escolhendo tipos de dados
 
-* Where possible do not use vendor specific data types—these are not portable and
-  may not be available in older versions of the same vendor's software.
-* Only use `REAL` or `FLOAT` types where it is strictly necessary for floating
-  point mathematics otherwise prefer `NUMERIC` and `DECIMAL` at all times. Floating
-  point rounding errors are a nuisance!
+* Onde possível, não utilize tipos de dados específicos de certos tipos de banco
+  de dados—eles não são portáteis e podem não estar disponíveis em versões antigas
+  do mesmo banco de dados.
+* Apenas utilize os tipos `REAL` ou `FLOAT` onde é estritamente necessário para
+  utilizar pontos flutuantes, do contrário prefira sempre `NUMERIC` e `DECIMAL`.
+  Erros de ponto flutuante são um transtorno!
 
-### Specifying default values
+### Especificando valores padrão
 
-* The default value must be the same type as the column—if a column is declared
-  a `DECIMAL` do not provide an `INTEGER` default value.
-* Default values must follow the data type declaration and come before any
-  `NOT NULL` statement.
+* O valor padrão deve ser do mesmo tipo da coluna—se uma coluna foi declarada
+  como `DECIMAL`, não forcena um `INTEGER` como valor padrão.
+* Valores padrão devem seguir a mesma declaração do tipo de dados e vir antes
+  de qualquer `NOT NULL`.
 
 ### Constraints and keys
 
