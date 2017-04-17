@@ -3,22 +3,22 @@
 ## Visão Geral
 
 Você pode utilizar esse conjunto de diretrizes, [fazer um fork][fork] ou criar
-seu próprio - a chave é que você selecione um estilo e o siga. Para sugerir
+seu próprio - a chave aqui é que você escolha um estilo e o siga. Para sugerir
 alterações ou correções de bugs, por favor abra uma [issue][issue] ou faça um
 [pull request][pull] no GitHub.
 
-Essas diretrizes são desenhadas para serem compatíveis com o livro
-[SQL Programming Style][celko] de Joe Celko, para ser adotado por times que já
-leram o livro mais facilmente. Esse guia é um pouco mais opiniativo em algumas
-áreas, enquanto em outras, é mais relaxado. É certamente mais sucinto que
-[o livro de Celko][celko], já que ele contém anedotas e racicínios por trás de
-cada regra para reflexão.
+Essas diretrizes foram desenhadas com compatibilidade com o livro
+[SQL Programming Style][celko] de Joe Celko, de forma a ser adotado mais
+facilmente por times que já leram o livro. Esse guia é um pouco mais opiniativo
+em algumas áreas, e mais relaxado em outras. É certamente mais sucinto que
+[o livro de Celko][celko], que contém anedotas e raciocínios por trás de
+cada regra.
 
 É fácil incluir esse guia com o [formato Markdown][dl-md] como parte do código
-base de um projeto, ou referenciá-lo aqui para que qualquer um no projeto possa
-ler livremente - muito mais dificil com um livro físico.
+base de um projeto ou referenciar aqui, para que qualquer um no projeto possa
+ler livremente - algo muito mais dificil com um livro físico.
 
-O Guia De Estilo SQL por [Simon Holywell][simon] é licenciaso sob a
+O Guia De Estilo SQL por [Simon Holywell][simon] é licenciado sob a
 [Creative Commons Attribution-ShareAlike 4.0 International License][licence].
 Baseado no trabalho em [http://www.sqlstyle.guide][sqlstyleguide].
 
@@ -69,13 +69,13 @@ UPDATE file_system
 ### Geral
 
 * Tenha certeza que o nome é único e não existe como uma
-  [palavra reservada][reserved-keywords].
-* Mantenha o comprimento até um tamanho máximo de 30 bytes-na prática isso são
+  [palavra-chave reservada][reserved-keywords].
+* Matenha um tamanho máximo de 30 bytes—na prática isso são
   30 caracateres, a não ser que você esteja utilizando um conjunto de
   caracateres multi-byte.
 * Nomes devem começar com uma letra e não devem terminar com underscore.  
 * Utilize apenas letras, números e underscores em nomes.
-* Evite o uso de multiplos underscores consecutivos-eles podem ser dificeis de
+* Evite o uso de multiplos underscores consecutivos—eles podem ser dificeis de
 se ler.
 * Utilize underscores onde você normalemnte incluiria um espaço no nome
   (primeiro nome se torna `primeiro_nome`).
@@ -115,7 +115,7 @@ SELECT first_name
 * Como regra geral, o nome da correlação deve ser a primeira letra de cada palavra
   do nome do objeto.
 * Se já existe uma correlação com o mesmo nome, acrescente um número.
-* Sempre inclua a palavra-chave `AS`-torna mais fácil de ler, pois é explícito.
+* Sempre inclua a palavra-chave `AS`—torna mais fácil de ler, pois é explícito.
 * Para dados computados (`SUM()` ou `AVG()`), utilize o nome que você daria se
   fosse uma coluna definida no schema.
 
