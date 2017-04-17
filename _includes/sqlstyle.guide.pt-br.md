@@ -27,17 +27,17 @@ Baseado no trabalho em [http://www.sqlstyle.guide][sqlstyleguide].
 ### Faça
 
 * Utilize identificadores e nomes consistentes e descritivos.
-* Faça uso criterioso de espaços em branco e indentação para tornar o código
-mais fácil de ler.
+* Tenha critério ao utilizar espaços em branco e indentação para melhorar
+  a legibilidade do código.
 * Armazene informações de data e hora compatíveis com [ISO-8601][iso-8601]
-(`YYYY-MM-DD HH:MM:SS.SSSSS`).
+  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
 * Por questões de portabilidade, tente utilizar apenas funções SQL padrão ao
-invés de funções específicas de servidores SQL de empresas.
-* Mantenha o código sucinto e desprovido de SQL redundante - como adição de
-aspas e parênteses desencessários, ou cláusulas WHERE que podem ser derivadas.
+  invés de funções específicas de servidores SQL de outros fornecedores.
+* Mantenha o código sucinto e desprovido de SQL redundante—como adição de aspas
+  e parênteses desencessários, ou cláusulas WHERE que podem ser derivadas.
 * Inclua comentários no código SQL quando necessário. Utilize o estilo C abrindo
-com `/*` e fechando com `*/` onde possível. Onde não for possível, preceda os
-comentários com `--` e termine com uma nova linha.
+  com `/*` e fechando com `*/` onde possível. Onde não for, preceda os
+  comentários com `--` e termine com uma nova linha.
 
 ```sql
 SELECT file_hash  -- stored ssdeep hash
