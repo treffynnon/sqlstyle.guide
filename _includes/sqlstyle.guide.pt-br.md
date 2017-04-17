@@ -58,9 +58,9 @@ UPDATE file_system
 * Prefixos descritivos ou notação Húngara como `sp_` ou `tbl`.
 * Plurais—utilize termos coletivos onde possível. Por exemplo,
   `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
-* Identificadores entre aspas—se você precisar utilizá-los, então utilize a as
-  aspas duplas SQL92 por questões de portabilidade (dependendo da desenvolvedora,
-  pode ser necessário configurar seu servidor SQL para suportar isso).
+* Identificadores entre aspas—caso necessário, utilize as aspas duplas SQL92
+  por questões de portabilidade (dependendo do fornecedor, pode ser necessário
+  configurar seu servidor SQL para ativar o suporte).
 * Princípios de design orientado a objetos não devem ser aplicados ao SQL ou
   a estrutura de bancos de dados.
 
