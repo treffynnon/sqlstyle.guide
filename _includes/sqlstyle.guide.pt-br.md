@@ -54,9 +54,9 @@ UPDATE file_system
 
 ### Evite
 
-* CamelCase—é dificil para efetuar buscas rapidamente.
+* CamelCase—difícil de se analisar rapidamente.
 * Prefixos descritivos ou notação Húngara como `sp_` ou `tbl`.
-* Plurais—utilize um termo coletivo onde possível. Por exemplo,
+* Plurais—utilize termos coletivos onde possível. Por exemplo,
   `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
 * Identificadores entre aspas—se você precisar utilizá-los, então utilize a as
   aspas duplas SQL92 por questões de portabilidade (dependendo da desenvolvedora,
