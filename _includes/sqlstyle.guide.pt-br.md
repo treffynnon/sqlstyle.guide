@@ -58,7 +58,7 @@ UPDATE file_system
 * Prefixos descritivos ou notação Húngara como `sp_` ou `tbl`.
 * Plurais—utilize um termo coletivo onde possível. Por exemplo,
   `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
-* Identificadores entre aspas-se você precisar utilizá-los, então utilize a as
+* Identificadores entre aspas—se você precisar utilizá-los, então utilize a as
   aspas duplas SQL92 por questões de portabilidade (dependendo da desenvolvedora,
   pode ser necessário configurar seu servidor SQL para suportar isso).
 * Princípios de design orientado a objetos não devem ser aplicados ao SQL ou
@@ -161,12 +161,12 @@ onde for apropriado.
 Sempre utilize caixa alta para as [palavras-chave reservadas][reserved-keywords]
 como `SELECT` e `WHERE`
 
-É melhor evitar palaras reservadas abreviadas e utilizar as que tem o nome
-completo (prefira `ABSOLUTE` ao invés de `ABS`).
+É melhor evitar palavras-chave reservadas abreviadas; utilize suas variações com
+nome completo (use `ABSOLUTE` ao invés de `ABS`).
 
-Não utilize palavras-chave específicas do servidor de banco de dados onde uma
-palavra-chave ANSI SQL já existe performando a mesma função. Isso ajuda a manter
-o código mais portátil.
+Não utilize palavras-chave de servidor de banco de dados específico onde é possível
+utilizar palavras-chave ANSI SQL já existentes e que tenham a mesma função.
+Isso ajuda na portabilidade do código.
 
 ```sql
 SELECT model_num
