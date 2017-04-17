@@ -154,18 +154,19 @@ onde for apropriado.
 * `_size`—o tamanho de algo, como o tamanho de um arquivo ou de uma roupa.
 * `_addr`—um endereço. Pode ser físico ou intangível, como por exemplo `ip_addr`.
 
-## Query syntax
+## Sintaxe de Queries
 
-### Reserved words
+### Palavras reservadas
 
-Always use uppercase for the [reserved keywords][reserved-keywords]
-like `SELECT` and `WHERE`.
+Sempre utilize caixa alta para as [palavras-chave reservadas][reserved-keywords]
+como `SELECT` e `WHERE`
 
-It is best to avoid the abbreviated keywords and use the full length ones where
-available (prefer `ABSOLUTE` to `ABS`).
+É melhor evitar palaras reservadas abreviadas e utilizar as que tem o nome
+completo (prefira `ABSOLUTE` ao invés de `ABS`).
 
-Do not use database server specific keywords where an ANSI SQL keyword already
-exists performing the same function. This helps to make code more portable.
+Não utilize palavras-chave específicas do servidor de banco de dados onde uma
+palavra-chave ANSI SQL já existe performando a mesma função. Isso ajuda a manter
+o código mais portátil.
 
 ```sql
 SELECT model_num
@@ -173,17 +174,20 @@ SELECT model_num
  WHERE p.release_date > '2014-09-30';
 ```
 
-### White space
+### Espaços em branco
 
-To make the code easier to read it is important that the correct compliment of
-spacing is used. Do not crowd code or remove natural language spaces.
+Para tornar o código mais fácil de ler, é importante que o cumprimento correto
+de espaçamento esteja sendo utilizado. Não coloque código ou remova espaços
+naturais da linguagem.
 
-#### Spaces
+#### Espaços
 
-Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle making it easy for
-the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
+Espaços devem ser utilizados para alinhar o código, de forma que as palavras-chaves
+raíz terminem sempre no mesmo limite de caracteres. Isso forma um rio no meio,
+tornando fácil para os leitores baterem o olho, visualizar o código e separar as
+palavras-chave dos detalhes de implementação. Rios são [ruins na tipografia][rivers],
+mas úteis aqui.
+
 
 ```sql
 (SELECT f.species_name,
@@ -205,8 +209,9 @@ implementation detail. Rivers are [bad in typography][rivers], but helpful here.
   GROUP BY b.species_name, b.observation_date)
 ```
 
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
+Notuqe que o `SELECT`, `FROM`, etc. estão todos a direita, alinhados, enquanto
+os nomes das colunas em si e os detalhes específicos de implementação estão
+alinhados à esquerda.
 
 Although not exhaustive always include spaces:
 
