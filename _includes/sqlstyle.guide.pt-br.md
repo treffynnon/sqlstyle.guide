@@ -102,10 +102,9 @@ SELECT first_name
 
 
 * Sempre utilize nomes no singular.
-* Quando possível, evite simplesmente usar `id` como o identificador primário
-  da tabela.
-* Não adicione uma coluna com o mesmo nome da tabela e vice versa.
-* Sempre utilize caixa baixa, exceto onde fizer sentido a sua utilização.
+* Quando possível, evite usar apenas `id` como identificador primário da tabela.
+* Não adicione uma coluna como o mesmo nome da tabela e vice versa.
+* Sempre utilize caixa baixa, exceto onde capitalização fizer sentido.
   Como em nomes próprios.
 
 ### Aliasing ou correlações
@@ -115,7 +114,7 @@ SELECT first_name
 * Como regra geral, o nome da correlação deve ser a primeira letra de cada palavra
   do nome do objeto.
 * Se já existe uma correlação com o mesmo nome, acrescente um número.
-* Sempre inclua a palavra-chave `AS`—torna mais fácil de ler, pois é explícito.
+* Sempre inclua a palavra-chave `AS`—torna o aliasing explícito e mais fácil de ler.
 * Para dados computados (`SUM()` ou `AVG()`), utilize o nome que você daria se
   fosse uma coluna definida no schema.
 
