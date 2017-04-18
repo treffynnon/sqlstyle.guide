@@ -10,8 +10,8 @@ alterações ou correções de bugs, por favor abra uma [issue][issue] ou faça 
 Estas diretrizes foram desenhadas em conformidade com o livro
 [SQL Programming Style][celko] de Joe Celko, para serem adotadas mais facilmente
 por equipes que já leram o livro. Em relação ao livro, este guia é um pouco mais
-opiniativo em algumas áreas e mais tranquilo em outras. Certamente é
-mais sucinto que [o livro de Celko][celko], que contém anedotas e racicínios por
+opinativo em algumas áreas e mais tranquilo em outras. Certamente é
+mais sucinto que [o livro de Celko][celko], que contém anedotas e raciocínios por
 trás de cada regra.
 
 É fácil incluir esse guia no [formato Markdown][dl-md] como parte do código
@@ -69,12 +69,12 @@ UPDATE file_system
 ### Geral
 
 * Tenha certeza que o nome é único e não é uma [palavra-chave reservada][reserved-keywords].
-* Matenha o tamanho máximo em 30 bytes—na prática isso são
+* Mantenha o tamanho máximo em 30 bytes—na prática isso são
   30 caracateres, a não ser que esteja utilizando um conjunto de
   caracateres multi-byte.
 * Nomes devem começar com uma letra e não devem terminar com underscore.  
 * Utilize apenas letras, números e underscores em nomes.
-* Evite o uso de multiplos underscores consecutivos—eles podem ser dificeis de
+* Evite o uso de múltiplos underscores consecutivos—eles podem ser difíceis de
 se ler.
 * Utilize underscores onde você normalemnte incluiria um espaço
   (primeiro nome se torna `primeiro_nome`).
@@ -136,7 +136,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 ### Sufixos uniformes
 
 Os sufixos seguintes tem sentido universal, garantindo que as colunas possam ser
-lidas e compreendedidas facilmente no código SQL. Utilize os sufixos corretos
+lidas e compreendidas facilmente no código SQL. Utilize os sufixos corretos
 onde for apropriado.
 
 * `_id`—um identificador único, como uma coluna que é a chave primária.
@@ -228,12 +228,12 @@ Sempre inclua novas linhas/espaço vertical:
 * antes de `AND` ou `OR`
 * depois de vírgulas, separando as queries para facilitar a leitura
 * depois de cada definição de palavras-chave
-* depois de um ponto, quando seperando múltiplas colunas em grupos lógicos
+* depois de um ponto, quando separando múltiplas colunas em grupos lógicos
 * para separar código em seções relacionadas, o que ajuda na legibilidade de
   grandes pedaços de código.
 
 Manter todas as palavras-chave alinhadas à direita e os valores alinhados
-à esqueda cria uma lacuna no meio da query. Isso torna a análise da definição
+à esquerda cria uma lacuna no meio da query. Isso torna a análise da definição
 da query mais fácil e rápida.
 
 ```sql
@@ -301,7 +301,7 @@ SELECT r.last_name,
 
 ### Formalismos preferidos
 
-* Faça uso de `BETWEEN` onde possível, ao invés de combinar múltplos `AND`.
+* Faça uso de `BETWEEN` onde possível, ao invés de combinar múltiplos `AND`.
 * De forma similar, utilize `IN()` ao invés de múltiplas cláusulas `OR`.
 * Onde um valor precisa ser interpretado antes de ser retornado pelo banco de
   dados, use a expressão `CASE`. Cláusulas `CASE` podem ser aninhadas para formar
@@ -341,14 +341,14 @@ Indente definições de coluna com quatro (4) espaços dentro da definição `CR
 ### Especificando valores padrão
 
 * O valor padrão deve ser do mesmo tipo da coluna—se uma coluna foi declarada
-  como `DECIMAL`, não forcena um `INTEGER` como valor padrão.
+  como `DECIMAL`, não force um `INTEGER` como valor padrão.
 * Valores padrão devem seguir a mesma declaração do tipo de dados e vir antes
   de qualquer `NOT NULL`.
 
 ### Constraints e keys
 
-Constraints e keys são compnentes muito importantes em qualquer definição de
-banco de dados. Elas podem rapidamente se tornarem dificeis de se ler e desenvolver
+Constraints e keys são componentes muito importantes em qualquer definição de
+banco de dados. Elas podem rapidamente se tornarem difíceis de se ler e desenvolver
 um raciocínio, então é importante seguir um conjunto de diretrizes.
 
 #### Escolhendo keys
@@ -370,7 +370,7 @@ definições para mantê-las atualizadas.
 
 #### Definindo constraints
 
-Uma vez que as keys foram decididas, é possível definí-las no sistema
+Uma vez que as keys foram decididas, é possível defini-las no sistema
 utilizando constraints juntamente com validação do valor do campo.
 
 ##### Geral
@@ -432,7 +432,7 @@ CREATE TABLE staff (
 * Tabelas [EAV (Entity Attribute Value)][eav]—utilize um produto especializado
   em para manipular esses dados sem schema.
 * Divisão de dados que devem estar em uma tabela em muitas, por preocupações
-  arbritárias, como arquivamento baseado em tempo ou localização em uma orgnização
+  arbitrárias, como arquivamento baseado em tempo ou localização em uma organização
   multinacional. As consultas posteriores devem trabalhar com múltiplas tabelas
   utilizando `UNION` ao invés de simplesmente consultar uma única tabela.
 
