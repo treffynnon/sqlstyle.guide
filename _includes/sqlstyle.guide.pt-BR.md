@@ -430,7 +430,8 @@ CREATE TABLE staff (
   em para manipular esses dados sem schema.
 * Divisão de dados que devem estar em uma tabela em muitas, por questões
   arbitrárias como arquivamento baseado em tempo ou localização em uma organização
-  multinacional. De forma que consultas posteriores devam trabalhar com múltiplas tabelas utilizando `UNION` ao invés de simplesmente consultar uma única tabela.
+  multinacional. Assim, consultas posteriores deverão trabalhar com múltiplas tabelas
+  utilizando `UNION` ao invés consultar apenas uma única tabela.
 
 ## Apêndice
 
