@@ -399,11 +399,9 @@ utilizando constraints juntamente com validação do valor do campo.
 
 * Utilize as constraints `LIKE` e `SIMILAR TO` para garantir a integridade de
   strings que tenham formato conhecido.
-* Onde a extensão final de um valor numérico é conhecido, é sabido que deve-se
-  escrever como uma extensão `CHECK()` para evitar que valores incorretos entrem
-  no banco de dados, ou que o truncamento silencioso dos dados seja muito grande
-  para ajustar-se ao tamanho definido na coluna. No mínimo, deve-se verificar
-  na maioria dos casos se o valor é maior que zero.
+* Onde a extensão final de um valor numérico é conhecida, deve-se utilizar
+  `CHECK()` para evitar que valores incorretos sejam inseridos no banco de dados,
+  ou que o truncamento silencioso dos dados seja muito grande para caber no tamanho definido na coluna. No mínimo, deve-se verificar na maioria dos casos se o valor é maior que zero.
 * Constraints `CHECK()` devem ser mantidas em cláusulas separadas para facilitar
   o debugging.
 
@@ -422,7 +420,7 @@ CREATE TABLE staff (
 
 ### Designs a se evitar
 
-* Princípios de design orientado a objetos não se traduzem efetivamente aos designs
+* Princípios de design orientado a objetos não se traduzem efetivamente ao design
   de bancos de dados relacionais—evite essa armadilha.
 * Colocar o valor em uma coluna e suas unidades em outra coluna. A coluna deve
   tornar as unidades evidentes para evitar a necessidade de se combinar colunas
@@ -430,10 +428,9 @@ CREATE TABLE staff (
   válidos sejam inseridos na coluna.
 * Tabelas [EAV (Entity Attribute Value)][eav]—utilize um produto especializado
   em para manipular esses dados sem schema.
-* Divisão de dados que devem estar em uma tabela em muitas, por preocupações
-  arbitrárias, como arquivamento baseado em tempo ou localização em uma organização
-  multinacional. As consultas posteriores devem trabalhar com múltiplas tabelas
-  utilizando `UNION` ao invés de simplesmente consultar uma única tabela.
+* Divisão de dados que devem estar em uma tabela em muitas, por questões
+  arbitrárias como arquivamento baseado em tempo ou localização em uma organização
+  multinacional. De forma que consultas posteriores devam trabalhar com múltiplas tabelas utilizando `UNION` ao invés de simplesmente consultar uma única tabela.
 
 ## Apêndice
 
