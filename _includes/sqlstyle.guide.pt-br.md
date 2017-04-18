@@ -76,7 +76,7 @@ UPDATE file_system
 * Utilize apenas letras, números e underscores em nomes.
 * Evite o uso de multiplos underscores consecutivos—eles podem ser dificeis de
 se ler.
-* Utilize underscores onde você normalemnte incluiria um espaço no nome
+* Utilize underscores onde você normalemnte incluiria um espaço
   (primeiro nome se torna `primeiro_nome`).
 * Evite abreviações. Se precisar utilizá-las, tenha certeza de que elas
   serão amplamente compreendidas.
@@ -88,10 +88,10 @@ SELECT first_name
 
 ### Tabelas
 
-* Utilize um nome coletivo ou de forma menos ideal, uma forma plural. Por exemplo,
+* Utilize um nome coletivo ou de forma menos ideal, plurais. Por exemplo,
   (em ordem de preferência) `pessoal` e `empregados`.
 * Não utilize prefixos com `tbl` ou qualquer outro prefixo descritivo ou notação
-  Húngara.
+  húngara.
 * Nunca dê a uma tabela o mesmo nome de uma das suas colunas e vice versa.
 * Evite, quando possível, concatenar dois nomes de tabelas para criar o nome de
   uma tabela de relacionamento. Ao invés de utilizar `mecanicos_de_carro`,
@@ -99,12 +99,11 @@ SELECT first_name
 
 ### Colunas
 
-
 * Sempre utilize nomes no singular.
 * Quando possível, evite usar apenas `id` como identificador primário da tabela.
 * Não adicione uma coluna como o mesmo nome da tabela e vice versa.
-* Sempre utilize caixa baixa, exceto onde capitalização fizer sentido.
-  Como em nomes próprios.
+* Sempre utilize caixa baixa, exceto onde capitalização fizer sentido, como
+  em nomes próprios.
 
 ### Aliasing ou correlações
 
@@ -113,7 +112,7 @@ SELECT first_name
 * Como regra geral, o nome da correlação deve ser a primeira letra de cada palavra
   do nome do objeto.
 * Se já existe uma correlação com o mesmo nome, acrescente um número.
-* Sempre inclua a palavra-chave `AS`—torna o aliasing explícito e mais fácil de ler.
+* Sempre inclua a palavra-chave `AS`—isso torna o aliasing explícito e mais fácil de ler.
 * Para dados computados (`SUM()` ou `AVG()`), utilize o nome que você daria se
   fosse uma coluna definida no schema.
 
@@ -132,7 +131,7 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 
 * O nome deve conter um verbo.
 * Não adicione `sp_` ou qualquer outro prefixo descritivo ou
-  notação Húngara.
+  notação húngara.
 
 ### Sufixos uniformes
 
@@ -156,14 +155,14 @@ onde for apropriado.
 
 ### Palavras reservadas
 
-Sempre utilize caixa alta para as [palavras-chave reservadas][reserved-keywords]
-como `SELECT` e `WHERE`
+Sempre utilize caixa alta para [palavras-chave reservadas][reserved-keywords],
+como `SELECT` e `WHERE`.
 
 É melhor evitar palavras-chave reservadas abreviadas; utilize suas variações com
 nome completo (use `ABSOLUTE` ao invés de `ABS`).
 
-Não utilize palavras-chave de servidor de banco de dados específico onde é possível
-utilizar palavras-chave ANSI SQL já existentes e que tenham a mesma função.
+Não utilize palavras-chave de um fornecedor específico de banco de dados
+onde for possível utilizar palavras-chave ANSI SQL que tenham a mesma função.
 Isso ajuda na portabilidade do código.
 
 ```sql
