@@ -347,13 +347,13 @@ Indente definições de coluna com quatro (4) espaços dentro da definição `CR
 
 ### Constraints e keys
 
-Constraints e keys são componentes muito importantes em qualquer definição de
-banco de dados. Elas podem rapidamente se tornarem difíceis de se ler e desenvolver
-um raciocínio, então é importante seguir um conjunto de diretrizes.
+Constraints e keys são componentes muito importantes na definição de qualquer
+banco de dados. Elas podem se tornar difíceis de ler e desenvolver raciocínios,
+por isso é importante também seguir um conjunto de diretrizes.
 
 #### Escolhendo keys
 
-Deve-se decidir cuidadosamente a(s) coluna(s) que servirão como keys na definição,
+Deve-se decidir cuidadosamente na definição a(s) coluna(s) que serão keys,
 já que afetará o desempenho e a integridade dos dados.
 
 1. A key deve ser única em algum nível.
@@ -361,11 +361,11 @@ já que afetará o desempenho e a integridade dos dados.
    baixa probabilidade de ser alterado no futuro.
 3. O valor pode ser validado em relação a um formato padrão (como os publicados
    pela ISO)? Incentiva-se a conformidade com o ponto 2.
-4. Mantenha a key o mais simples possível, sem medo de utilizar keys compostas
+4. Mantenha a key o mais simples possível, não tenha medo de utilizar keys compostas
    se necessário.
 
-Tratam-se de atos de equilíbrio a serem efetuados na definição de um banco de
-dados. Se os requisitos evoluírem no futuro, é possível fazer alterações nas
+Trata-se de um ato de equilíbrio a ser feito na definição de um banco de dados.
+Se os requisitos evoluírem no futuro, será possível fazer alterações nas
 definições para mantê-las atualizadas.
 
 #### Definindo constraints
