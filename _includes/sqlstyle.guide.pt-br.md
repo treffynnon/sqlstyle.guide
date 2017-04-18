@@ -3,7 +3,7 @@
 ## Visão Geral
 
 Você pode utilizar esse conjunto de diretrizes, [fazer um fork][fork] ou criar
-seu próprio - a chave aqui é que você escolha um estilo e o siga. Para sugerir
+seu próprio - a chave aqui é escolher um estilo e seguir. Para sugerir
 alterações ou correções de bugs, por favor abra uma [issue][issue] ou faça um
 [pull request][pull] no GitHub.
 
@@ -68,10 +68,9 @@ UPDATE file_system
 
 ### Geral
 
-* Tenha certeza que o nome é único e não existe como uma
-  [palavra-chave reservada][reserved-keywords].
-* Matenha um tamanho máximo de 30 bytes—na prática isso são
-  30 caracateres, a não ser que você esteja utilizando um conjunto de
+* Tenha certeza que o nome é único e não é uma [palavra-chave reservada][reserved-keywords].
+* Matenha o tamanho máximo de 30 bytes—na prática isso são
+  30 caracateres, a não ser que esteja utilizando um conjunto de
   caracateres multi-byte.
 * Nomes devem começar com uma letra e não devem terminar com underscore.  
 * Utilize apenas letras, números e underscores em nomes.
@@ -79,7 +78,7 @@ UPDATE file_system
 se ler.
 * Utilize underscores onde você normalemnte incluiria um espaço no nome
   (primeiro nome se torna `primeiro_nome`).
-* Evite abreviações. Se você precisar utilizá-las, tenha certeza de que elas
+* Evite abreviações. Se precisar utilizá-las, tenha certeza de que elas
   serão amplamente compreendidas.
 
 ```sql
