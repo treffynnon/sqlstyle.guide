@@ -375,31 +375,30 @@ utilizando constraints juntamente com validação do valor do campo.
 
 ##### Geral
 
-* Tabelas precisam ter pelo menos uma key para ser completa e utilizável.
-* Constraints devem ter um nome personalizado exceto `UNIQUE`, `PRIMARY KEY`
+* Tabelas precisam ter pelo menos uma key para serem completas e utilizáveis.
+* Constraints devem ter um nome personalizado exceto por `UNIQUE`, `PRIMARY KEY`
   e `FOREIGN KEY`, onde o fornecedor do banco de dados comumente gera nomes
-  iteligíveis automaticamente.
+  inteligíveis automaticamente.
 
 ##### Layout e ordenação
 
 * Especifique a primary key primeiro, logo após a declaração `CREATE TABLE`.
 * Constraints devem ser definidas diretamente abaixo da coluna correspondente.
-  Indente a constraint alinhada à direita do nome da coluna.
+  Indente a constraint alinhando à direita do nome da coluna.
 * Se é uma constraint que se refere a múltiplas colunas, considere colocá-la
-  o mais próximo possível a definição das colunas. Se for complicado fazer isso,
+  o mais próximo possível à definição das colunas. Se for complicado fazer isso,
   como último recurso as inclua no fim da declaração `CREATE TABLE`.
 * Se for uma constraint que se aplica a toda a tabela, ela também deve aparecer
   no fim.
 * Utilize ordem alfabética, onde `ON DELETE` vem antes de `ON UPDATE`.
 * Se fizer sentido, alinhe cada aspecto da query na mesma posição de caracteres.
-  Por exemplo, todas as definições `NOT NULL` poderiam começar na mesma posição
-  de caracteres. Isso não é difícil nem rápido, mas certamente torna o código
-  muito mais fácil de se examinar e ler.
+  Por exemplo, todas as definições `NOT NULL` podem começar verticalmente alinhadas.
+  Pode dar trabalho, mas torna o código muito mais fácil de se examinar e ler.
 
 ##### Validação
 
 * Utilize as constraints `LIKE` e `SIMILAR TO` para garantir a integridade de
-  strings de formato é conhecido.
+  strings que tenham formato conhecido.
 * Onde a extensão final de um valor numérico é conhecido, é sabido que deve-se
   escrever como uma extensão `CHECK()` para evitar que valores incorretos entrem
   no banco de dados, ou que o truncamento silencioso dos dados seja muito grande
