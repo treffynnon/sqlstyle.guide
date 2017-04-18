@@ -401,7 +401,9 @@ utilizando constraints juntamente com validação do valor do campo.
   strings que tenham formato conhecido.
 * Onde a extensão final de um valor numérico é conhecida, deve-se utilizar
   `CHECK()` para evitar que valores incorretos sejam inseridos no banco de dados,
-  ou que o truncamento silencioso dos dados seja muito grande para caber no tamanho definido na coluna. No mínimo, deve-se verificar na maioria dos casos se o valor é maior que zero.
+  ou que o truncamento silencioso dos dados seja muito grande para caber no tamanho
+  definido na coluna. No mínimo, deve-se verificar na maioria dos casos se o valor
+  é maior que zero.
 * Constraints `CHECK()` devem ser mantidas em cláusulas separadas para facilitar
   o debugging.
 
