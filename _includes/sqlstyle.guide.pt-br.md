@@ -10,7 +10,7 @@ alterações ou correções de bugs, por favor abra uma [issue][issue] ou faça 
 Estas diretrizes foram desenhadas em conformidade com o livro
 [SQL Programming Style][celko] de Joe Celko, para serem adotadas mais facilmente
 por equipes que já leram o livro. Em relação ao livro, este guia é um pouco mais
-opiniativo em algumas áreas, enquanto em outras, é mais relaxado. É certamente
+opiniativo em algumas áreas e mais tranquilo em outras. Certamente é
 mais sucinto que [o livro de Celko][celko], que contém anedotas e racicínios por
 trás de cada regra.
 
@@ -31,10 +31,10 @@ Baseado no trabalho em [http://www.sqlstyle.guide][sqlstyleguide].
   a legibilidade do código.
 * Armazene informações de data e hora compatíveis com [ISO-8601][iso-8601]
   (`YYYY-MM-DD HH:MM:SS.SSSSS`).
-* Por questões de portabilidade, tente utilizar apenas funções SQL padrão ao
-  invés de funções específicas de servidores SQL de outros fornecedores.
+* Por questões de portabilidade, tente utilizar apenas funções SQL padrão no lugar
+  de funções específicas de servidores SQL de fornecedores.
 * Mantenha o código sucinto e desprovido de SQL redundante—como adição de aspas
-  e parênteses desencessários, ou cláusulas WHERE que podem ser derivadas.
+  e parênteses desnecessários, ou cláusulas WHERE que podem ser derivadas.
 * Inclua comentários no código SQL quando necessário. Utilize o estilo C abrindo
   com `/*` e fechando com `*/` onde possível. Onde não for, preceda os
   comentários com `--` e termine com uma nova linha.
@@ -55,7 +55,7 @@ UPDATE file_system
 ### Evite
 
 * CamelCase—difícil de se analisar rapidamente.
-* Prefixos descritivos ou notação Húngara como `sp_` ou `tbl`.
+* Prefixos descritivos ou notação húngara como `sp_` ou `tbl`.
 * Plurais—utilize termos coletivos onde possível. Por exemplo,
   `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
 * Identificadores entre aspas—caso necessário, utilize as aspas duplas SQL92
@@ -69,7 +69,7 @@ UPDATE file_system
 ### Geral
 
 * Tenha certeza que o nome é único e não é uma [palavra-chave reservada][reserved-keywords].
-* Matenha o tamanho máximo de 30 bytes—na prática isso são
+* Matenha o tamanho máximo em 30 bytes—na prática isso são
   30 caracateres, a não ser que esteja utilizando um conjunto de
   caracateres multi-byte.
 * Nomes devem começar com uma letra e não devem terminar com underscore.  
@@ -78,8 +78,8 @@ UPDATE file_system
 se ler.
 * Utilize underscores onde você normalemnte incluiria um espaço
   (primeiro nome se torna `primeiro_nome`).
-* Evite abreviações. Se precisar utilizá-las, tenha certeza de que elas
-  serão amplamente compreendidas.
+* Evite abreviações. Se precisar utilizá-las, tenha certeza de que serão
+  amplamente compreendidas.
 
 ```sql
 SELECT first_name
@@ -88,13 +88,13 @@ SELECT first_name
 
 ### Tabelas
 
-* Utilize um nome coletivo ou de forma menos ideal, plurais. Por exemplo,
+* Utilize um nome coletivo ou menos idealmente, plurais. Por exemplo,
   (em ordem de preferência) `pessoal` e `empregados`.
 * Não utilize prefixos com `tbl` ou qualquer outro prefixo descritivo ou notação
   húngara.
 * Nunca dê a uma tabela o mesmo nome de uma das suas colunas e vice versa.
-* Evite, quando possível, concatenar dois nomes de tabelas para criar o nome de
-  uma tabela de relacionamento. Ao invés de utilizar `mecanicos_de_carro`,
+* Evite quando possível concatenar dois nomes de tabelas para criar o nome de
+  uma tabela de relacionamento. No lugar de `mecanicos_de_carro`,
   prefira `servicos`.
 
 ### Colunas
@@ -102,8 +102,8 @@ SELECT first_name
 * Sempre utilize nomes no singular.
 * Quando possível, evite usar apenas `id` como identificador primário da tabela.
 * Não adicione uma coluna como o mesmo nome da tabela e vice versa.
-* Sempre utilize caixa baixa, exceto onde capitalização fizer sentido, como
-  em nomes próprios.
+* Sempre utilize caixa baixa, exceto onde capitalização fizer sentido (como
+  em nomes próprios).
 
 ### Aliasing ou correlações
 
@@ -158,11 +158,11 @@ onde for apropriado.
 Sempre utilize caixa alta para [palavras-chave reservadas][reserved-keywords],
 como `SELECT` e `WHERE`.
 
-É melhor evitar palavras-chave reservadas abreviadas; utilize suas variações com
-nome completo (use `ABSOLUTE` ao invés de `ABS`).
+É melhor evitar palavras-chave abreviadas; utilize suas variações por extenso
+(use `ABSOLUTE` ao invés de `ABS`).
 
-Não utilize palavras-chave de um fornecedor específico de banco de dados
-onde for possível utilizar palavras-chave ANSI SQL que tenham a mesma função.
+Não utilize palavras-chave de um fornecedor específico de banco de dados. Onde for
+possível, utilize palavras-chave reservadas ANSI SQL que tenham a mesma função.
 Isso ajuda na portabilidade do código.
 
 ```sql
@@ -173,16 +173,15 @@ SELECT model_num
 
 ### Espaços em branco
 
-Para tornar o código mais fácil de ler, é importante que o cumprimento correto
-de espaçamento esteja sendo utilizado. Não coloque código ou remova espaços
-naturais da linguagem.
+Para tornar o código mais fácil de ler, é importante o uso correto do espaçamento.
+Não insira código ou remova espaços em linguagem natural.
 
 #### Espaços
 
 Espaços devem ser utilizados para alinhar o código, de forma que as palavras-chave
-terminem sempre no mesmo limite de caracteres. Isso forma um rio tipográfico,
-tornando fácil bater olho, visualizar o código e separar as palavras-chave dos
-detalhes de implementação. Rios são [ruins na tipografia][rivers], mas úteis aqui.
+fiquem sempre no mesmo limite. Isso forma um rio tipográfico, tornando fácil visualizar
+o código e separar as palavras-chave dos detalhes de implementação.
+Rios são [ruins na tipografia][rivers], mas úteis aqui.
 
 ```sql
 (SELECT f.species_name,
@@ -204,15 +203,15 @@ detalhes de implementação. Rios são [ruins na tipografia][rivers], mas úteis
   GROUP BY b.species_name, b.observation_date)
 ```
 
-Note que o `SELECT`, `FROM`, etc. estão todos a direita, alinhados, enquanto
-os nomes das colunas em si e os detalhes específicos de implementação estão
-alinhados à esquerda.
+Note que o `SELECT`, `FROM`, etc. estão todos alinhados à direita, enquanto
+os nomes das colunas em si e os detalhes de implementação estão alinhados à
+esquerda.
 
 Sempre inclua espaços:
 
-* antes de depois do símbolo igual (`=`)
+* antes e depois do símbolo igual (`=`)
 * depois de vírgulas (`,`)
-* ao redor de apóstrofes (`'`) caso não estejam entre parênteses, com uma vírgula
+* ao redor de apóstrofes (`'`) caso não estejam entre parênteses ou com uma vírgula
   ou ponto e vírgula.
 
 ```sql
@@ -227,15 +226,15 @@ SELECT a.title, a.release_date, a.recording_date
 Sempre inclua novas linhas/espaço vertical:
 
 * antes de `AND` ou `OR`
-* depois de vírgulas, separando as queries para uma leitura mais fácil
+* depois de vírgulas, separando as queries para facilitar a leitura
 * depois de cada definição de palavras-chave
 * depois de um ponto, quando seperando múltiplas colunas em grupos lógicos
 * para separar código em seções relacionadas, o que ajuda na legibilidade de
   grandes pedaços de código.
 
-Manter todas as palavras-chave alinhadas ao lado direito e os valores alinhados
-ao lado esquerdo, cria uma lacuna no meio da query. Isso torna muito mais fácil
-e rápido a análise da definição da query.
+Manter todas as palavras-chave alinhadas à direita e os valores alinhados
+à esqueda cria uma lacuna no meio da query. Isso torna a análise da definição
+da query mais fácil e rápida.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -259,13 +258,13 @@ SELECT a.title,
 
 ### Indentação
 
-Para garantir que o SQL fique legível, é importante que padrões de indentação
+Para garantir que o SQL seja legível, é importante que padrões de indentação
 sejam seguidos.
 
 #### Joins
 
-Joins devem ser indentados do outro lado do rio e agrupados com uma nova linha
-quando necessário.
+Joins devem ser indentados do outro lado do rio tipográfico e agrupados
+com uma nova linha quando necessário.
 
 ```sql
 SELECT r.last_name
@@ -281,10 +280,10 @@ SELECT r.last_name
 
 #### Subqueries
 
-Subqueries também devem ser alinhadas do lado direito do rio e então seguir o
-mesmo estilo de qualquer outra query. As vezes faz sentido ter o parêntese de
-fechamento em uma nova linha na mesma posição que o parêntese de abertura foi
-definido—isso é especialmente importante onde você tem subqueries aninhadas.
+Subqueries também devem ser alinhadas à direita do rio e seguir o mesmo estilo
+de qualquer outra query. As vezes faz sentido ter o parêntese de fechamento em
+uma nova linha na mesma posição que o parêntese de abertura foi definido—isso é
+especialmente importante onde você tem subqueries aninhadas.
 
 ```sql
 SELECT r.last_name,
@@ -307,9 +306,9 @@ SELECT r.last_name,
 * Onde um valor precisa ser interpretado antes de ser retornado pelo banco de
   dados, use a expressão `CASE`. Cláusulas `CASE` podem ser aninhadas para formar
   estruturas lógicas mais complexas.
-* Evite o uso de cláusulas  `UNION` e tabelas temporários quando possível. Se
-  o schema pode ser otimizado, removendo a dependência desses recursos, então
-  é provável que essa otimização deve ser feita.
+* Evite o uso de cláusulas  `UNION` e tabelas temporárias quando possível. Se
+  o schema pode ser otimizado removendo a dependência desses recursos, é melhor
+  otimizar.
 
 ```sql
 SELECT CASE postcode
@@ -324,19 +323,19 @@ SELECT CASE postcode
 
 ## Sintaxe Create
 
-Enquanto declarando informação do schema, é importante manter código legível
-por humanos. Para facilitar isso, tenha certeza que as definições das colunas
-estão ordenadas e agrupadas onde fizer sentido.
+Enquanto declarando informação do schema, é importante manter um código humanamente
+legível. Para garantir isso, assegure-se de que as definições das colunas estejam
+ordenadas e agrupadas onde fizer sentido.
 
 Indente definições de coluna com quatro (4) espaços dentro da definição `CREATE`.
 
 ### Escolhendo tipos de dados
 
-* Onde possível, não utilize tipos de dados específicos de certos tipos de banco
-  de dados—eles não são portáteis e podem não estar disponíveis em versões antigas
-  do mesmo banco de dados.
-* Apenas utilize os tipos `REAL` ou `FLOAT` onde é estritamente necessário para
-  utilizar pontos flutuantes, do contrário prefira sempre `NUMERIC` e `DECIMAL`.
+* Onde possível, não utilize tipos de dados específicos de fornecedores de banco
+  de dados—esses formatos geralmente não são portáteis e podem estar indisponíveis
+  em versões antigas do banco de dados do mesmo fornecedor.
+* Utilize os tipos `REAL` ou `FLOAT` apenas onde o uso de pontos flutuantes for
+  estritamente necessário, do contrário prefira sempre `NUMERIC` e `DECIMAL`.
   Erros de ponto flutuante são um transtorno!
 
 ### Especificando valores padrão
