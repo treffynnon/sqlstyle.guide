@@ -1,22 +1,22 @@
-# Guia de Estilo SQL
+# Guia de estilo SQL
 
-## Visão Geral
+## Visão geral
 
-Você pode utilizar esse conjunto de diretrizes, [fazer um fork][fork] ou criar
-seu próprio - a chave aqui é escolher um estilo e seguir. Para sugerir
+Você pode utilizar estas diretrizes, [fazer um fork][fork] ou criar
+suas próprias - a chave aqui é escolher um estilo e seguir. Para sugerir
 alterações ou correções de bugs, por favor abra uma [issue][issue] ou faça um
 [pull request][pull] no GitHub.
 
-Essas diretrizes são desenhadas em conformidade com o livro
-[SQL Programming Style][celko] de Joe Celko, para ser adotado por times que já
-leram o livro mais facilmente. Esse guia é um pouco mais opiniativo em algumas
-áreas, enquanto em outras, é mais relaxado. É certamente mais sucinto que
-[o livro de Celko][celko], já que ele contém anedotas e racicínios por trás de
-cada regra para reflexão.
+Estas diretrizes foram desenhadas em conformidade com o livro
+[SQL Programming Style][celko] de Joe Celko, para serem adotadas mais facilmente
+por equipes que já leram o livro. Em relação ao livro, este guia é um pouco mais
+opiniativo em algumas áreas, enquanto em outras, é mais relaxado. É certamente
+mais sucinto que [o livro de Celko][celko], que contém anedotas e racicínios por
+trás de cada regra.
 
 É fácil incluir esse guia no [formato Markdown][dl-md] como parte do código
 base de um projeto, ou fazer uma referência a esta página para que qualquer um
-no projeto possa ler livremente - muito mais dificil com um livro físico.
+no projeto possa ler livremente.
 
 O Guia De Estilo SQL por [Simon Holywell][simon] é licenciado sob a
 [Creative Commons Attribution-ShareAlike 4.0 International License][licence].
