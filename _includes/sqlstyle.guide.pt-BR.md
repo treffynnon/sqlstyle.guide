@@ -1280,7 +1280,7 @@ ZONE
     "SQL style guide pull requests on GitHub"
 [celko]: https://www.amazon.com/gp/product/0120887975/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=treffynnon-20&linkId=9c88eac8cd420e979675c815771313d5
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.pt-BR.md
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
@@ -1292,5 +1292,5 @@ ZONE
     "Wikipedia: Entity–attribute–value model"
 [sqlstyleguide]: http://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
-[licence]: http://creativecommons.org/licenses/by-sa/4.0/
+[licence]: https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR
     "Creative Commons Attribution-ShareAlike 4.0 International License"
