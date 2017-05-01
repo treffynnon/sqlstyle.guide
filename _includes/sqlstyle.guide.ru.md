@@ -1,5 +1,3 @@
-{::options parse_block_html="true" /}
-<div lang="ru">
 # SQL: Руководство по стилю
 
 ## Предисловие
@@ -1315,4 +1313,3 @@ ZONE
     "SQL style guide by Simon Holywell"
 [licence-ru]: https://creativecommons.org/licenses/by-sa/4.0/deed.ru
     "Creative Commons «Атрибуция — На тех же условиях» 4.0 Всемирная"
-</div>
