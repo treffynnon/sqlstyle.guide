@@ -1293,7 +1293,7 @@ ZONE
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
 [celko-ru]: https://www.ozon.ru/context/detail/id/2628672
     "Стиль программирования Джо Селко на SQL"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.ru.md
     "Download the guide in Markdown format"
 [iso-8601-ru]: https://ru.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
