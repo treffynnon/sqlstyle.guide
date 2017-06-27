@@ -28,8 +28,9 @@ if you need some help getting it setup.
 
 * [Japanese/日本語](http://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
 * [Portuguese (Brazil)/Português (BR)](http://www.sqlstyle.guide/pt-br/) by [pmarcus93](https://github.com/pmarcus93)
-* [Simplified Chinese/简体中文](http://www.sqlstyle.guide/zh/) by 
-  [wontoncoder](https://github.com/wontoncoder)
+* [Russian/Русский](http://www.sqlstyle.guide/ru/) by [denpatin](https://github.com/denpatin)
+* [Simplified Chinese/简体中文](http://www.sqlstyle.guide/zh/) by [wontoncoder](https://github.com/wontoncoder)
+* [Traditional Chinese/正體中文](http://www.sqlstyle.guide/zh-tw/) by [Leon0824](https://github.com/Leon0824)
 
 ## Projects known to be implementing the guide
 
