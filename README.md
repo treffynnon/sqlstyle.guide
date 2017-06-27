@@ -57,5 +57,5 @@ description of your deviance.
 [jekyll]: http://jekyllrb.com/
 [gh-pages]: https://pages.github.com/
 [md]: https://github.com/treffynnon/sqlstyle.guide/blob/gh-pages/_includes/sqlstyle.guide.md
-[gh-pages-help]: https://help.github.com/articles/using-jekyll-with-pages/#installing-jekyll
+[gh-pages-help]: https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
 
