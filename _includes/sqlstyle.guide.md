@@ -112,8 +112,8 @@ SELECT first_name
 ```sql
 SELECT first_name AS fn
   FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
+       JOIN students AS s2
+         ON s2.mentor_id = s1.staff_num;
 ```
 ```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
@@ -261,12 +261,12 @@ line where necessary.
 SELECT r.last_name
   FROM riders AS r
        INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engines > 2
+               ON r.bike_vin_num = b.vin_num
+              AND b.engines > 2
 
        INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+               ON r.crew_chief_last_name = c.last_name
+              AND c.chief = 'Y';
 ```
 
 #### Subqueries
