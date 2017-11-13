@@ -2,30 +2,52 @@
 
 ## Überblick
 
-Sie können diese Reihe von Richtlinien verwenden, [abspalten][fork] oder zu Ihrem eigenen machen — der Kniff hier ist, dass Sie einen Stil wählen und dann dabei bleiben. Um Änderungen vorzuschlagen oder Bugs zu beheben, öffnen Sie bitte ein [Issue][issue] oder [Pull Request][pull] auf GitHub.
+Sie können diese Reihe von Richtlinien verwenden, [abspalten][fork] oder zu
+Ihrem eigenen machen — der Kniff hier ist, dass Sie einen Stil wählen und dann
+dabei bleiben. Um Änderungen vorzuschlagen oder Bugs zu beheben, öffnen Sie
+bitte ein [Issue][issue] oder [Pull Request][pull] auf GitHub.
 
-Diese Richtlinien sind entworfen worden, um mit Joe Celkos [SQL Programming Style][celko] Buch kompatibel zu sein, um Adoption für Teams zu machen, die dieses Buch schon gelesen haben. Dieser Guide ist ein wenig mehr meinungsorientiert in einigen Bereichen und in anderen ein wenig mehr entspannt. Es ist sicherlich prägnanter, wo [Celkos Buch][celko] Anekdoten und Argumentationen hinter jeder Regel als nachdenkliche Prosa enthält.
+Diese Richtlinien sind entworfen worden, um mit Joe Celkos [SQL Programming
+Style][celko] Buch kompatibel zu sein, um Adoption für Teams zu machen, die
+dieses Buch schon gelesen haben. Dieser Guide ist ein wenig mehr
+meinungsorientiert in einigen Bereichen und in anderen ein wenig mehr
+entspannt. Es ist sicherlich prägnanter, wo [Celkos Buch][celko] Anekdoten und
+Argumentationen hinter jeder Regel als nachdenkliche Prosa enthält.
 
-Es ist einfach, diesen Leitfaden im [Markdown-Format][dl-md] als Teil der Code-Basis eines Projekts einzuschließen oder irgendjemanden auf dieses Projekt zu verweisen, um frei zu lesen — viel härter mit einem physischen Buch.
+Es ist einfach, diesen Leitfaden im [Markdown-Format][dl-md] als Teil der
+Code‑Basis eines Projekts einzuschließen oder irgendjemanden auf dieses
+Projekt zu verweisen, um frei zu lesen — viel härter mit einem physischen
+Buch.
 
-SQL Style Guide von [Simon Holywell][simon] ist unter einer [Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International][licence-de] lizenziert. Basierend auf einer Arbeit auf [http://www.sqlstyle.guide][sqlstyleguide].
+SQL Style Guide von [Simon Holywell][simon] ist unter einer [Creative Commons
+Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International]
+[licence-de] lizenziert. Basierend auf einer Arbeit auf
+[http://www.sqlstyle.guide][sqlstyleguide].
 
 ## Allgemein
 
 ### Befolgen
 
 * Verwenden Sie konsistente und beschreibende Bezeichner und Namen.
-* Verwenden Sie den Leerraum und die Einrückung vernünftigerweise, um den Code lesbarer zu machen.
-* Speichern Sie [ISO-8601][iso-8601-de] konforme Zeit- und Datumsinformationen: `YYYY-MM-DD HH:MM:SS.SSSSS`.
-* Versuchen Sie, aus Gründen der Portabilität nur Standard-SQL-Funktionen anstelle von herstellerspezifischen Funktionen zu verwenden.
-* Halten Sie den Code prägnant und ohne redundante SQL, wie z.B. unnötige Anführungszeichen oder Klammern oder `WHERE`-Klauseln, die anderweitig abgeleitet werden können.
-* Geben Sie ggf. Kommentare in SQL-Code ein. Benutzen Sie die C-ähnlichen öffenden `/*` und schließenden `*/` Kommentarzeichen wo möglich, sonst gehen Sie mit Kommentaren von `–-` voraus und enden Sie mit einer neuen Zeile.
+* Verwenden Sie den Leerraum und die Einrückung vernünftigerweise, um den Code
+  lesbarer zu machen.
+* Speichern Sie [ISO‑8601][iso-8601-de] konforme Zeit- und
+  Datumsinformationen: `YYYY‑MM‑DD HH:MM:SS.SSSSS`.
+* Versuchen Sie, aus Gründen der Portabilität nur Standard‑SQL‑Funktionen
+  anstelle von herstellerspezifischen Funktionen zu verwenden.
+* Halten Sie den Code prägnant und ohne redundante SQL, wie z.B. unnötige
+  Anführungszeichen oder Klammern oder `WHERE`‑Klauseln, die anderweitig
+  abgeleitet werden können.
+* Geben Sie ggf. Kommentare in SQL‑Code ein. Benutzen Sie die C‑ähnlichen
+  öffenden `/*` und schließenden `*/` Kommentarzeichen wo möglich, sonst gehen
+  Sie mit Kommentaren von `--` voraus und enden Sie mit einer neuen Zeile.
 
 ```sql
 SELECT file_hash  -- stored ssdeep hash
   FROM file_system
  WHERE file_name = '.vimrc';
 ```
+
 ```sql
 /* Updating the file record after writing to the file */
 UPDATE file_system
@@ -37,22 +59,35 @@ UPDATE file_system
 ### Vermeiden
 
 * CamelCase. Es ist schwierig schnell zu scannen.
-* Beschreibende Präfixe oder [ungarische Notation][ungarische-notation] wie `sp_` oder `tbl`.
-* Plurale. Verwenden Sie stattdessen den natürlicheren Sammelbegriff. Zum Beispiel, `staff` anstelle von `employees`, oder `people` anstatt von `individuals`.
-* Zitierte Bezeichner. Wenn Sie sie verwenden müssen, dann halten Sie sich an die doppelten SQL92-Anführungszeichen für Portabilität. Möglicherweise müssen Sie Ihren SQL-Server konfigurieren, um dieses abhängig vom Hersteller zu stützen.
-* Objektorientierte Entwurfsmuster sollten auf SQL- oder Datenbankstrukturen nicht angewendet werden.
+* Beschreibende Präfixe oder [ungarische Notation][ungarische-notation] wie
+  `sp_` oder `tbl`.
+* Plurale. Verwenden Sie stattdessen den natürlicheren Sammelbegriff. Zum
+  Beispiel, `staff` anstelle von `employees`, oder `people` anstatt von
+  `individuals`.
+* Zitierte Bezeichner. Wenn Sie sie verwenden müssen, dann halten Sie sich an
+  die doppelten SQL92‑Anführungszeichen für Portabilität. Möglicherweise
+  müssen Sie Ihren SQL‑Server konfigurieren, um dieses abhängig vom
+  Hersteller zu stützen.
+* Objektorientierte Entwurfsmuster sollten auf SQL- oder Datenbankstrukturen
+  nicht angewendet werden.
 
 ## Namenskonventionen
 
 ### Allgemein
 
-* Stellen Sie sicher, dass der Name einmalig ist und nicht als [reservierte Schlüsselwörter][reserved-keywords] existiert.
-* Halten Sie die Länge auf maximal 30 Bytes. In der Praxis entspricht das 30 Zeichen, es sei denn, Sie verwenden einen Multi-Byte-Zeichensatz.
-* Die Namen müssen mit einem Buchstaben beginnen und dürfen nicht mit einem Unterstrich enden.
+* Stellen Sie sicher, dass der Name einmalig ist und nicht als [reservierte
+  Schlüsselwörter][reserved-keywords] existiert.
+* Halten Sie die Länge auf maximal 30 Bytes. In der Praxis entspricht das 30
+  Zeichen, es sei denn, Sie verwenden einen Multi‑Byte‑Zeichensatz.
+* Die Namen müssen mit einem Buchstaben beginnen und dürfen nicht mit einem
+  Unterstrich enden.
 * Verwenden Sie nur Buchstaben, Zahlen und Unterstriche in den Namen.
-* Vermeiden Sie die Verwendung von mehreren aufeinanderfolgenden Unterstrichen — das kann schwer zu lesen sein.
-* Verwenden Sie Unterstriche, wo Sie natürlich ein Leerzeichen im Namen eintragen: `first name` wird `first_name`.
-* Vermeiden Sie Abkürzungen, und wenn Sie sie verwenden müssen, stellen Sie sicher, dass sie allgemein verstanden werden.
+* Vermeiden Sie die Verwendung von mehreren aufeinanderfolgenden Unterstrichen
+  — das kann schwer zu lesen sein.
+* Verwenden Sie Unterstriche, wo Sie natürlich ein Leerzeichen im Namen
+  eintragen: `first name` wird `first_name`.
+* Vermeiden Sie Abkürzungen, und wenn Sie sie verwenden müssen, stellen Sie
+  sicher, dass sie allgemein verstanden werden.
 
 ```sql
 SELECT first_name
@@ -61,26 +96,39 @@ SELECT first_name
 
 ### Tabellen
 
-* Verwenden Sie einen Sammelbegriff oder, aber weniger bevorzugt, eine Pluralform. Zum Beispiel (in absteigender Priorität) `staff` and `employees`.
-* Fügen Sie nicht das `tbl` Präfix oder ein anderes solches beschreibendes Präfix. Verwenden Sie keine [ungarische Notation][ungarische-notation].
-* Geben Sie niemals einer Tabelle denselben Namen wie einer ihrer Spalten und umgekehrt.
-* Vermeiden Sie, wo möglich, zwei Tabellennamen zusammen zu verketten, um eine Beziehungstabelle zu nennen. Anstatt `cars_mechanics` verwenden Sie `services`.
+* Verwenden Sie einen Sammelbegriff oder, aber weniger bevorzugt, eine
+  Pluralform. Zum Beispiel (in absteigender Priorität) `staff` and
+  `employees`.
+* Fügen Sie nicht das `tbl` Präfix oder ein anderes solches beschreibendes
+  Präfix. Verwenden Sie keine [ungarische Notation][ungarische-notation].
+* Geben Sie niemals einer Tabelle denselben Namen wie einer ihrer Spalten und
+  umgekehrt.
+* Vermeiden Sie, wo möglich, zwei Tabellennamen zusammen zu verketten, um eine
+  Beziehungstabelle zu nennen. Anstatt `cars_mechanics` verwenden Sie
+  `services`.
 
 ### Spalten
 
 * Verwenden Sie immer Namen im Singular.
-* Vermeiden Sie, wo möglich, einfach `id` als Primärschlüssel für die Tabelle zu verwenden.
+* Vermeiden Sie, wo möglich, einfach `id` als Primärschlüssel für die Tabelle
+  zu verwenden.
 * Fügen Sie keine Spalte mit demselben Namen wie ihre Tabelle und umgekehrt.
-* Verwenden Sie immer nur Kleinbuchstaben, es sei denn, es ist sinnvoll wie z.B. bei Eigennamen.
+* Verwenden Sie immer nur Kleinbuchstaben, es sei denn, es ist sinnvoll wie
+  z.B. bei Eigennamen.
 
 ### Aliasing oder Korrelationen
 
-* Aliasnamen sollen in gewisser Weise mit dem Objekt oder dem Ausdruck, das sie aliasieren, verbunden sein.
-* Als Faustregel wird der Korrelationsname aus ersten Buchstaben jedes Namens des Objekts zusammengesetzt.
-* Falls es schon eine Korrelation mit dem gleichen Namen gibt, fügen Sie eine Zahl hinzu.
-* Immer schließen das `AS` Keyword ein. Das macht es lesbarer, da es eindeutig ist.
-* Für berechnete Daten (`SUM()` oder `AVG()`) benutzen Sie den Namen, den Sie einer Spalte mit diesen Daten geben würden,
-  falls solche Spalte im Schema definiert wäre.
+* Aliasnamen sollen in gewisser Weise mit dem Objekt oder dem Ausdruck, das
+  sie aliasieren, verbunden sein.
+* Als Faustregel wird der Korrelationsname aus ersten Buchstaben jedes Namens
+  des Objekts zusammengesetzt.
+* Falls es schon eine Korrelation mit dem gleichen Namen gibt, fügen Sie eine
+  Zahl hinzu.
+* Immer schließen das `AS` Keyword ein. Das macht es lesbarer, da es eindeutig
+  ist.
+* Für berechnete Daten (`SUM()` oder `AVG()`) benutzen Sie den Namen, den Sie
+  einer Spalte mit diesen Daten geben würden, falls solche Spalte im Schema
+  definiert wäre.
 
 ```sql
 SELECT first_name AS fn
@@ -88,6 +136,7 @@ SELECT first_name AS fn
   JOIN students AS s2
     ON s2.mentor_id = s1.staff_num;
 ```
+
 ```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
   FROM staff AS s;
@@ -96,17 +145,19 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 ### Gespeicherte Prozeduren
 
 * Der Name muss ein Verb enthalten.
-* Fügen Sie nicht das `sp_` Präfix oder ein anderes solches beschreibendes Präfix. 
-  Verwenden Sie keine [ungarische Notation][ungarische-notation].
+* Fügen Sie nicht das `sp_` Präfix oder ein anderes solches beschreibendes
+  Präfix. Verwenden Sie keine [ungarische Notation][ungarische-notation].
 
 ### Einheitliche Suffixe
 
-Die folgenden Suffixe haben eine universelle Bedeutung. 
-Dabei wird sichergestellt, dass die Spalten in SQL-Code lesbar und verständlich sind.
-Verwenden Sie ggf. das richtige Suffix.
+Die folgenden Suffixe haben eine universelle Bedeutung. Dabei wird
+sichergestellt, dass die Spalten in SQL‑Code lesbar und verständlich
+sind. Verwenden Sie ggf. das richtige Suffix.
 
-* `_id` — ein eindeutiger Bezeichner wie eine Spalte, die ein Primärschlüssel ist.
-* `_status` ein Flag oder ein anderer Status eines beliebigen Typs wie `publication_status`.
+* `_id` — ein eindeutiger Bezeichner wie eine Spalte, die ein Primärschlüssel
+  ist.
+* `_status` ein Flag oder ein anderer Status eines beliebigen Typs wie
+  `publication_status`.
 * `_total` — die Gesamtmenge oder Gesamtsumme einer Collection von Werten.
 * `_num` — bezeichnet das Feld, dass jeglicher Art von Zahl enthält.
 * `_name` — bezeichnet einen Namen wie `first_name`.
@@ -114,17 +165,22 @@ Verwenden Sie ggf. das richtige Suffix.
 * `_date` — bezeichnet eine Spalte, die das Datum von etwas enthält.
 * `_tally` — eine Zählung.
 * `_size` — die Größe von etwas wie eine Dateigröße oder Konfektionsgröße.
-* `_addr` — eine physikalische oder logische Adresse für den Datensatz wie `ip_addr`.
+* `_addr` — eine physikalische oder logische Adresse für den Datensatz wie
+  `ip_addr`.
 
 ## Abfragesyntax
 
 ### Reservierte Wörter
 
-Verwenden Sie immer Großbuchstaben für [reservierte Schlüsselwörter][reserved-keywords] wie `SELECT` und `WHERE`.
+Verwenden Sie immer Großbuchstaben für
+[reservierte Schlüsselwörter][reserved-keywords] wie `SELECT` und `WHERE`.
 
-Es ist am besten, die abgekürzten Schlüsselwörter zu vermeiden und die in voller Länge zu verwenden, wo verfügbar (bevorzugen Sie `ABSOLUTE` zu `ABS`).
+Es ist am besten, die abgekürzten Schlüsselwörter zu vermeiden und die in
+voller Länge zu verwenden, wo verfügbar (bevorzugen Sie `ABSOLUTE` zu `ABS`).
 
-Verwenden Sie keine DBMS-Hersteller-spezifischen Schlüsselwörter, wenn es ein ANSI-SQL-Schlüsselwort gibt, das die gleiche Funktion ausführt. Das hilft den Code mehr portabel zu machen.
+Verwenden Sie keine DBMS‑Hersteller‑spezifischen Schlüsselwörter,
+wenn es ein ANSI‑SQL‑Schlüsselwort gibt, das die gleiche Funktion
+ausführt. Das hilft den Code mehr portabel zu machen.
 
 ```sql
 SELECT model_num
@@ -134,11 +190,18 @@ SELECT model_num
 
 ### Weißraum
 
-Um den Code lesbarer zu machen, ist es wichtig die Zeichenabstände richtig zu verwenden. Verdichten Sie nicht den Code und entfernen Sie nicht die Zeichenabstände, die natürliche Sprache enthält.
+Um den Code lesbarer zu machen, ist es wichtig die Zeichenabstände richtig zu
+verwenden. Verdichten Sie nicht den Code und entfernen Sie nicht die
+Zeichenabstände, die natürliche Sprache enthält.
 
 #### Leerzeichen
 
-Leerzeichen sollten verwendet werden, um den Code so auszurichten, dass die Hauptschlüsselwörter alle rechtsbündig ausgerichtet werden. Dies erstellt Gießbäche in der Mitte, die es dem Leser leichter macht, den Code zu lesen und die Schlüsselwörter von den Implementierungsdetails zu trennen. [Gießbäche][gießbäche] sind schlecht in der Typografie [schlecht][rivers], aber hier sind sie hilfreich.
+Leerzeichen sollten verwendet werden, um den Code so auszurichten, dass die
+Hauptschlüsselwörter alle rechtsbündig ausgerichtet werden. Dies erstellt
+Gießbäche in der Mitte, die es dem Leser leichter macht, den Code zu lesen und
+die Schlüsselwörter von den Implementierungsdetails zu trennen.
+[Gießbäche][gießbäche] sind schlecht in der Typografie [schlecht][rivers],
+aber hier sind sie hilfreich.
 
 ```sql
 (SELECT f.species_name,
@@ -160,13 +223,16 @@ Leerzeichen sollten verwendet werden, um den Code so auszurichten, dass die Haup
   GROUP BY b.species_name, b.observation_date)
 ```
 
-Bemerken Sie, dass `SELECT`, `FROM`, usw. alle rechtsbündig, während die tatsächlichen Spaltennamen und spezifische Implementierungsdetails linksbündig ausgerichtet sind.
+Bemerken Sie, dass `SELECT`, `FROM`, usw. alle rechtsbündig, während die
+tatsächlichen Spaltennamen und spezifische Implementierungsdetails linksbündig
+ausgerichtet sind.
 
 Obwohl das nicht erschöpfend ist, schließen Sie immer Leerzeichen ein:
 
 * vor und nach Gleichheitszeichen (=)
 * nach Kommas (,)
-* umgebende Apostrophe ('), wenn sie nicht in Klammern oder mit einem nachlaufenden Komma oder Semikolon sind.
+* umgebende Apostrophe ('), wenn sie nicht in Klammern oder mit einem
+  nachlaufenden Komma oder Semikolon sind.
 
 ```sql
 SELECT a.title, a.release_date, a.recording_date
@@ -181,11 +247,14 @@ Schließen Sie immer Zeilenumbruch / vertikalen Raum ein:
 
 * vor `AND` oder `OR`
 * nach Semikolons, um Abfragen für leichteres Lesen zu trennen
-* nach jeder Schlüsselwort-Definition
+* nach jeder Schlüsselwort‑Definition
 * nach einem Komma, um mehrfachen Spalten in logische Gruppen zu trennen
-* um den Code in verwandte Abschnitte zu trennen, was dazu beiträgt, großen Teilen des Codes lesbarer zu machen.
+* um den Code in verwandte Abschnitte zu trennen, was dazu beiträgt, großen
+  Teilen des Codes lesbarer zu machen.
 
-Wenn alle Schlüsselwörter rechtsbündig und Implementierungsdetails linksbündig ausgerichtet sind, erstellt das ein Gießbach in der Mitte der Abfrage, der es dem Leser leichter macht, die Abfrage schneller durchzusuchen.
+Wenn alle Schlüsselwörter rechtsbündig und Implementierungsdetails linksbündig
+ausgerichtet sind, erstellt das ein Gießbach in der Mitte der Abfrage, der es
+dem Leser leichter macht, die Abfrage schneller durchzusuchen.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -209,11 +278,13 @@ SELECT a.title,
 
 ### Vertiefung
 
-Um sicherzustellen, dass SQL-Abfrage lesbar ist, ist es wichtig, dass Standards der Einrückung eingehalten werden.
+Um sicherzustellen, dass SQL‑Abfrage lesbar ist, ist es wichtig, dass
+Standards der Einrückung eingehalten werden.
 
 #### Joins
 
-Joins sollten auf die rechte Seite des Gießbaches eingerückt werden und mit einer neuen Zeile gruppiert werden, wo nötig.
+Joins sollten auf die rechte Seite des Gießbaches eingerückt werden und mit
+einer neuen Zeile gruppiert werden, wo nötig.
 
 ```sql
 SELECT r.last_name
@@ -229,7 +300,11 @@ SELECT r.last_name
 
 #### Unterabfragen
 
-Unterabfragen sollten auch auf die rechte Seite des Gießbaches ausgerichtet werden und dann mit dem gleichen Stil wie jede andere Abfrage geordnet werden. Manchmal ist es sinnvoll, die abschließende Klammer auf einer neuen Zeile an der gleichen Charakterposition,  genau unter der eröffnenden Klammer zu haben. Das ist besonders wichtig, wenn Sie verschachtelte Unterabfragen verwenden.
+Unterabfragen sollten auch auf die rechte Seite des Gießbaches ausgerichtet
+werden und dann mit dem gleichen Stil wie jede andere Abfrage geordnet werden.
+Manchmal ist es sinnvoll, die abschließende Klammer auf einer neuen Zeile an
+der gleichen Charakterposition,  genau unter der eröffnenden Klammer zu haben.
+Das ist besonders wichtig, wenn Sie verschachtelte Unterabfragen verwenden.
 
 ```sql
 SELECT r.last_name,
@@ -247,10 +322,15 @@ SELECT r.last_name,
 
 ### Bevorzugte Formalismen
 
-* Wo es möglich ist, verwenden Sie `BETWEEN` anstatt mehrere Anweisungen mit `AND` zu verbinden.
-* Verwenden Sie auch `IN()` anstelle von mehreren `OR`-Klauseln.
-* Wenn ein Wert interpretiert werden muss, bevor er die Datenbank verlässt, verwenden Sie die `CASE`-Anweisung. `CASE`-Anweisungen können verschachtelt werden, um komplexere logische Strukturen zu bilden.
-* Vermeiden Sie `UNION`-Klauseln und temporären Tabellen, soweit wie möglich. Wenn das Schema optimiert werden kann, um auf diese Funktionen nicht zu vertrauen, dann sollte es getan werden.
+* Wo es möglich ist, verwenden Sie `BETWEEN` anstatt mehrere Anweisungen mit
+  `AND` zu verbinden.
+* Verwenden Sie auch `IN()` anstelle von mehreren `OR`‑Klauseln.
+* Wenn ein Wert interpretiert werden muss, bevor er die Datenbank verlässt,
+  verwenden Sie die `CASE`‑Anweisung. `CASE`‑Anweisungen können
+  verschachtelt werden, um komplexere logische Strukturen zu bilden.
+* Vermeiden Sie `UNION`‑Klauseln und temporären Tabellen, soweit wie
+  möglich. Wenn das Schema optimiert werden kann, um auf diese Funktionen
+  nicht zu vertrauen, dann sollte es getan werden.
 
 ```sql
 SELECT CASE postcode
@@ -265,58 +345,103 @@ SELECT CASE postcode
 
 ## `CREATE`-Syntax
 
-Bei der Entwicklung von Datenschema ist es auch wichtig, den lesbaren Code zu pflegen. Um dies zu erleichtern, stellen Sie sicher, dass die Spaltenerklärung logisch geordnet und gruppiert werden, wo es sinnvoll ist, dies zu tun.
+Bei der Entwicklung von Datenschema ist es auch wichtig, den lesbaren Code zu
+pflegen. Um dies zu erleichtern, stellen Sie sicher, dass die Spaltenerklärung
+logisch geordnet und gruppiert werden, wo es sinnvoll ist, dies zu tun.
 
-Rücken Sie die Spaltenerklärung mit vier (4) Leerzeichen innerhalb der `CREATE`-Anweisung ein.
+Rücken Sie die Spaltenerklärung mit vier (4) Leerzeichen innerhalb der
+`CREATE`‑Anweisung ein.
 
 ### Datentypen
 
-* Wo möglich, verwenden Sie keine herstellerspezifischen Datentypen, denn die sind nicht portabel und möglicherweise nicht in älteren   Versionen derselben Software verfügbar.
-* Verwenden Sie `REAL`- oder `FLOAT`-Typen, nur wenn es für die Gleitkommazahl unbedingt notwendig ist. Ansonsten verwenden Sie jederzeit `NUMERIC`- und `DECIMAL`-Typen. Fließkomma-Rundungsfehler sind ein Ärgernis.
+* Wo möglich, verwenden Sie keine herstellerspezifischen Datentypen, denn die
+  sind nicht portabel und möglicherweise nicht in älteren   Versionen
+  derselben Software verfügbar.
+* Verwenden Sie `REAL`- oder `FLOAT`‑Typen, nur wenn es für die
+  Gleitkommazahl unbedingt notwendig ist. Ansonsten verwenden Sie jederzeit
+  `NUMERIC`- und `DECIMAL`‑Typen. Fließkomma‑Rundungsfehler sind
+  ein Ärgernis.
 
 ### Standardwerten
 
-* Der Vorschlagswert muss vom gleichen Typ sein, wie die Spalte - wenn eine Spalte als `DECIMAL` deklariert wird, setzen Sie keinen `INTEGER`-Vorschlagswert ein.
-* Standardwerte müssen der Datentypdeklaration folgen und vor jeder `NOT NULL`-Anweisung kommen.
+* Der Vorschlagswert muss vom gleichen Typ sein, wie die Spalte - wenn eine
+  Spalte als `DECIMAL` deklariert wird, setzen Sie keinen
+  `INTEGER`‑Vorschlagswert ein.
+* Standardwerte müssen der Datentypdeklaration folgen und vor jeder
+  `NOT NULL`‑Anweisung kommen.
 
 ### Einschränkungen und Schlüssel
 
-Einschränkungen und ihre Untermenge, Schlüssel, sind eine sehr wichtige Komponente jeder Datenbankdefinition. Aber sie können schnell zu schwierig zu lesen und zu begreifen werden. Deshalb ist es wichtig, dass eine Standardreihe von Richtlinien gefolgt wird.
+Einschränkungen und ihre Untermenge, Schlüssel, sind eine sehr wichtige
+Komponente jeder Datenbankdefinition. Aber sie können schnell zu schwierig zu
+lesen und zu begreifen werden. Deshalb ist es wichtig, dass eine Standardreihe
+von Richtlinien gefolgt wird.
 
 #### Schlüssel
 
-Die Entscheidung über die Spalte(n), die die Schlüssel in der Definition bilden werden, sollte sorgfältig durchgeführt werden, denn sie wird Leistung und Datenintegrität beeinflussen.
+Die Entscheidung über die Spalte(n), die die Schlüssel in der Definition
+bilden werden, sollte sorgfältig durchgeführt werden, denn sie wird Leistung
+und Datenintegrität beeinflussen.
 
 1. Der Schlüssel sollte bis zu einem gewissen Grad eindeutig sein.
-2. Konsistenz muss vorhanden sein - in Bezug auf den Datentyp für den Wert über das Schema und darauf, dass es in der Zukunft unwahrscheinlich verändern wird.
-3. Kann der Wert gegen ein Standardformat validiert werden (wie z.B. ein ISO)? Erfüllung der Konformität zum Punkt 2.
-4. Der Schlüssel sollte so einfach wie möglich sein. Aber man muss keine Angst davor haben, wo nötig, zusammengesetzte Schlüssel zu verwenden.
+1. Konsistenz muss vorhanden sein - in Bezug auf den Datentyp für den Wert
+   über das Schema und darauf, dass es in der Zukunft unwahrscheinlich
+   verändern wird.
+1. Kann der Wert gegen ein Standardformat validiert werden (wie z.B. ein ISO)?
+   Erfüllung der Konformität zum Punkt 2.
+1. Der Schlüssel sollte so einfach wie möglich sein. Aber man muss keine Angst
+   davor haben, wo nötig, zusammengesetzte Schlüssel zu verwenden.
 
-Diese gewissermaßen Konventionen sollten bei der Definition einer Datenbank durchgeführt werden. Wenn die Anforderungen in Zukunft weiterentwickeln werden, ist es möglich, Änderungen an den Definitionen vorzunehmen, um sie aktuell zu halten.
+Diese gewissermaßen Konventionen sollten bei der Definition einer Datenbank
+durchgeführt werden. Wenn die Anforderungen in Zukunft weiterentwickeln
+werden, ist es möglich, Änderungen an den Definitionen vorzunehmen, um sie
+aktuell zu halten.
 
 #### Einschränkungen
 
-Sobald die Schlüssel entschieden sind, ist es möglich, sie im System mit Einschränkungen zusammen mit Feldwertvalidierung zu definieren.
+Sobald die Schlüssel entschieden sind, ist es möglich, sie im System mit
+Einschränkungen zusammen mit Feldwertvalidierung zu definieren.
 
 ##### Allgemein
 
-* Die Tabellen müssen mindestens einen Schlüssel haben, um vollständig und nützlich zu sein.
-* Man sollte benutzerdefinierten Namen alle Einschränkungen geben, mit Ausnahme von `UNIQUE`, `PRIMARY KEY` und `FOREIGN KEY`,    denn Datenbankhersteller liefert in der Regel automatisch ausreichend verständliche Namen.
+* Die Tabellen müssen mindestens einen Schlüssel haben, um vollständig und
+  nützlich zu sein.
+* Man sollte benutzerdefinierten Namen alle Einschränkungen geben, mit
+  Ausnahme von `UNIQUE`, `PRIMARY KEY` und `FOREIGN KEY`,    denn
+  Datenbankhersteller liefert in der Regel automatisch ausreichend
+  verständliche Namen.
 
 ##### Layout und Reihenfolge
 
-* Geben Sie zuerst den Primärschlüssel direkt nach der `CREATE TABLE`-Anweisung an.
-* Einschränkungen sollten direkt unterhalb der Spalte definiert werden, der sie entsprechen. Rücken Sie die Einschränkung so ein, dass sie rechtsbündig vom Spaltennamen ausgerichtet werden.
-* Wenn es sich um eine mehrspaltige Einschränkung handelt, dann sollten Sie es so nah wie möglich bei den beiden Spaltendefinitionen setzen. Aber wenn es zu schwierig ist, als letzten Ausweg, setzen Sie es am Ende der `CREATE TABLE`-Definition.
-* Wenn es eine tabellenebene Einschränkung ist, die für die gesamte Tabelle gilt, dann sollte es auch am Ende erscheinen.
-* Verwenden Sie die alphabetische Reihenfolge, in der `ON DELETE` vor `ON UPDATE` kommt.
-* Wenn es Sinn macht, dies zu tun, richten Sie jeden Aspekt der Abfrage auf die gleiche Zeichenposition aus. Zum Beispiel können alle `NOT NULL`-Definitionen mit derselben Zeichenposition beginnen. Es macht den Code viel einfacher durchzusuchen und zu lesen.
+* Geben Sie zuerst den Primärschlüssel direkt nach der
+  `CREATE TABLE`‑Anweisung an.
+* Einschränkungen sollten direkt unterhalb der Spalte definiert werden, der
+  sie entsprechen. Rücken Sie die Einschränkung so ein, dass sie rechtsbündig
+  vom Spaltennamen ausgerichtet werden.
+* Wenn es sich um eine mehrspaltige Einschränkung handelt, dann sollten Sie es
+  so nah wie möglich bei den beiden Spaltendefinitionen setzen. Aber wenn es
+  zu schwierig ist, als letzten Ausweg, setzen Sie es am Ende der
+  `CREATE TABLE`‑Definition.
+* Wenn es eine tabellenebene Einschränkung ist, die für die gesamte Tabelle
+  gilt, dann sollte es auch am Ende erscheinen.
+* Verwenden Sie die alphabetische Reihenfolge, in der `ON DELETE` vor
+  `ON UPDATE` kommt.
+* Wenn es Sinn macht, dies zu tun, richten Sie jeden Aspekt der Abfrage auf
+  die gleiche Zeichenposition aus. Zum Beispiel können alle
+  `NOT NULL`‑Definitionen mit derselben Zeichenposition beginnen. Es macht
+  den Code viel einfacher durchzusuchen und zu lesen.
 
 ##### Validierung
 
-* Verwenden Sie `LIKE` und `SIMILAR TO` Einschränkungen, um die Integrität von Strings dort gewährleisten, deren Format bekannt ist.
-* Wenn der endgültige Bereich eines numerischen Wertes bekannt ist, muss er als ein Bereich `CHECK()` geschrieben werden, um zu verhindern, dass falsche Werte in die Datenbank eingegeben werden oder Daten, die größer als die Spaltendefinition ist, leise reduziert wird. Im Geringsten sollte es prüfen, ob der Wert in den meisten Fällen größer als Null ist.
-* `CHECK()` Einschränkungen sollten in separaten Klauseln gehalten werden, um das Debugging zu erleichtern.
+* Verwenden Sie `LIKE` und `SIMILAR TO` Einschränkungen, um die Integrität von
+  Strings dort gewährleisten, deren Format bekannt ist.
+* Wenn der endgültige Bereich eines numerischen Wertes bekannt ist, muss er
+  als ein Bereich `CHECK()` geschrieben werden, um zu verhindern, dass falsche
+  Werte in die Datenbank eingegeben werden oder Daten, die größer als die
+  Spaltendefinition ist, leise reduziert wird. Im Geringsten sollte es prüfen,
+  ob der Wert in den meisten Fällen größer als Null ist.
+* `CHECK()` Einschränkungen sollten in separaten Klauseln gehalten werden, um
+  das Debugging zu erleichtern.
 
 ##### Beispiel
 
@@ -333,10 +458,21 @@ CREATE TABLE staff (
 
 ### Zu vermeidende Entwürfe
 
-* Objektorientierte Gestaltungsprinzipien werden nicht effektiv in relationale Datenbankentwürfe übersetzt - vermeiden Sie diese Fallstricke.
-* Teilen Sie nicht die Werten und die Maßeinheiten in verschiedene Spalten auf. Die Spalten sollten die Maßeinheiten selbstverständlich machen, um die Anforderung zu vermeiden, Spalten später in der Anwendung zu kombinieren. Verwenden Sie `CHECK()`, um sicherzustellen, dass gültige Daten in die Spalte eingefügt werden.
-* [EAV (Entity Attribute Value)][eav] Tabellen - Verwenden Sie stattdessen spezielle Produkte, die für die Verarbeitung solcher schemafreier Daten bestimmt sind.
-* Teilen Sie nicht die Daten, die logisch zu einziger Tabelle gehören, in vielen verschidenen Tabellen auf, aus Gründen von beliebiger Bedenken, wie z. B. zeitbasierte Archivierung oder Standort in einer multinationalen Organisation. Spätere Abfragen müssen dann über mehrere Tabellen mit `UNION` arbeiten, anstatt einfach nur eine Tabelle abzufragen.
+* Objektorientierte Gestaltungsprinzipien werden nicht effektiv in relationale
+  Datenbankentwürfe übersetzt - vermeiden Sie diese Fallstricke.
+* Teilen Sie nicht die Werten und die Maßeinheiten in verschiedene Spalten
+  auf. Die Spalten sollten die Maßeinheiten selbstverständlich machen, um die
+  Anforderung zu vermeiden, Spalten später in der Anwendung zu kombinieren.
+  Verwenden Sie `CHECK()`, um sicherzustellen, dass gültige Daten in die
+  Spalte eingefügt werden.
+* [EAV (Entity Attribute Value)][eav] Tabellen - Verwenden Sie stattdessen
+  spezielle Produkte, die für die Verarbeitung solcher schemafreier Daten
+  bestimmt sind.
+* Teilen Sie nicht die Daten, die logisch zu einziger Tabelle gehören, in
+  vielen verschidenen Tabellen auf, aus Gründen von beliebiger Bedenken, wie
+  z. B. zeitbasierte Archivierung oder Standort in einer multinationalen
+  Organisation. Spätere Abfragen müssen dann über mehrere Tabellen mit `UNION`
+  arbeiten, anstatt einfach nur eine Tabelle abzufragen.
 
 ## Anhang
 
@@ -344,7 +480,8 @@ CREATE TABLE staff (
 
 ### Reservierte Schlüsselwörter-Referenz
 
-Eine Liste von ANSI SQL (92, 99 und 2003), MySQL 3 bis 5.x, PostgreSQL 8.1, MS SQL Server 2000, MS ODBC und Oracle 10.2 reservierte Schlüsselwörter.
+Eine Liste von ANSI SQL (92, 99 und 2003), MySQL 3 bis 5.x, PostgreSQL 8.1, MS
+SQL Server 2000, MS ODBC und Oracle 10.2 reservierte Schlüsselwörter.
 
 ```sql
 A
