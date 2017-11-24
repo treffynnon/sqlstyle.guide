@@ -273,7 +273,7 @@ SELECT r.last_name
 
 Subqueries should also be aligned to the right side of the river and then laid
 out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as it's
+the closing parenthesis on a new line at the same character position as its
 opening partner—this is especially true where you have nested subqueries.
 
 ```sql
@@ -343,7 +343,7 @@ about though so it is important that a standard set of guidelines are followed.
 
 #### Choosing keys
 
-Deciding the column(s) that will form the keys in the definition should be a 
+Deciding the column(s) that will form the keys in the definition should be a
 carefully considered activity as it will effect performance and data integrity.
 
 1. The key should be unique to some degree.
@@ -1276,7 +1276,7 @@ ZONE
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference" 
+    "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
 [sqlstyleguide]: http://www.sqlstyle.guide
