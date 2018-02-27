@@ -104,6 +104,19 @@ a:hover {
     color: inherit;
 }
 
+#translation-bar .language-ico { display: inline }
+#translation-bar .language-ico svg {
+    width: 25px;
+    margin-bottom: -10px;
+    fill: {{ primary_colour }};
+    margin-left: 10px;
+}
+#translation-bar .language-drop {
+    height: 25px;
+    color: #999;
+    background-color: #222;
+}
+
 header.top {
     background: {{ primary_colour }};
     color: #333;
@@ -116,6 +129,10 @@ header.top h1 {
 
 header.top p.author {
     margin-top: 0;
+}
+
+header.top p.translator {
+    font-size: smaller;
 }
 
 header.top a {
@@ -202,7 +219,7 @@ pre code {
     overflow-y: auto;
 }
 
-{% include highlight.hybrid.css %}
+{% include static/highlight.hybrid.css %}
 
 .anchorjs-link {
     color: {{ primary_colour }};

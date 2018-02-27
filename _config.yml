@@ -15,7 +15,32 @@ kramdown:
     input: GFM
     hard_wrap: false
     toc_levels: "2,3"
+    auto_ids: true
+    transliterated_header_ids: true
+    auto_id_stripping: true
 
-gems:
+plugins:
     - jekyll-redirect-from
     - jekyll-sitemap
+
+langs:
+    de:
+        de: Deutsch
+        en: German
+    en: 
+        en: English
+    ja:
+        ja: 日本語
+        en: Japanese
+    pt-BR:
+        pt-BR: Português (BR)
+        en: Portuguese - Brazil
+    ru:
+        ru: Русский
+        en: Russian
+    zh:
+        zh: 简体中文
+        en: Simplified Chinese
+    zh-TW:
+        zh-TW: 正體中文
+        en: Traditional Chinese

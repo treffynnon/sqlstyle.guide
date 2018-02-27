@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <title property="og:title">{% if page.lang_title %}{{ page.lang_title }} · {% endif %}{{ site.name }}</title>
         <link href="http://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab|Droid+Sans+Mono" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{{ site.url }}/style.css">
+        <link rel="stylesheet" href="{{ site.url }}/static/style.css">
 
-        <link rel="icon" type="image/png" href="{{ site.url }}/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="{{ site.url }}/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="{{ site.url }}/static/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{{ site.url }}/static/favicon-16x16.png" sizes="16x16" />
 
         <meta content="website" property="og:type">
         <meta content="{{ site.url }}" property="og:url">
@@ -31,31 +31,24 @@
 
         <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
         <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
-        <link rel="alternate" hreflang="en" href="{{ site.url }}/">
-        <link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/">
-        <link rel="alternate" hreflang="zh" href="{{ site.url }}/zh/">
-        <link rel="alternate" hreflang="zh-TW" href="{{ site.url }}/zh-tw/">
-        <link rel="alternate" hreflang="pt-BR" href="{{ site.url }}/pt-br/">
-        <link rel="alternate" hreflang="ru" href="{{ site.url }}/ru/">
-        <link rel="alternate" hreflang="de" href="{{ site.url }}/de/">
+        {% include layout_partials/languages.html rel_alternate=true %}
     </head>
     <body itemscope itemtype="http://schema.org/TechArticle">
         <meta itemprop="wordCount" content="{{ content | number_of_words }}">
         <meta itemprop="about" content="{{ site.description }}">
         <meta itemprop="audience" content="SQL programmers">
         <meta itemprop="license" content="http://creativecommons.org/licenses/by-sa/4.0/">
-        <meta itemprop="version" content="1.0.0">
+        <meta itemprop="version" content="1.0.1">
         <meta itemprop="proficiencyLevel" content="Beginner">
         <meta itemprop="dependencies" content="SQL knowledge">
         <meta itemprop="copyrightHolder" content="Simon Holywell">
-        {% include head.html %}
+        {% include layout_partials/head.html %}
         <main class="article-body wrap" id="content" itemprop="articleBody" lang="{{ page.lang }}">
             {{ content }}
         </main>
-        {% include foot.html %}
+        {% include layout_partials/foot.html %}
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="{{ site.url }}/scripts.js"></script>
+        <script src="{{ site.url }}/static/scripts.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

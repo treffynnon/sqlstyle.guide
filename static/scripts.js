@@ -2,34 +2,71 @@
 layout: nil
 ---
 
-{% include highlight.pack.js %}
+{% include static/highlight.pack.js %}
 hljs.initHighlightingOnLoad();
 
-{% include anchor.min.js %}
+{% include static/anchor.min.js %}
 anchors.add('h2,h3,h4,h5,h6');
 
-/*
- * ScrollTo code
- */
-$(document).ready(function(){
-    $('a[href^="#"]').on('click',function (e) {
-        e.preventDefault();
+function offset(el) {
+    var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
 
-        var target = this.hash.replace(/:/g,'\\$&');
-        var dest = 0;
-        if(target) {
-            var $target = $(target);
-            if($target.length) {
-                dest = $target.offset().top;
-            }
+function scrollTo(to, duration) {
+    var start = document.documentElement.scrollTop,
+        change = to - start,
+        currentTime = 0,
+        increment = 20;
+        
+    var animateScroll = function(){        
+        currentTime += increment;
+        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+        document.documentElement.scrollTop = val;
+        if(currentTime < duration) {
+            setTimeout(animateScroll, increment);
         }
+    };
+    animateScroll();
+}
 
-        $('html, body').stop().animate({
-            'scrollTop': dest
-        }, 900, 'swing', function () {
-            window.location.hash = target;
-        });
+//t = current time
+//b = start value
+//c = change in value
+//d = duration
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d/2;
+	if (t < 1) return c/2*t*t + b;
+	t--;
+	return -c/2 * (t*(t-2) - 1) + b;
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    /*
+     * translation jump menu
+     */
+    document.getElementById('language-drop').addEventListener('change', e => {
+        var selected = e.target.selectedOptions[0].value + '/';
+        if (selected === 'en/') selected = '';
+        window.location.href = `{{ site.url }}/${selected}`;
     });
+
+    /*
+     * ScrollTo code
+     */
+    document.querySelectorAll('a[href^="#"]')
+        .forEach(x => x.addEventListener('click', e => {
+            e.preventDefault();
+            var target = decodeURI(e.target.hash.replace(/:/g,'\\$&'));
+            var dest = 0;
+            if(target && target.length) {
+                dest = offset(document.querySelector(target)).top;
+            }
+
+            scrollTo(dest, 900);
+        }));
 });
 
 // http://exisweb.net/link-tracking-universal-analytics
