@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * translation jump menu
      */
     document.getElementById('language-drop').addEventListener('change', e => {
-        var selected = e.target.selectedOptions[0].value + '/';
+        var selected = e.target.selectedOptions[0].value + '/'.toLowerCase();
         if (selected === 'en/') selected = '';
         window.location.href = `{{ site.url }}/${selected}`;
     });
