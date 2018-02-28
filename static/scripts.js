@@ -8,41 +8,6 @@ hljs.initHighlightingOnLoad();
 {% include static/anchor.min.js %}
 anchors.add('h2,h3,h4,h5,h6');
 
-function offset(el) {
-    var rect = el.getBoundingClientRect(),
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-}
-
-function scrollTo(to, duration) {
-    var start = document.documentElement.scrollTop,
-        change = to - start,
-        currentTime = 0,
-        increment = 20;
-        
-    var animateScroll = function(){        
-        currentTime += increment;
-        var val = Math.easeInOutQuad(currentTime, start, change, duration);
-        document.documentElement.scrollTop = val;
-        if(currentTime < duration) {
-            setTimeout(animateScroll, increment);
-        }
-    };
-    animateScroll();
-}
-
-//t = current time
-//b = start value
-//c = change in value
-//d = duration
-Math.easeInOutQuad = function (t, b, c, d) {
-  t /= d/2;
-	if (t < 1) return c/2*t*t + b;
-	t--;
-	return -c/2 * (t*(t-2) - 1) + b;
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     /*
      * translation jump menu
@@ -58,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     document.querySelectorAll('a[href^="#"]')
         .forEach(x => x.addEventListener('click', e => {
-            e.preventDefault();
-            var target = decodeURI(e.target.hash.replace(/:/g,'\\$&'));
-            var dest = 0;
-            if(target && target.length) {
-                dest = offset(document.querySelector(target)).top;
+            var targetHash = e.target.hash.replace(/:/g,'\\$&'),
+                targetDecoded = decodeURI(targetHash),
+                targetId = targetDecoded.replace('#', ''),
+                target = document.getElementById(targetId || 'translation-bar');
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
-
-            scrollTo(dest, 900);
         }));
 });
 
