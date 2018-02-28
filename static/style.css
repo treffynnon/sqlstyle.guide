@@ -209,17 +209,29 @@ ul#markdown-toc {
 }
 
 /* Syntax highlighting */
-code {
-    font-family: 'Droid Sans Mono', monospace;
-    font-size: 0.825em;
-    color: #666;
-}
-pre code {
+div.highlighter-rouge {
     max-height: 450px;
     overflow-y: auto;
+    border: 2px solid #eee;
+    margin: 1em 0;
+    background-color: #fefefe
 }
 
-{% include static/highlight.hybrid.css %}
+div.highlighter-rouge div.highlight {
+    padding: .5em .825em;
+}
+div.highlighter-rouge pre.highlight {
+    margin: 0;
+    display: block;
+    line-height: 1.1;
+}
+code {
+    font-size: .825em;
+    font-family: 'Droid Sans Mono', monospace;
+    color: #555;
+}
+
+{% include static/manni.css %}
 
 .anchorjs-link {
     color: {{ primary_colour }};
