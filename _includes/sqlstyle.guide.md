@@ -51,117 +51,73 @@ UPDATE file_system
 
 ### Avoid
 
-* CamelCase—it is difficult to scan quickly.
-* Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
 * Plurals—use the more natural collective term where possible instead. For example
   `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
-  portability (you may need to configure your SQL server to support this depending
-  on vendor).
 * Object oriented design principles should not be applied to SQL or database
   structures.
 
 ## Naming conventions
 
-### General
-
-* Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords].
-* Keep the length to a maximum of 30 bytes—in practice this is 30 characters
-  unless you are using multi-byte character set.
-* Names must begin with a letter and may not end with an underscore.
-* Only use letters, numbers and underscores in names.
-* Avoid the use of multiple consecutive underscores—these can be hard to read.
-* Use underscores where you would naturally include a space in the name (first
-  name becomes `first_name`).
-* Avoid abbreviations and if you have to use them make sure they are commonly
-  understood.
-
-```sql
-SELECT first_name
-  FROM staff;
-```
-
-### Tables
-
-* Use a collective name or, less ideally, a plural form. For example (in order of
-  preference) `staff` and `employees`.
-* Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
-  notation.
-* Never give a table the same name as one of its columns and vice versa.
-* Avoid, where possible, concatenating two table names together to create the name
-  of a relationship table. Rather than `cars_mechanics` prefer `services`.
-
-### Columns
-
-* Always use the singular name.
-* Where possible avoid simply using `id` as the primary identifier for the table.
-* Do not add a column with the same name as its table and vice versa.
-* Always use lowercase except where it may make sense not to such as proper nouns.
+### All Naming Conventions
+* See Confluence documentation for [Ives Database Design Guide][design-guide]
 
 ### Aliasing or correlations
 
+#### Aliasing Column Names
+* Avoid unnessisary aliases at all times
+* Must always alias `COUNT(*)` columns
+* Must always alias computed data (`SUM()` or `AVG()` or `IF()`) use the name you would give it were it a column defined in the schema.
+* Must always include the `AS` keyword, which makes it easier to read as it is explicit.
 * Should relate in some way to the object or expression they are aliasing.
-* As a rule of thumb the correlation name should be the first letter of each word
-  in the object's name.
-* If there is already a correlation with the same name then append a number.
-* Always include the `AS` keyword—makes it easier to read as it is explicit.
-* For computed data (`SUM()` or `AVG()`) use the name you would give it were it
-  a column defined in the schema.
+
+#### Aliasing Table Names
+* All Tables must be aliased when using more than one in a JOIN
+* Table aliases will be made up of the first letter of every word in the table name unless
+  * unless the alias is a reseverd word ie. `FROM INTERNATIONAL_FILINGS AS IF` will cause an error in SQL
+    * in this case us an abbreviated name for the table ie. `FROM INTERNATIONAL_FILINGS AS IFILINGS`
+  * if the aliases for two table will be the same, or the same table is used more then once, append a number in order of apperance in the query
+* When a query contains multiple databases the first letter of the database, in lower case will be prepended to the table alias ie. `FROM international.ENTITY_MAP AS iEM INNER JOIN secdocs.COMPANY AS sC`
 
 ```sql
-SELECT first_name AS fn
-  FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
+SELECT 
+  COUNT(*) as student_staff_count
+FROM 
+  STAFF AS S1
+    INNER JOIN 
+  STUDENTS AS S2
+    ON S2.mentor_id = S1.staff_num;
 ```
 ```sql
-SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
+SELECT 
+  SUM(s.monitor_tally) AS monitor_total
+FROM 
+  STAFF AS S
+GROUP BY
+  S.staff_department_fkey;
 ```
-
-### Stored procedures
-
-* The name must contain a verb.
-* Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
-  notation.
 
 ### Uniform suffixes
 
 The following suffixes have a universal meaning ensuring the columns can be read
 and understood easily from SQL code. Use the correct suffix where appropriate.
 
-* `_id`—a unique identifier such as a column that is a primary key.
-* `_status`—flag value or some other status of any type such as
-  `publication_status`.
+* `_key`—a unique identifier such as a column that is a primary key.
+* `_status`—flag value or some other status of any type such as `publication_status`.
 * `_total`—the total or sum of a collection of values.
 * `_num`—denotes the field contains any kind of number.
 * `_name`—signifies a name such as `first_name`.
-* `_seq`—contains a contiguous sequence of values.
 * `_date`—denotes a column that contains the date of something.
-* `_tally`—a count.
+* `_count`—a count.
 * `_size`—the size of something such as a file size or clothing.
-* `_addr`—an address for the record could be physical or intangible such as
-  `ip_addr`.
+* `_addr`—an address for the record could be physical or intangible such as `ip_addr`.
 
 ## Query syntax
 
 ### Reserved words
 
-Always use uppercase for the [reserved keywords][reserved-keywords]
-like `SELECT` and `WHERE`.
+Always use uppercase for the [reserved keywords][reserved-keywords] like `SELECT`, `WHERE` or `IF`.
 
-It is best to avoid the abbreviated keywords and use the full length ones where
-available (prefer `ABSOLUTE` to `ABS`).
-
-Do not use database server specific keywords where an ANSI SQL keyword already
-exists performing the same function. This helps to make code more portable.
-
-```sql
-SELECT model_num
-  FROM phones AS p
- WHERE p.release_date > '2014-09-30';
-```
+Data manipulation statements should have every clause keyword on a line of its own unless performing extremely simple statements.  Examples of the clause keywords are `SELECT`, `DELETE`, `UPDATE`, `FROM`, `WHERE`, `HAVING`, `GROUP BY`, `ORDER BY`, `LIMIT`.  An example of a simple single line statements `SELECT COUNT(*) as student_count FROM STUDENTS WHERE graduated = 0;`
 
 ### White space
 
@@ -170,34 +126,49 @@ spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
 
-Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle making it easy for
-the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
+Spaces should never be used to line up the code so that the root keywords all end on the same character boundary. 
+* Indentations of 4 spaces are the standard that is utilized throughout the codebase.  
+* All `(` and `)` must be placed on a line of there own unless only operating on two or less items
 
 ```sql
-(SELECT f.species_name,
-        AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
-   FROM flora AS f
-  WHERE f.species_name = 'Banksia'
-     OR f.species_name = 'Sheoak'
-     OR f.species_name = 'Wattle'
-  GROUP BY f.species_name, f.observation_date)
+(
+    SELECT 
+        species_name,
+        AVG(height) AS average_height, 
+        AVG(diameter) AS average_diameter
+    FROM 
+        FLORA
+    WHERE 
+        species_name = 'Banksia'
+        OR 
+        species_name = 'Sheoak'
+        OR 
+        species_name = 'Wattle'
+    GROUP BY 
+        species_name, 
+        observation_date
+)
 
-  UNION ALL
+    UNION ALL
 
-(SELECT b.species_name,
-        AVG(b.height) AS average_height, AVG(b.diameter) AS average_diameter
-   FROM botanic_garden_flora AS b
-  WHERE b.species_name = 'Banksia'
-     OR b.species_name = 'Sheoak'
-     OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+(
+    SELECT 
+        species_name,
+        AVG(height) AS average_height, 
+        AVG(diameter) AS average_diameter
+    FROM 
+        BOTANIC_GARDEN_FLORA
+    WHERE 
+        species_name = 'Banksia'
+        OR 
+        species_name = 'Sheoak'
+        OR 
+        species_name = 'Wattle'
+    GROUP BY 
+        species_name, 
+        observation_date
+)
 ```
-
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
-
 Although not exhaustive always include spaces:
 
 * before and after equals (`=`)
@@ -216,16 +187,15 @@ SELECT a.title, a.release_date, a.recording_date
 
 Always include newlines/vertical space:
 
-* before `AND` or `OR`
 * after semicolons to separate queries for easier reading
-* after each keyword definition
-* after a comma when separating multiple columns into logical groups
-* to separate code into related sections, which helps to ease the readability of
-  large chunks of code.
+* after each `VALUE` group in an `INSERT` statement
+* to separate code into related sections, which helps to ease the readability of large chunks of code.
 
-Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of query. It makes it much easier to scan
-the query definition over quickly too.
+Always on their own line:
+* Data manipulation statements should have every clause keyword on a line of its own unless performing extremely simple statements.  Examples of the clause keywords are `SELECT`, `DELETE`, `UPDATE`, `FROM`, `WHERE`, `HAVING`, `GROUP BY`, `ORDER BY`, `LIMIT`.  An example of a simple single line statements `SELECT COUNT(*) as student_count FROM STUDENTS WHERE graduated = 0;`
+* Every field being selected, updated, grouped on or limted by in the query should be on their own line. Unless involved in a functional operation such as an `IF()`, `CASE`, `COALESCE()` ... etc. which require additional fields to function 
+* `AND` and `OR` should appear on their own lines
+
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -234,17 +204,27 @@ VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000
 ```
 
 ```sql
-UPDATE albums
-   SET release_date = '1990-01-01 01:01:01.00000'
- WHERE title = 'The New Danger';
+UPDATE 
+    ALBUMS
+SET 
+    release_date = '1990-01-01 01:01:01.00000',
+    producer_name = NULL
+WHERE
+    title = 'The New Danger';
 ```
 
 ```sql
-SELECT a.title,
-       a.release_date, a.recording_date, a.production_date -- grouped dates together
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+    title,
+    release_date, 
+    recording_date, 
+    production_date
+FROM 
+    ALBUMS
+WHERE 
+    title = 'Charcoal Lane'
+    OR 
+    title = 'The New Danger';
 ```
 
 ### Indentation
@@ -252,42 +232,66 @@ SELECT a.title,
 To ensure that SQL is readable it is important that standards of indentation
 are followed.
 
+#### Clause Keywords
+* Should be at the top level with the least indentation of anything else contained in their statement.
+* These words should be on a line alone
+
 #### Joins
 
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+* Natural Joins are not allowed ... ever
+* A Join type must be indicated `LEFT OUTER`, `RIGHT OUTER`, `INNER`
+* Joins should be indented one indent under their tables or sub-queries
+* ON clauses should be indented to be left justified with the JOINs
+* Multiple ON clauses should be indented to be indented benieth the ON and JOIN keywords
 
 ```sql
-SELECT r.last_name
-  FROM riders AS r
-       INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engines > 2
-
-       INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+SELECT 
+    R.last_name
+FROM 
+    RIDERS AS R
+        INNER JOIN 
+    BIKES AS B
+        ON R.bike_vin_num = B.vin_num
+           AND 
+           B.engines > 2
+        INNER JOIN 
+    CREW AS C
+        ON R.crew_chief_last_name = C.last_name
+           AND 
+           C.chief = 'Y';
 ```
 
 #### Subqueries
 
-Subqueries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as its
-opening partner—this is especially true where you have nested subqueries.
+Subqueries should be aligned with the indentation level that their non-subquery counterpart would reside.  Subqueries should begin with a line containing only an opening `(` then the next line being indented 1 indent deeper.  The subquery should end with a closing `)` and the alias for that subquery if appropriate.  Try and include a commend line to describe the subquery
 
 ```sql
-SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
-         WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
-  FROM riders AS r
- WHERE r.last_name IN
-       (SELECT c.last_name
-          FROM champions AS c
-         WHERE YEAR(championship_date) > '2008'
-           AND c.confirmed = 'Y');
+SELECT 
+    r.last_name,
+    (
+        SELECT
+            MAX(YEAR(championship_date))
+        FROM
+            champions AS c
+        WHERE
+            c.last_name = r.last_name
+            AND
+            c.confirmed = 'Y'
+     ) AS last_championship_year
+FROM 
+    riders AS r
+WHERE 
+    r.last_name IN
+        (
+            SELECT 
+                c.last_name
+            FROM 
+                champions AS c
+            WHERE 
+                YEAR(championship_date) > '2008'
+                AND 
+                c.confirmed = 'Y'
+        );
 ```
 
 ### Preferred formalisms
@@ -302,18 +306,25 @@ SELECT r.last_name,
   likely should be.
 
 ```sql
-SELECT CASE postcode
+SELECT 
+    CASE postcode
        WHEN 'BN1' THEN 'Brighton'
        WHEN 'EH1' THEN 'Edinburgh'
-       END AS city
-  FROM office_locations
- WHERE country = 'United Kingdom'
-   AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+    END AS city
+FROM 
+    OFFICE_LOCATIONS
+WHERE 
+    country = 'United Kingdom'
+    AND 
+    opening_time BETWEEN 8 AND 9
+    AND 
+    postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
 
 ## Create syntax
-
+```sql
+/* I do not think that this is a nessisary part of a style guide since we generally should not be creating tables in production */
+```
 When declaring schema information it is also important to maintain human
 readable code. To facilitate this ensure the column definitions are ordered and
 grouped where it makes sense to do so.
@@ -1283,3 +1294,5 @@ ZONE
     "SQL style guide by Simon Holywell"
 [licence]: http://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
+[design-guide]: https://auditanalytics.atlassian.net/wiki/spaces/WEBDEV/pages/25198598/Database+Design
+	"Ives Database Design Guide"
