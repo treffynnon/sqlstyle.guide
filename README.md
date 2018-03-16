@@ -2,23 +2,7 @@
 
 ## Overview
 
-You can use this set of guidelines, [fork them][fork] or make your own - the
-key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][issue] or [pull request][pull] on GitHub.
-
-These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams who have already read that book
-easier. This guide is a little more opinionated in some areas and in others a
-little more relaxed. It is certainly more succinct where [Celko's book][celko]
-contains anecdotes and reasoning behind each rule as thoughtful prose.
-
-It is easy to include this guide in [Markdown format][dl-md] as a part of a
-project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book.
-
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
-Attribution-ShareAlike 4.0 International License][licence].
-Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
+This document is a work in progress to generate a SQL query style guide for use in our department
 
 ## General
 
@@ -37,29 +21,33 @@ Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
   them with a new line.
 
 ```sql
-SELECT file_hash  -- stored ssdeep hash
-  FROM file_system
- WHERE file_name = '.vimrc';
+SELECT 
+    file_hash  -- stored ssdeep hash
+FROM 
+    file_system
+WHERE 
+    file_name = '.vimrc';
 ```
 ```sql
 /* Updating the file record after writing to the file */
-UPDATE file_system
-   SET file_modified_date = '1980-02-22 13:19:01.00000',
-       file_size = 209732
- WHERE file_name = '.vimrc';
+UPDATE 
+    file_system
+SET
+    file_modified_date = '1980-02-22 13:19:01.00000',
+    file_size = 209732
+WHERE 
+    file_name = '.vimrc';
 ```
 
 ### Avoid
 
-* Plurals—use the more natural collective term where possible instead. For example
-  `staff` instead of `employees` or `people` instead of `individuals`.
 * Object oriented design principles should not be applied to SQL or database
   structures.
 
 ## Naming conventions
 
 ### All Naming Conventions
-* See Confluence documentation for [Ives Database Design Guide][design-guide]
+* See Confluence documentation for [Ives Database Design Guide][design-guide] when creating new tables or altering existing tables for the complete naming conventions to be used.
 
 ### Aliasing or correlations
 
