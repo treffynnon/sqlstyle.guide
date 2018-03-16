@@ -68,20 +68,20 @@ WHERE
 
 ```sql
 SELECT 
-  COUNT(*) as student_staff_count
+    COUNT(*) as student_staff_count
 FROM 
-  STAFF AS S1
-    INNER JOIN 
-  STUDENTS AS S2
-    ON S2.mentor_id = S1.staff_num;
+    STAFF AS S1
+      INNER JOIN 
+    STUDENTS AS S2
+      ON S2.mentor_id = S1.staff_num;
 ```
 ```sql
 SELECT 
-  SUM(s.monitor_tally) AS monitor_total
+    SUM(s.monitor_tally) AS monitor_total
 FROM 
-  STAFF AS S
+    STAFF AS S
 GROUP BY
-  S.staff_department_fkey;
+    S.staff_department_fkey;
 ```
 
 ### Uniform suffixes
@@ -165,10 +165,16 @@ Although not exhaustive always include spaces:
   comma or semicolon.
 
 ```sql
-SELECT a.title, a.release_date, a.recording_date
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT
+    title,
+    release_date,
+    recording_date
+FROM
+    ALBUMS
+WHERE
+    title = 'Charcoal Lane'
+    OR 
+    title = 'The New Danger';
 ```
 
 #### Line spacing
@@ -310,9 +316,12 @@ WHERE
 ```
 
 ## Create syntax
-```sql
-/* I do not think that this is a nessisary part of a style guide since we generally should not be creating tables in production */
-```
+
+<hr/>
+<hr/>
+I do not think that this is a nessisary part of a style guide since we generally should not be creating tables in production
+<hr/>
+<hr/>
 When declaring schema information it is also important to maintain human
 readable code. To facilitate this ensure the column definitions are ordered and
 grouped where it makes sense to do so.
