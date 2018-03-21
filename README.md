@@ -244,8 +244,8 @@ FROM
         INNER JOIN 
     BIKES AS B
         ON R.bike_vin_num = B.vin_num
-           AND 
-           B.engines > 2
+        AND 
+        B.engines > 2
         INNER JOIN 
     CREW AS C
         ON R.crew_chief_last_name = C.last_name
