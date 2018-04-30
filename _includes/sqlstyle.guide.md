@@ -165,7 +165,7 @@ SELECT model_num
 
 ### White space
 
-To make the code easier to read it is important that the correct compliment of
+To make the code easier to read it is important that the correct complement of
 spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
