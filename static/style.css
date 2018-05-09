@@ -227,7 +227,7 @@ div.highlighter-rouge pre.highlight {
 }
 code {
     font-size: .825em;
-    font-family: 'Droid Sans Mono', monospace;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, "Fira Code", "Hack Regular", Courier, monospace;
     color: #555;
 }
 
