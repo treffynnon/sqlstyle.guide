@@ -97,7 +97,7 @@ SELECT first_name
 ### Tabellen
 
 * Verwenden Sie einen Sammelbegriff oder, aber weniger bevorzugt, eine
-  Pluralform. Zum Beispiel (in absteigender Priorität) `staff` and
+  Pluralform. Zum Beispiel (in absteigender Priorität) `staff` und
   `employees`.
 * Fügen Sie nicht das `tbl` Präfix oder ein anderes solches beschreibendes
   Präfix. Verwenden Sie keine [ungarische Notation][ungarische-notation].
