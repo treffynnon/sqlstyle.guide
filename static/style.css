@@ -183,6 +183,7 @@ ul#markdown-toc {
     border-top: 0.1em solid #E2E2E2;
     color: #E2E2E2;
     text-align: center;
+    overflow: visible;
 }
 .foot hr:after {
     content: "§";
