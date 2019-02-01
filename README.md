@@ -39,6 +39,12 @@ If your project uses this styleguide and you'd like to be mentioned in this read
 please open a pull request adding it below in alphabetical order with a URL and short
 description.
 
+You can also add a badge ([![sqlstyle.guide](https://img.shields.io/badge/style-sqlstyle.guide-brightgreen.svg)](https://www.sqlstyle.guide/)) to your projects readme with the following markdown code if you like:
+
+```markdown
+[![sqlstyle.guide](https://img.shields.io/badge/style-sqlstyle.guide-brightgreen.svg)](https://www.sqlstyle.guide/)
+```
+
 * [BEdita](https://github.com/bedita/bedita) - a Symfony based PHP CMF
 * [SQLQuery.jl](https://github.com/yeesian/SQLQuery.jl) - A Julia lang package for representing sql queries, and converting them to valid SQL statements
 * [Stock Talk](https://github.com/nigelgilbert/stock-talk) - a realtime dashboard that displays the stock data of the most Tweeted Nasdaq companies.
