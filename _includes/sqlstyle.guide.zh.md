@@ -1190,8 +1190,8 @@ ZONE
     "Wikipedia: ISO 8601"
 [rivers]: http://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
-[reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference" 
+[reserved-keywords]: #保留字参考
+    "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
 [sqlstyleguide]: http://www.sqlstyle.guide
