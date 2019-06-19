@@ -192,7 +192,7 @@ implementation detail. Rivers are [bad in typography][rivers], but helpful here.
   WHERE b.species_name = 'Banksia'
      OR b.species_name = 'Sheoak'
      OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+  GROUP BY b.species_name, b.observation_date);
 ```
 
 Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
@@ -309,7 +309,7 @@ SELECT CASE postcode
   FROM office_locations
  WHERE country = 'United Kingdom'
    AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
 ```
 
 ## Create syntax
