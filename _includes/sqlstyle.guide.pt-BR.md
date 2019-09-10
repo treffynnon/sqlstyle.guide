@@ -200,7 +200,7 @@ Rios são [ruins na tipografia][rivers], mas úteis aqui.
   WHERE b.species_name = 'Banksia'
      OR b.species_name = 'Sheoak'
      OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+  GROUP BY b.species_name, b.observation_date);
 ```
 
 Note que o `SELECT`, `FROM`, etc. estão todos alinhados à direita, enquanto
@@ -318,7 +318,7 @@ SELECT CASE postcode
   FROM office_locations
  WHERE country = 'United Kingdom'
    AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
 ```
 
 ## Sintaxe Create

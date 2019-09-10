@@ -166,7 +166,7 @@ SELECT model_num
   WHERE b.species_name = 'Banksia'
      OR b.species_name = 'Sheoak'
      OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+  GROUP BY b.species_name, b.observation_date);
 ```
 
 `SELECT`、`FROM`、その他キーワードはすべて右揃えされ、列名や実装の詳細は左揃えされている点に注意する。
@@ -269,7 +269,7 @@ SELECT CASE postcode
   FROM office_locations
  WHERE country = 'United Kingdom'
    AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
 ```
 
 ## Create文
