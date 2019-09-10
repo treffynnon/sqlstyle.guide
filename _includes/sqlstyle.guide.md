@@ -1259,6 +1259,49 @@ ZEROFILL
 ZONE
 ```
 
+### Column data types
+
+These are some suggested column data types to use for maximum compatibility between database engines.
+
+#### Character types:
+
+* CHAR
+* CLOB
+* VARCHAR
+
+#### Numeric types
+
+* Exact numeric types
+    * BIGINT
+    * DECIMAL
+    * DECFLOAT
+    * INTEGER
+    * NUMERIC
+    * SMALLINT
+* Approximate numeric types
+    * DOUBLE PRECISION
+    * FLOAT
+    * REAL
+
+#### Datetime types
+
+* DATE
+* TIME
+* TIMESTAMP
+
+#### Binary types:
+
+* BINARY
+* BLOB
+* VARBINARY
+
+#### Additional types
+
+* Boolean
+* INTERVAL
+* XML
+
+
 [simon]: https://www.simonholywell.com/?utm_source=sqlstyle.guide&utm_medium=link&utm_campaign=md-document
     "SimonHolywell.com"
 [issue]: https://github.com/treffynnon/sqlstyle.guide/issues
