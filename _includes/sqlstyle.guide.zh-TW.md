@@ -155,7 +155,7 @@ SELECT model_num
   WHERE b.species_name = 'Banksia'
      OR b.species_name = 'Sheoak'
      OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+  GROUP BY b.species_name, b.observation_date);
 ```
 
 注意`WHERE`和`FROM`等關鍵字，都右對齊，而真實的列名都左對齊。
@@ -261,7 +261,7 @@ SELECT CASE postcode
   FROM office_locations
  WHERE country = 'United Kingdom'
    AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
 ```
 
 ## Create syntax 創建語句
