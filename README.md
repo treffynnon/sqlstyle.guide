@@ -59,6 +59,8 @@ description of your deviance.
 
 * [Lumos Labs](https://github.com/lumoslabs/sqlstyle.guide) - removed the river, Redshift, etc. [www](http://engineering.lumosity.com/sqlstyle.guide)
 * [Mozilla](https://github.com/mozilla/firefox-data-docs/blob/master/concepts/sql_style.md) - removed the river, heavily modified [www](https://docs.telemetry.mozilla.org/concepts/sql_style.html)
+* [Ricardo.ch](https://ricardo-ch.github.io/sqlstyle.guide/)
+* [Scout24](https://github.com/Scout24/sqlstyle.guide)
 
 
 [md-lang]: http://daringfireball.net/projects/markdown/
