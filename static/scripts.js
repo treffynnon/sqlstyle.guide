@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 target = document.getElementById(targetId || 'translation-bar');
             if (target) {
                 e.preventDefault();
-                window.location.hash = e.target.hash;
+                history.pushState({}, `${document.title} - ${target.innerText}`, e.target.href);
                 target.scrollIntoView({behavior: 'smooth', block: 'start'});
             }
         }));
