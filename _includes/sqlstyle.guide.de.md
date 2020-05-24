@@ -200,7 +200,7 @@ Leerzeichen sollten verwendet werden, um den Code so auszurichten, dass die
 Hauptschlüsselwörter alle rechtsbündig ausgerichtet werden. Dies erstellt
 Gießbäche in der Mitte, die es dem Leser leichter macht, den Code zu lesen und
 die Schlüsselwörter von den Implementierungsdetails zu trennen.
-[Gießbäche][gießbäche] sind schlecht in der Typografie [schlecht][rivers],
+[Gießbäche][gießbäche] sind [schlecht][rivers] in der Typografie,
 aber hier sind sie hilfreich.
 
 ```sql
