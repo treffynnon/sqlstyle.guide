@@ -18,7 +18,7 @@ read—much harder with a physical book.
 
 SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
-Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
+Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 
 ## General
 
@@ -28,7 +28,7 @@ Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
 * Make judicious use of white space and indentation to make code easier to read.
 * Store [ISO-8601][iso-8601] compliant time and date information
   (`YYYY-MM-DD HH:MM:SS.SSSSS`).
-* Try to use only standard SQL functions instead of vendor specific functions for
+* Try to use only standard SQL functions instead of vendor-specific functions for
   reasons of portability.
 * Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
   parentheses or `WHERE` clauses that can otherwise be derived.
@@ -55,10 +55,10 @@ UPDATE file_system
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
 * Plurals—use the more natural collective term where possible instead. For example
   `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL92 double quotes for
+* Quoted identifiers—if you must use them then stick to SQL-92 double quotes for
   portability (you may need to configure your SQL server to support this depending
   on vendor).
-* Object oriented design principles should not be applied to SQL or database
+* Object-oriented design principles should not be applied to SQL or database
   structures.
 
 ## Naming conventions
@@ -155,7 +155,7 @@ It is best to avoid the abbreviated keywords and use the full length ones where
 available (prefer `ABSOLUTE` to `ABS`).
 
 Do not use database server specific keywords where an ANSI SQL keyword already
-exists performing the same function. This helps to make code more portable.
+exists performing the same function. This helps to make the code more portable.
 
 ```sql
 SELECT model_num
@@ -224,8 +224,8 @@ Always include newlines/vertical space:
   large chunks of code.
 
 Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of query. It makes it much easier to scan
-the query definition over quickly too.
+creates a uniform gap down the middle of the query. It also makes it much easier to
+to quickly scan over the query definition.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -315,14 +315,14 @@ SELECT CASE postcode
 ## Create syntax
 
 When declaring schema information it is also important to maintain human
-readable code. To facilitate this ensure the column definitions are ordered and
-grouped where it makes sense to do so.
+readable code. To facilitate this ensure that the column definitions are
+ordered and grouped together where it makes sense to do so.
 
 Indent column definitions by four (4) spaces within the `CREATE` definition.
 
 ### Choosing data types
 
-* Where possible do not use vendor specific data types—these are not portable and
+* Where possible do not use vendor-specific data types—these are not portable and
   may not be available in older versions of the same vendor's software.
 * Only use `REAL` or `FLOAT` types where it is strictly necessary for floating
   point mathematics otherwise prefer `NUMERIC` and `DECIMAL` at all times. Floating
@@ -378,7 +378,7 @@ constraints along with field value validation.
 * If it is a multi-column constraint then consider putting it as close to both
   column definitions as possible and where this is difficult as a last resort
   include them at the end of the `CREATE TABLE` definition.
-* If it is a table level constraint that applies to the entire table then it
+* If it is a table-level constraint that applies to the entire table then it
   should also appear at the end.
 * Use alphabetical order where `ON DELETE` comes before `ON UPDATE`.
 * If it make senses to do so align each aspect of the query on the same character
@@ -411,16 +411,16 @@ CREATE TABLE staff (
 
 ### Designs to avoid
 
-* Object oriented design principles do not effectively translate to relational
+* Object-oriented design principles do not effectively translate to relational
   database designs—avoid this pitfall.
 * Placing the value in one column and the units in another column. The column
-  should make the units self evident to prevent the requirement to combine
+  should make the units self-evident to prevent the requirement to combine
   columns again later in the application. Use `CHECK()` to ensure valid data is
   inserted into the column.
-* [EAV (Entity Attribute Value)][eav] tables—use a specialist product intended for
+* [Entity–Attribute–Value][eav] (EAV) tables—use a specialist product intended for
   handling such schema-less data instead.
-* Splitting up data that should be in one table across many because of arbitrary
-  concerns such as time-based archiving or location in a multi-national
+* Splitting up data that should be in one table across many tables because of
+  arbitrary concerns such as time-based archiving or location in a multi-national
   organisation. Later queries must then work across multiple tables with `UNION`
   rather than just simply querying one table.
 
@@ -1316,13 +1316,13 @@ These are some suggested column data types to use for maximum compatibility betw
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide/
     "SQL style guide by Simon Holywell"
-[licence]: http://creativecommons.org/licenses/by-sa/4.0/
+[licence]: https://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
