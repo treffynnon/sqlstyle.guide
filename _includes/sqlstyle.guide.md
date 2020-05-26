@@ -16,7 +16,7 @@ It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
 read—much harder with a physical book.
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
+SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons 
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 
@@ -26,9 +26,9 @@ Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 
 * Use consistent and descriptive identifiers and names.
 * Make judicious use of white space and indentation to make code easier to read.
-* Store [ISO-8601][iso-8601] compliant time and date information
+* Store [ISO 8601][iso-8601] compliant time and date information
   (`YYYY-MM-DD HH:MM:SS.SSSSS`).
-* Try to use only standard SQL functions instead of vendor-specific functions for
+* Try to only use standard SQL functions instead of vendor-specific functions for
   reasons of portability.
 * Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or
   parentheses or `WHERE` clauses that can otherwise be derived.
@@ -68,7 +68,7 @@ UPDATE file_system
 * Ensure the name is unique and does not exist as a
   [reserved keyword][reserved-keywords].
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
-  unless you are using multi-byte character set.
+  unless you are using a multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
 * Only use letters, numbers and underscores in names.
 * Avoid the use of multiple consecutive underscores—these can be hard to read.
@@ -196,7 +196,7 @@ implementation detail. Rivers are [bad in typography][rivers], but helpful here.
 ```
 
 Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
+names and implementation-specific details are left aligned.
 
 Although not exhaustive always include spaces:
 
@@ -314,9 +314,9 @@ SELECT CASE postcode
 
 ## Create syntax
 
-When declaring schema information it is also important to maintain human
-readable code. To facilitate this ensure that the column definitions are
-ordered and grouped together where it makes sense to do so.
+When declaring schema information it is also important to maintain human-readable
+code. To facilitate this ensure that the column definitions are ordered and
+grouped together where it makes sense to do so.
 
 Indent column definitions by four (4) spaces within the `CREATE` definition.
 
@@ -420,7 +420,7 @@ CREATE TABLE staff (
 * [Entity–Attribute–Value][eav] (EAV) tables—use a specialist product intended for
   handling such schema-less data instead.
 * Splitting up data that should be in one table across many tables because of
-  arbitrary concerns such as time-based archiving or location in a multi-national
+  arbitrary concerns such as time-based archiving or location in a multinational
   organisation. Later queries must then work across multiple tables with `UNION`
   rather than just simply querying one table.
 
@@ -1297,7 +1297,7 @@ These are some suggested column data types to use for maximum compatibility betw
 
 #### Additional types
 
-* Boolean
+* BOOLEAN
 * INTERVAL
 * XML
 
