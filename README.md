@@ -27,6 +27,7 @@ If you would like to translate the guide then please open a pull request or open
 if you need some help getting it setup.
 
 * [German/Deutsch](http://www.sqlstyle.guide/de/) by [AStasyK](https://github.com/AStasyK)
+* [Italian/Italiano](http://www.sqlstyle.guide/it/) by [robertopauletto](https://github.com/robertopauletto)
 * [Japanese/日本語](http://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
 * [Portuguese (Brazil)/Português (BR)](http://www.sqlstyle.guide/pt-br/) by [pmarcus93](https://github.com/pmarcus93)
 * [Russian/Русский](http://www.sqlstyle.guide/ru/) by [denpatin](https://github.com/denpatin)
