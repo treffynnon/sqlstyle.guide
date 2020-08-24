@@ -1,7 +1,7 @@
 ---
 layout: default
 lang: it
-lang_title: Guía de estilo SQL
+lang_title: Guida allo stile SQL
 contributors:
     - user: robertopauletto
       type: translator
