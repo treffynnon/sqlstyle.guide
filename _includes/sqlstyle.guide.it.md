@@ -71,7 +71,7 @@ SELECT first_name
 
 - Usare sempre la forma singolare.
 - Dove possibile evitare l'uso del semplice `id` come identificatore primario per la tabella.
-- Non dare mai a una colonna lo stesso nome nome della sua tabella e viceversa.
+- Non dare mai a una colonna lo stesso nome della sua tabella e viceversa.
 - Usare sempre il minuscolo a meno che possa avere senso il non farlo come per i nomi propri.
 
 ### Alias o correlazioni
@@ -183,7 +183,7 @@ Includere sempre ritorni a capo/spaziatura verticale:
 - dopo una virgola quando si separano colonne multiple in gruppi logici
 - per separare codice in sezioni correlate, il che aiuta la leggibilità di grandi porzioni di codice.
 
-Mantenere tutte le parole chiave allineate a destra e i valori allineati a sinistra crea un divario uniforma nel mezzo della query. Rende anche più facile scorrere velocemente la definizione della query
+Mantenere tutte le parole chiave allineate a destra e i valori allineati a sinistra crea un divario uniforme nel mezzo della query. Rende anche più facile scorrere velocemente la definizione della query
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
@@ -306,10 +306,10 @@ Una volta che le chiavi sono determinate è possibile definirli nel sistema usan
 - Specificare la chiave primaria per prima appena dopo l'istruzione `CREATE TABLE`.
 - I vincoli dovrebbero essere definiti direttamente sotto la colonna alla quale corrispondono.
   Indentare il vincolo in modo che sia allineato alla destra del nome della colonne.
-- Se il vincolo è multi-colonna allora considerare si sistemarlo più vicino possibile a entrambe le definizioni della colonne e laddove questo sia difficoltoso includerli come ultima risorsa alla fine della definizione di `CREATE TABLE`
+- Se il vincolo è multi-colonna allora considerare di sistemarlo più vicino possibile a entrambe le definizioni della colonne e laddove questo sia difficoltoso includerli come ultima risorsa alla fine della definizione di `CREATE TABLE`
 - Se esiste un vincolo a livello di tabella che si applica all'intera tabella dovrebbe apparire alla fine.
 - Usare l'ordine alfabetico dove `ON DELETE` viene prima di `ON UPDATE`.
-- Se ha senso allineare ogni aspetto della query alla stessa posizione di carattere. Ad esempio tutte le definizioni `NOT NULL` potrebbero partire alla stessa posizione di carattere. Questo non è categorico ma rende certamente il codice più facile da scorrere e leggere.
+- Se ha senso, allineare ogni aspetto della query alla stessa posizione di carattere. Ad esempio tutte le definizioni `NOT NULL` potrebbero partire alla stessa posizione di carattere. Questo non è categorico ma rende certamente il codice più facile da scorrere e leggere.
 
 ##### Validazione
 
