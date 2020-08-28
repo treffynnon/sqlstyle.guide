@@ -452,7 +452,7 @@ CREATE TABLE staff (
     first_name     VARCHAR(100) NOT NULL,
     pens_in_drawer INT(2)       NOT NULL,
                    CONSTRAINT pens_in_drawer_range
-                   CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
+                   CHECK(pens_in_drawer BETWEEN 1 AND 99)
 );
 ```
 
