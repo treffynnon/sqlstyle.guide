@@ -1324,7 +1324,7 @@ Bunlar, veritabanı motorları arasında maksimum uyumluluk için kullanılacak 
     "SQL style guide pull requests on GitHub"
 [celko]: https://www.amazon.com/gp/product/0120887975/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=treffynnon-20&linkId=9c88eac8cd420e979675c815771313d5
     "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
+[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.tr.md
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
