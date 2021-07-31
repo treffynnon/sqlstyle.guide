@@ -35,6 +35,9 @@ langs:
     ja:
         ja: 日本語
         en: Japanese
+    pl:
+        pl: Polski
+        en: Polish
     pt-BR:
         pt-BR: Português (BR)
         en: Portuguese - Brazil
