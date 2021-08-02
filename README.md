@@ -32,9 +32,9 @@ if you need some help getting it setup.
 * [Polish/Polski](http://www.sqlstyle.guide/pl/) by [andre-wojtowicz](https://github.com/andre-wojtowicz)
 * [Portuguese (Brazil)/Português (BR)](http://www.sqlstyle.guide/pt-br/) by [pmarcus93](https://github.com/pmarcus93)
 * [Russian/Русский](http://www.sqlstyle.guide/ru/) by [denpatin](https://github.com/denpatin)
-* [Turkish/Türkçe](http://www.sqlstyle.guide/tr/) by [mrfade](https://github.com/mrfade)
 * [Simplified Chinese/简体中文](http://www.sqlstyle.guide/zh/) by [wontoncoder](https://github.com/wontoncoder)
 * [Traditional Chinese/正體中文](http://www.sqlstyle.guide/zh-tw/) by [Leon0824](https://github.com/Leon0824)
+* [Turkish/Türkçe](http://www.sqlstyle.guide/tr/) by [mrfade](https://github.com/mrfade)
 
 ## Projects known to be implementing the guide
 
