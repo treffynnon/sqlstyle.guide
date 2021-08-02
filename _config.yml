@@ -44,12 +44,12 @@ langs:
     ru:
         ru: Русский
         en: Russian
-    tr:
-        tr: Türkçe
-        en: Turkish
     zh:
         zh: 简体中文
         en: Simplified Chinese
     zh-TW:
         zh-TW: 正體中文
         en: Traditional Chinese
+    tr:
+        tr: Türkçe
+        en: Turkish
