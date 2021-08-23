@@ -1,22 +1,27 @@
 # SQL style guide
 
+## Purpose
+To improve the interoperability and quality of the marketing analytics team's SQL,
+which ultimately will help us scale up our reporting.
+
+## Values
+Utilizing this style guide aligns with the following Remitly values:
+1. Be an empathetic partner: Writing consistent easy to read SQL
+   shows empathy to both your future self and for anyone else who
+   will read your code in the future.
+2. Sweat the Details: How we work is important to the future of this department.
+   Coming up with the right query, while writing elegant, beautifully written SQL
+   shows how much we care about practicing our craft.
+4. Be an owner: We own the code we write, and adhering to this style guide will 
+   make that ownership much easier.
+6. Constructively Direct: If there is something about this style guide that doesn't
+   work, tell us. We collectively own this guide and it is supposed to work for all
+   of us.
+
 ## Overview
 
-You can use this set of guidelines, [fork them][fork] or make your own - the
-key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][issue] or [pull request][pull] on GitHub.
-
-These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams who have already read that book
-easier. This guide is a little more opinionated in some areas and in others a
-little more relaxed. It is certainly more succinct where [Celko's book][celko]
-contains anecdotes and reasoning behind each rule as thoughtful prose.
-
-It is easy to include this guide in [Markdown format][dl-md] as a part of a
-project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book.
-
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons 
+This style guide is forked from the SQL style guide by [Simon Holywell][simon]
+and is licensed under a [Creative Commons 
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 
@@ -35,6 +40,14 @@ Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 * Include comments in SQL code where necessary. Use the C style opening `/*` and
   closing `*/` where possible otherwise precede comments with `--` and finish
   them with a new line.
+* Utilize CTEs instead of Subqueries unless there is a particularly compelling
+  reason to use a Subquery (a substantial boost in performance)
+* Specify the type of join you are using. While you can use 'JOIN' to do an
+  'INNER JOIN' it is harder to parse. Be specific
+* Whenever possible build queries left to right. If you are using a join other
+  than a left join, please put a comment to say why.
+* Put all columns in a select statement on their own line with commas at the
+  start of the line.
 
 ```sql
 SELECT file_hash  -- stored ssdeep hash
@@ -60,6 +73,8 @@ UPDATE file_system
   on vendor).
 * Object-oriented design principles should not be applied to SQL or database
   structures.
+* Avoid using GROUP BY 1, 2, 3 etc. Likewise, avoid using ORDER BY 1, 2, 3.
+  This convention makes code much harder to read and refactor.
 
 ## Naming conventions
 
@@ -267,6 +282,43 @@ SELECT r.last_name
        INNER JOIN crew AS c
        ON r.crew_chief_last_name = c.last_name
           AND c.chief = 'Y';
+```
+
+#### Common Table Expressions (CTEs)
+
+CTEs should have a descriptive name no greater than 30 characters in length.
+CTEs should open with a docstring describing what the CTE does, and if it is
+a CTE that will be used in numerous queries, it should describe what it should
+join on. If it is a standard CTE that has been modified, the doctring should
+also specify what changes were made.
+
+``` sql
+WITH PROSPECTS AS (
+\*
+This CTE is a UNION between our prospective customers
+and our existing customers. This is commonly used to report
+on marketing efforts at all of our potential customers
+*\
+(
+SELECT id as prospect_id
+      , name as prospect_name
+      , email as prospect_email
+      
+      FROM salesforce.leads
+)      
+      UNION ALL
+(      
+SELECT      
+      id as prospect_id
+      , name as prospect_name
+      , email as prosect_name
+      
+      FROM salesforce.contacts
+)
+
+
+)
+
 ```
 
 #### Subqueries
