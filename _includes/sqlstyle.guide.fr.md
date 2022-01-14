@@ -2,10 +2,10 @@
 
 ## Vue d'ensemble
 
-Vous pouvez utiliser cet ensemble de principes, le [forker][fork] ou faire le vôtre - l'important est de choisir un style et de s'y tenir. Pour proposer des modifications ou corriger des bugs, ouvrez un [ticket][issue] ou une [pull request][pull] sur GitHub.
+Vous pouvez utiliser ce guide tel quel, le [forker][fork] ou bien faire le vôtre — l'important est de choisir un style et de s'y tenir. Pour proposer des modifications ou corriger des bugs, ouvrez un [ticket][issue] ou une [pull request][pull] sur GitHub.
 
-Ces principes sont prévus pour être compatibles avec le livre [SQL Programming
-Style][celko] de Joe Celko afin de faciliter leur adoption par les équipes qui ont déjà lu ce livre. Ce guide est un peu plus strict sur certains points, et plus permissif sur d'autres. Il est certainement plus succinct que [le livre de Celko][celko], qui contient des anecdotes et propose un raisonnement plus poussé pour chaque règle.
+Les principes présentés ici sont prévus pour être compatibles avec le livre [SQL Programming
+Style][celko] de Joe Celko afin de faciliter leur adoption par les équipes qui ont déjà lu cet ouvrage. Ce guide est un peu plus strict sur certains points, et plus permissif sur d'autres. Il est certainement plus succinct que [le livre de Celko][celko], qui contient des anecdotes et propose un raisonnement assez poussé pour chaque règle.
 
 Il est aisé d'inclure ce guide au [format Markdown][dl-md] dans la base de code d'un projet, ou de l'y référencer pour que tout·e membre du projet puisse le lire librement, ce qui est bien plus dur à faire avec un livre physique.
 
