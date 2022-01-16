@@ -10,7 +10,7 @@ Style][celko] de Joe Celko afin de faciliter leur adoption par les équipes qui 
 Il est aisé d'inclure ce guide au [format Markdown][dl-md] dans la base de code d'un projet, ou de l'y référencer pour que tout·e membre du projet puisse le lire librement, ce qui est bien plus dur à faire avec un livre physique.
 
 Ce guide de style SQL par [Simon Holywell][simon] est proposé sous licence [Creative Commons 
-Attribution-ShareAlike 4.0 International License][licence].
+Attribution-Partage dans les Mêmes Conditions 4.0 International][licence].
 Fondé sur un travail disponible sur [https://www.sqlstyle.guide/][sqlstyleguide].
 
 ## Généralités
@@ -1236,5 +1236,5 @@ Voici quelques types de données de colonnes suggérés pour une compatibilité 
     "Wikipédia : Entity–attribute–value model"
 [sqlstyleguide]: https://www.sqlstyle.guide/
     "SQL style guide par Simon Holywell"
-[licence]: https://creativecommons.org/licenses/by-sa/4.0/
-    "Creative Commons Attribution-ShareAlike 4.0 International License"
+[licence]: https://creativecommons.org/licenses/by-sa/4.0/deed.fr
+    "Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International"
