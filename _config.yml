@@ -29,6 +29,9 @@ langs:
         en: German
     en: 
         en: English
+    fr:
+        fr: Français
+        en: French
     it:
         it: Italiano
         en: Italian
