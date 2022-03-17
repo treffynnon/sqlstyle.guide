@@ -1263,7 +1263,7 @@ ZONE
 
 These are some suggested column data types to use for maximum compatibility between database engines.
 
-#### Character types:
+#### Character types
 
 * CHAR
 * CLOB
@@ -1289,7 +1289,7 @@ These are some suggested column data types to use for maximum compatibility betw
 * TIME
 * TIMESTAMP
 
-#### Binary types:
+#### Binary types
 
 * BINARY
 * BLOB
