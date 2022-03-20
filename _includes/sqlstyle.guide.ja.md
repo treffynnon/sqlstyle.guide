@@ -19,7 +19,7 @@
 
 このガイドの[Markdown版][dl-md]を活用すれば、紙の本では難しいプロジェクトのコード規約に含めたり、プロジェクトの参加者がその場で参照し自由に読んだりすることが容易になります。 
 
-SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[http://www.sqlstyle.guide][sqlstyleguide]です。
+SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[https://www.sqlstyle.guide][sqlstyleguide]です。
 
 ## 全般
 
@@ -1197,13 +1197,13 @@ ZONE
     "Download the guide in Markdown format"
 [iso-8601]: https://ja.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference" 
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity-attribute-value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence-ja]: https://creativecommons.org/licenses/by-sa/4.0/deed.ja
     "Creative Commons Attribution-ShareAlike 4.0 International License"

@@ -1,6 +1,6 @@
 # SQL style guide SQL 样式指南
 
-这篇文档翻译自以[署名-相同方式共享 4.0 国际协议][licence-zh]发布的 [http://www.sqlstyle.guide][sqlstyleguide]，译文以与原文同样的协议发布。
+这篇文档翻译自以[署名-相同方式共享 4.0 国际协议][licence-zh]发布的 [https://www.sqlstyle.guide][sqlstyleguide]，译文以与原文同样的协议发布。
 
 ## Overview 综述
 
@@ -10,7 +10,7 @@
 
 将该文档的 [Markdown 格式][dl-md] 添加到项目代码库中或将该页面的链接发送给项目的所有参与者要比传阅实体书容易得多。
 
-[Simon Holywell][simon] 所著的《SQL 样式指南》以[署名-相同方式共享 4.0 国际协议][licence-zh]发布，改编自 [http://www.sqlstyle.guide][sqlstyleguide]。
+[Simon Holywell][simon] 所著的《SQL 样式指南》以[署名-相同方式共享 4.0 国际协议][licence-zh]发布，改编自 [https://www.sqlstyle.guide][sqlstyleguide]。
 
 ## General 一般原则
 
@@ -1232,13 +1232,13 @@ ZONE
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #保留字参考
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence-zh]: https://creativecommons.org/licenses/by-sa/4.0/deed.zh
     "署名-相同方式共享 4.0 国际"
