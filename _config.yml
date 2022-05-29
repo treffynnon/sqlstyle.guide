@@ -38,6 +38,9 @@ langs:
     ja:
         ja: 日本語
         en: Japanese
+    ko:
+        ko: 한국어
+        en: Korean
     pl:
         pl: Polski
         en: Polish

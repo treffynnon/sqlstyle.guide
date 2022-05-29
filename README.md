@@ -30,6 +30,7 @@ if you need some help getting it setup.
 * [French/Français](http://www.sqlstyle.guide/fr/) by [IdrissaD](https://github.com/IdrissaD)
 * [Italian/Italiano](http://www.sqlstyle.guide/it/) by [robertopauletto](https://github.com/robertopauletto)
 * [Japanese/日本語](http://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
+* [Korean/한국어](http://www.sqlstyle.guide/ko/) by [Dokyeongyun](https://github.com/Dokyeongyun)
 * [Polish/Polski](http://www.sqlstyle.guide/pl/) by [andre-wojtowicz](https://github.com/andre-wojtowicz)
 * [Portuguese (Brazil)/Português (BR)](http://www.sqlstyle.guide/pt-br/) by [pmarcus93](https://github.com/pmarcus93)
 * [Russian/Русский](http://www.sqlstyle.guide/ru/) by [denpatin](https://github.com/denpatin)
