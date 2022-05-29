@@ -22,7 +22,7 @@ Buch.
 SQL Style Guide von [Simon Holywell][simon] ist unter einer [Creative Commons
 Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International]
 [licence-de] lizenziert. Basierend auf einer Arbeit auf
-[http://www.sqlstyle.guide][sqlstyleguide].
+[https://www.sqlstyle.guide][sqlstyleguide].
 
 ## Allgemein
 
@@ -1329,13 +1329,13 @@ ZONE
     "Ungarische Notation"
 [gießbäche]: https://de.wikipedia.org/wiki/Gie%C3%9Fbach_(Typografie)
     "Gießbach in Typografie"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence-de]: https://creativecommons.org/licenses/by-sa/4.0/deed.de
     "Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International"
