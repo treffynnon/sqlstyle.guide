@@ -27,7 +27,7 @@ GitHub'е.
 «SQL: Руководство по стилю» (SQL style guide) за авторством Саймона Холиуэлла
 (Simon Holywell) находится под лицензией [Creative Commons «Атрибуция — На тех
 же условиях» 4.0 Всемирная][licence-ru]. Оригинал —
-[http://www.sqlstyle.guide][sqlstyleguide].
+[https://www.sqlstyle.guide][sqlstyleguide].
 
 ## Основные положения
 
@@ -1307,7 +1307,7 @@ ZONE
     "Wikipedia: Венгерская нотация"
 [sql-92-ru]: https://ru.wikipedia.org/wiki/SQL-92
     "Wikipedia: SQL-92"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [rivers-ru]: https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%B8%D0%B4%D0%BE%D1%80_(%D1%82%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0)
     "Коридоры в типографике"
@@ -1315,7 +1315,7 @@ ZONE
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence-ru]: https://creativecommons.org/licenses/by-sa/4.0/deed.ru
     "Creative Commons «Атрибуция — На тех же условиях» 4.0 Всемирная"

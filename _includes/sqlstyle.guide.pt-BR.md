@@ -20,7 +20,7 @@ no projeto possa ler livremente.
 
 O Guia De Estilo SQL por [Simon Holywell][simon] é licenciado sob a
 [Creative Commons Attribution-ShareAlike 4.0 International License][licence].
-Baseado no trabalho em [http://www.sqlstyle.guide][sqlstyleguide].
+Baseado no trabalho em [https://www.sqlstyle.guide][sqlstyleguide].
 
 ## Geral
 
@@ -1284,13 +1284,13 @@ ZONE
     "Download the guide in Markdown format"
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: http://practicaltypography.com/one-space-between-sentences.html
+[rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: http://www.sqlstyle.guide
+[sqlstyleguide]: https://www.sqlstyle.guide
     "SQL style guide by Simon Holywell"
 [licence]: https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR
     "Creative Commons Attribution-ShareAlike 4.0 International License"
