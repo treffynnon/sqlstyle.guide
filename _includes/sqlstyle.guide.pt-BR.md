@@ -145,7 +145,6 @@ onde for apropriado.
 * `_num`—indica que o campo contém qualquer tipo de número.
 * `_name`—significa um nome, como `first_name`.
 * `_seq`—contém uma sequência contígua de valores.
-* `_seq`—contains a contiguous sequence of values.
 * `_date`—indica uma coluna que contém a data de alguma coisa.
 * `_tally`—uma contagem.
 * `_size`—o tamanho de algo, como o tamanho de um arquivo ou de uma roupa.
