@@ -38,6 +38,7 @@ if you need some help getting it setup.
 * [Traditional Chinese/正體中文](https://www.sqlstyle.guide/zh-tw/) by [Leon0824](https://github.com/Leon0824)
 * [Turkish/Türkçe](https://www.sqlstyle.guide/tr/) by [mrfade](https://github.com/mrfade)
 * [Ukrainian/Українська](https://www.sqlstyle.guide/ua/) by [yar-lukomsky](https://github.com/yar-lukomsky)
+* [Vietnamese/Tiếng Việt](https://www.sqlstyle.guide/vn/) by [Vũ Phượng Hoàng](https://github.com/DancingPhoenix88)
 
 ## Projects known to be implementing the guide
 
