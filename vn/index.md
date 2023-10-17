@@ -3,7 +3,7 @@ layout: default
 lang: vn
 lang_title: Bộ quy tắc viết SQL
 contributors:
-    - user: Vũ Phượng Hoàng
+    - user: DancingPhoenix88
       type: translator
 ---
 
