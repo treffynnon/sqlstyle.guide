@@ -51,7 +51,7 @@ UPDATE file_system
 
 ### Avoid
 
-* CamelCase—it is difficult to scan quickly.
+* camelCase—it is difficult to scan quickly.
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
 * Plurals—use the more natural collective term where possible instead. For example
   `staff` instead of `employees` or `people` instead of `individuals`.

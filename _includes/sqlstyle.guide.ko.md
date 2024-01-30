@@ -47,7 +47,7 @@ UPDATE file_system
 
 ### Avoid
 
-* CamelCase. — 빠르게 스캔하기 어렵다.
+* camelCase. — 빠르게 스캔하기 어렵다.
 * 설명 접두사 또는 `sp_`, `tbl`과 같은 헝가리안 표기법.
 * 복수. — 가능한 경우 더 자연스러운 집합 명사를 사용하라. 예를 들어, `employees` 대신 `staff`를,
   `individuals` 대신 `people`을 사용하라.

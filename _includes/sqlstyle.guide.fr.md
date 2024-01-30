@@ -39,7 +39,7 @@ UPDATE file_system
 
 ### À éviter
 
-* Le CamelCase — c'est difficile à lire rapidement.
+* Le camelCase — c'est difficile à lire rapidement.
 * Les préfixes descriptifs ou les notations hongroises comme `sp_` ou `tbl`.
 * Les pluriels — à la place, utilisez le terme collectif le plus naturel quand c'est possible. Par exemple `staff` au lieu de `employees` ou `people` au lieu de `individuals`.
 * Identifiants entre guillemets — si vous devez les utiliser, limitez-vous aux doubles guillemets SQL-92 pour la portabilité (selon le SGBD, vous aurez peut-être besoin de configurer votre serveur SQL pour qu'il soit compatible).
