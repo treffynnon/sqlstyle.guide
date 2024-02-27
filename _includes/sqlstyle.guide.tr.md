@@ -54,7 +54,7 @@ UPDATE file_system
 
 ### Bunlardan Kaçın
 
-* CamelCase—hızlı taranması için zor.
+* camelCase—hızlı taranması için zor.
 * Tanımlayıcı önekler ya da Hungarian gösterimi: `sp_` veya `tbl`.
 * Çoğullar—mümkün olduğunda daha doğal ve genel bir terim kullanın.
   Örneğin `employees` yerine `staff` ya da `individuals` yerine `people`.

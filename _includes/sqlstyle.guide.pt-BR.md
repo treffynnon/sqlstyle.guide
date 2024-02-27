@@ -54,7 +54,7 @@ UPDATE file_system
 
 ### Evite
 
-* CamelCase—difícil de se analisar rapidamente.
+* camelCase—difícil de se analisar rapidamente.
 * Prefixos descritivos ou notação húngara como `sp_` ou `tbl`.
 * Plurais—utilize termos coletivos onde possível. Por exemplo,
   `pessoal` ao invés de `funcionários` ou `pessoa` no lugar de `indivíduos`.
