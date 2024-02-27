@@ -269,6 +269,16 @@ SELECT r.last_name
           AND c.chief = 'Y';
 ```
 
+The exception to this is when using just the `JOIN` keyword where it should be
+before the river.
+
+```sql
+SELECT r.last_name
+  FROM riders AS r
+  JOIN bikes AS b
+    ON r.bike_vin_num = b.vin_num
+```
+
 #### Subqueries
 
 Subqueries should also be aligned to the right side of the river and then laid
