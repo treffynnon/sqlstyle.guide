@@ -56,7 +56,7 @@ UPDATE file_system
 
 ### Niezalecane
 
-* CamelCase – trudno się go odczytuje przy szybkim przęglądaniu kodu.
+* camelCase – trudno się go odczytuje przy szybkim przęglądaniu kodu.
 * Przedrostki opisowe lub notacja węgierska, takie jak `sp_` lub `tbl`.
 * Liczba mnoga – tam, gdzie jest to możliwe, używaj bardziej naturalnego określenia zbiorowego,
   np. `staff` zamiast `employees` lub `people` zamiast `individuals`.

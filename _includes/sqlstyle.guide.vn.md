@@ -37,7 +37,7 @@ UPDATE file_system
 
 ### Nên tránh
 
-* Tránh cách đặt tên kiểu "lạc đà" (CamelCase) - vì nó khiến tốc độ đọc chậm đi.
+* Tránh cách đặt tên kiểu "lạc đà" (camelCase) - vì nó khiến tốc độ đọc chậm đi.
 * Tránh cách đặt tên kiểu "ký pháp Hungary" (thêm các tiền tố thể hiện chức năng như `sp_` hoặc `tbl`)
 * Tránh dùng danh từ không đếm được, trong khi có thể thay thế bằng từ đếm được. Ví dụ như dùng `staff` thay vì `employees`, dùng `people` thay vì `individuals`.
 * Tránh đặt tên bảng/cột/biến cần dùng tới dấu ngoặc kép ". Nếu bạn buộc phải làm như thế, hãy tuân thủ phong cách SQL-92 để đoạn code tương thích tốt hơn (Thậm chí bạn sẽ có thể cần phải chỉnh sửa thiết lập của SQL server để hỗ trợ tính năng này)

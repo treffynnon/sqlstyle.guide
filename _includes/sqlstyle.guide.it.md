@@ -37,7 +37,7 @@ SELECT file_hash  -- stored ssdeep hash
 
 ### Evitare
 
-- La [notazione a cammello][camelcase-it] (_CamelCase_)—è difficile da scorrere velocemente.
+- La [notazione a cammello][camelCase-it] (_camelCase_)—è difficile da scorrere velocemente.
 - Prefissi descrittivi o notazione ungherese tipo `sp_` o `tbl`.
 - Plurali—quando possibile usare invece il termine collettivo che più si addice. Ad esempio `personale` in luogo di `impiegati` o `persone` invece che `individui`
 - Identificatori racchiusi tra virgolette—se si devono usare attenersi ai doppi apici SQL-92 per ragioni di portabilità (si potrebbe aver bisogno di configurare il proprio server SQL per supportarlo, dipende dal fornitore).
@@ -1225,4 +1225,4 @@ Ci sono alcuni tipi di dato di colonna consigliati per massimizzare la compatibi
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model 'Wikipedia: Entity–attribute–value model'
 [sqlstyleguide]: https://www.sqlstyle.guide/ 'SQL style guide by Simon Holywell'
 [licence]: https://creativecommons.org/licenses/by-sa/4.0/ 'Creative Commons Attribution-ShareAlike 4.0 International License'
-[camelcase-it]: https://www.wikiwand.com/it/Notazione_a_cammello
+[camelCase-it]: https://www.wikiwand.com/it/Notazione_a_cammello

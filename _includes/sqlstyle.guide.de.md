@@ -58,7 +58,7 @@ UPDATE file_system
 
 ### Vermeiden
 
-* CamelCase. Es ist schwierig schnell zu scannen.
+* camelCase. Es ist schwierig schnell zu scannen.
 * Beschreibende Präfixe oder [ungarische Notation][ungarische-notation] wie
   `sp_` oder `tbl`.
 * Plurale. Verwenden Sie stattdessen den natürlicheren Sammelbegriff. Zum
