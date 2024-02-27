@@ -17,7 +17,7 @@ Có tham khảo [https://www.sqlstyle.guide/][sqlstyleguide].
 
 * Hãy đặt tên bảng/cột/biến dễ hiểu và có tính thống nhất
 * Căn lề hoặc thêm khoảng trống phù hợp sẽ giúp code dễ đọc hơn.
-* Nếu cần lưu trữ thông tin dạng DATETIME thì hãy tuân thủ quy chuẩn [ISO 8601][iso-8601] (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+* Nếu cần lưu trữ thông tin dạng DATETIME thì hãy tuân thủ quy chuẩn [ISO 8601][iso-8601] (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 * Cố gắng chỉ sử dụng các hàm SQL tiêu chuẩn thay vì các hàm đặc thù của vendor, vì làm như vậy sẽ khiến đoạn code dễ dàng mang sang sử dụng ở dự án khác hơn.
 * Cố viết code thật gọn, đừng viết thừa (tiêu biểu là các dấu ' và " hay các mệnh đề `WHERE` có thể kế thừa)
 * Sử dụng comment khi cần. Bạn có thể sử dụng comment kiểu ngôn ngữ C (mở bằng `/*` và đóng bằng `*/`), hoặc comment cả dòng bằng `--`

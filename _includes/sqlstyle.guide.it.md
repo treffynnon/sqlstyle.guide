@@ -24,7 +24,7 @@ SQL style guide di [Simon Holywell][simon] è autorizzata sotto la licenza
 
 - Usare nome e identificativi consistenti e descrittivi.
 - Fare un uso giudizioso degli spazi e indentazione per facilitare la lettura del codice.
-- Conservare le informazioni relative a data e ora conformi con [ISO 8601][iso-8601] (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+- Conservare le informazioni relative a data e ora conformi con [ISO 8601][iso-8601] (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 - Cercare di utilizzare funzioni SQL standard in luogo di quelle dello specifico fornitore per ragioni di portabilità.
 - Mantenere il codice conciso ed evitare ridondanza di SQL—tipo l'utilizzo di parentesi o l'inserimento di elementi tra apici non necessari o clausole `WHERE` che potrebbero essere altrimenti derivate.
 - Includere commenti nel codice SQL laddove necessario. Usare lo stile di commento C con `/*` in apertura e `*/` in chiusura dove possibile, altrimenti far precedere i commenti da `--` e finirli con un ritorno a capo.

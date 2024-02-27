@@ -29,7 +29,7 @@ Attribution-ShareAlike 4.0 International License][licence] lisansı ile lisansla
 * Uygun ve açıklayıcı isimler kullanın.
 * Girintileri ve boşlukları güzelce kullanarak kodu daha okunabilir yapın.
 * Tarih ve zaman bilgisini [ISO 8601][iso-8601] uygunluğunda depolayın
-  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+  (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 * Taşınabilirlik için dağıtıma/versiyona özel fonksiyonlar yerine sadece
   standart SQL fonksiyonlarını kullanmaya çalışın.
 * Gereksiz tırnak işareti veya başka türlü de türetilebilecek `WHERE`

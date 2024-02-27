@@ -19,7 +19,7 @@ Fondé sur un travail disponible sur [https://www.sqlstyle.guide/][sqlstyleguide
 
 * Utilisez des identifiants et noms cohérents et descriptifs.
 * Faites un usage judicieux de l'espace et de l'indentation afin de faciliter la lecture du code.
-* Utilisez la norme [ISO 8601][iso-8601] pour les informations temporelles (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+* Utilisez la norme [ISO 8601][iso-8601] pour les informations temporelles (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 * Essayez de n'utiliser que des fonctions SQL standard au lieu des fonctions spécifiques à chaque SGBD pour des raisons de portabilité.
 * Gardez le code court et évitez les redondances comme les parenthèses ou guillemets superflus, ou encore les clauses `WHERE` qui peuvent être dérivées.
 * Commentez le code SQL lorsque c'est nécessaire. Utilisez le style de commentaires du langage C, en ouvrant avec `/*` et fermant avec `*/` là où c'est possible, autrement débutez les commentaires avec `--` et faites-les suivre par une nouvelle ligne.

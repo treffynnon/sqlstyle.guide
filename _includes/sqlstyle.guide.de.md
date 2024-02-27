@@ -32,7 +32,7 @@ Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International]
 * Verwenden Sie den Leerraum und die Einrückung vernünftigerweise, um den Code
   lesbarer zu machen.
 * Speichern Sie [ISO‑8601][iso-8601-de] konforme Zeit- und
-  Datumsinformationen: `YYYY‑MM‑DD HH:MM:SS.SSSSS`.
+  Datumsinformationen: `YYYY‑MM‑DDTHH:MM:SS.SSSSS`.
 * Versuchen Sie, aus Gründen der Portabilität nur Standard‑SQL‑Funktionen
   anstelle von herstellerspezifischen Funktionen zu verwenden.
 * Halten Sie den Code prägnant und ohne redundante SQL, wie z.B. unnötige

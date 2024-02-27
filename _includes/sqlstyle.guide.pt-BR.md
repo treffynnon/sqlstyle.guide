@@ -30,7 +30,7 @@ Baseado no trabalho em [https://www.sqlstyle.guide][sqlstyleguide].
 * Tenha critério ao utilizar espaços em branco e indentação para melhorar
   a legibilidade do código.
 * Armazene informações de data e hora compatíveis com [ISO-8601][iso-8601]
-  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+  (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 * Por questões de portabilidade, tente utilizar apenas funções SQL padrão no lugar
   de funções específicas de servidores SQL de fornecedores.
 * Mantenha o código sucinto e desprovido de SQL redundante—como adição de aspas

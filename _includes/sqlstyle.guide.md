@@ -27,7 +27,7 @@ Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 * Use consistent and descriptive identifiers and names.
 * Make judicious use of white space and indentation to make code easier to read.
 * Store [ISO 8601][iso-8601] compliant time and date information
-  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
+  (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
 * Try to only use standard SQL functions instead of vendor-specific functions for
   reasons of portability.
 * Keep code succinct and devoid of redundant SQL—such as unnecessary quoting or

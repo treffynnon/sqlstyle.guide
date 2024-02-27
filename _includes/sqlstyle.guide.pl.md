@@ -31,9 +31,9 @@ Międzynarodowe][licence]. Na podstawie pracy dostępnej pod adresem
 
 * Używaj spójnych oraz opisowych identyfikatorów i nazw.
 * Rozsądnie wykorzystuj białe znaki i wcięcia, tak aby ułatwić czytanie kodu.
-* Przechowuj informacje o czasie i dacie w formacie zgodnym z [ISO 8601][iso-8601] 
-  (`YYYY-MM-DD HH:MM:SS.SSSSS`).
 * Ze względu na przenośność kodu staraj się używać wyłącznie standardowych funkcji SQL 
+* Przechowuj informacje o czasie i dacie w formacie zgodnym z [ISO 8601][iso-8601]
+  (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
   zamiast funkcji specyficznych dla danego dostawcy silnika bazodanowego.
 * Kod powinien być zwięzły i pozbawiony zbędnego kodu SQL, np. bez zbędnych cudzysłowów, 
   nawiasów lub klauzul `WHERE`, które mogą być wyprowadzone w inny sposób.
