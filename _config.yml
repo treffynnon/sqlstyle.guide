@@ -1,67 +1,67 @@
-name:          SQL style guide by Simon Holywell
-description:   A consistent code style guide for SQL to ensure legible and maintainable projects
+name: SQL style guide by Simon Holywell
+description: A consistent code style guide for SQL to ensure legible and maintainable projects
 
-ga_ua_code: UA-65071829-1
+ga_code: G-9Y2WX5MML2
 
-url:           https://www.sqlstyle.guide
-domain:        sqlstyle.guide
-port:          4040
+url: https://www.sqlstyle.guide
+domain: sqlstyle.guide
+port: 4040
 
-markdown:      kramdown
-permalink:     pretty
-highlighter:   rouge
+markdown: kramdown
+permalink: pretty
+highlighter: rouge
 
 kramdown:
-    input: GFM
-    hard_wrap: false
-    toc_levels: "2,3"
-    auto_ids: true
-    transliterated_header_ids: true
-    auto_id_stripping: true
+  input: GFM
+  hard_wrap: false
+  toc_levels: "2,3"
+  auto_ids: true
+  transliterated_header_ids: true
+  auto_id_stripping: true
 
 plugins:
-    - jekyll-redirect-from
-    - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-sitemap
 
 langs:
-    de:
-        de: Deutsch
-        en: German
-    en: 
-        en: English
-    fr:
-        fr: Français
-        en: French
-    it:
-        it: Italiano
-        en: Italian
-    ja:
-        ja: 日本語
-        en: Japanese
-    ko:
-        ko: 한국어
-        en: Korean
-    pl:
-        pl: Polski
-        en: Polish
-    pt-BR:
-        pt-BR: Português (BR)
-        en: Portuguese - Brazil
-    ru:
-        ru: Русский
-        en: Russian
-    zh:
-        zh: 简体中文
-        en: Simplified Chinese
-    zh-TW:
-        zh-TW: 正體中文
-        en: Traditional Chinese
-    tr:
-        tr: Türkçe
-        en: Turkish
-    ua:
-        ua: Українська
-        en: Ukrainian
-    vn:
-        vn: Tiếng Việt
-        en: Vietnamese
+  de:
+    de: Deutsch
+    en: German
+  en:
+    en: English
+  fr:
+    fr: Français
+    en: French
+  it:
+    it: Italiano
+    en: Italian
+  ja:
+    ja: 日本語
+    en: Japanese
+  ko:
+    ko: 한국어
+    en: Korean
+  pl:
+    pl: Polski
+    en: Polish
+  pt-BR:
+    pt-BR: Português (BR)
+    en: Portuguese - Brazil
+  ru:
+    ru: Русский
+    en: Russian
+  zh:
+    zh: 简体中文
+    en: Simplified Chinese
+  zh-TW:
+    zh-TW: 正體中文
+    en: Traditional Chinese
+  tr:
+    tr: Türkçe
+    en: Turkish
+  ua:
+    ua: Українська
+    en: Ukrainian
+  vn:
+    vn: Tiếng Việt
+    en: Vietnamese
