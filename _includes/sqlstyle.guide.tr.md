@@ -18,7 +18,7 @@ Bu rehberi bir projenin kod tabanının bir parçası olarak [Markdown
 formatında][dl-md] eklemek veya projedeki herkesin özgürce okuması için burada
 referans vermek kolaydır - fiziksel bir kitapla bu çok daha zordur.
 
-[Simon Holywell][simon] tarafından hazırlanan bu SQL stil rehberi [Creative Commons 
+[Simon Holywell][simon] tarafından hazırlanan bu SQL stil rehberi [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence] lisansı ile lisanslanmıştır.
 [https://www.sqlstyle.guide/][sqlstyleguide]'daki çalışmaya dayanarak.
 

@@ -9,7 +9,7 @@ Style][celko] de Joe Celko afin de faciliter leur adoption par les équipes qui 
 
 Il est aisé d'inclure ce guide au [format Markdown][dl-md] dans la base de code d'un projet, ou de l'y référencer pour que tout·e membre du projet puisse le lire librement, ce qui est bien plus dur à faire avec un livre physique.
 
-Ce guide de style SQL par [Simon Holywell][simon] est proposé sous licence [Creative Commons 
+Ce guide de style SQL par [Simon Holywell][simon] est proposé sous licence [Creative Commons
 Attribution-Partage dans les Mêmes Conditions 4.0 International][licence].
 Fondé sur un travail disponible sur [https://www.sqlstyle.guide/][sqlstyleguide].
 

@@ -72,7 +72,7 @@ UPDATE file_system
 * Mantenha o tamanho máximo em 30 bytes—na prática isso são
   30 caracteres, a não ser que esteja utilizando um conjunto de
   caracteres multi-byte.
-* Nomes devem começar com uma letra e não devem terminar com underscore.  
+* Nomes devem começar com uma letra e não devem terminar com underscore.
 * Utilize apenas letras, números e underscores em nomes.
 * Evite o uso de múltiplos underscores consecutivos—eles podem ser difíceis de
 se ler.

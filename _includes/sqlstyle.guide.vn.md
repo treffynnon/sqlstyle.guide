@@ -8,7 +8,7 @@ Những quy tắc này tương đồng với những gì được đề cập t�
 
 Bạn có thể dễ dàng đặt bộ quy tắc này ở [định dạng Markdown][dl-md] vào thẳng thư mục code của dự án hoặc chỉ đơn giản là đặt tham chiếu tới đây để nếu ai muốn thì có thể tìm đọc phiên bản sách giấy.
 
-Bộ quy tắc viết câu lệnh SQL này được tạo ra bởi [Simon Holywell][simon] và được bảo vệ bằng giấy phép [Creative Commons Attribution-ShareAlike 4.0 International][licence]. 
+Bộ quy tắc viết câu lệnh SQL này được tạo ra bởi [Simon Holywell][simon] và được bảo vệ bằng giấy phép [Creative Commons Attribution-ShareAlike 4.0 International][licence].
 Có tham khảo [https://www.sqlstyle.guide/][sqlstyleguide].
 
 ## Những quy tắc chung

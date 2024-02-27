@@ -16,7 +16,7 @@ It is easy to include this guide in [Markdown format][dl-md] as a part of a
 project's code base or reference it here for anyone on the project to freely
 read—much harder with a physical book.
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons 
+SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
 Attribution-ShareAlike 4.0 International License][licence].
 Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 

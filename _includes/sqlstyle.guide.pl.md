@@ -7,17 +7,17 @@ własne – najważniejsze jest abyś wybrał styl i się go trzymał. Jeśli ch
 zasugerować zmiany lub poprawić błędy, utwórz na GitHubie [zgłoszenie][issue]
 lub zrób [pull request][pull].
 
-Wytyczne zostały zaprojektowane tak, aby były zgodne z podręcznikiem 
+Wytyczne zostały zaprojektowane tak, aby były zgodne z podręcznikiem
 [SQL Programming Style][celko] Joego Celko i były łatwe do przyswojenia
 dla zespołów, które już przeczytały tę książkę. Poniższy przewodnik w niektórych
-obszarach jest nieco bardziej stanowczy, a w innych nieco swobodniejszy. 
+obszarach jest nieco bardziej stanowczy, a w innych nieco swobodniejszy.
 Z pewnością jest bardziej zwięzły, podczas gdy [książka Celko][celko] każdą regułę okrasza
 anegdotami i uzasadnieniem w formie przemyślanej wypowiedzi.
 
-Poniższy podręcznik można łatwo umieścić w głównym repozytorium projektu poprzez pobranie go 
+Poniższy podręcznik można łatwo umieścić w głównym repozytorium projektu poprzez pobranie go
 w [formacie Markdown][dl-md] lub podając link bezpośrednio do tej strony.
-Dzieki temu każda osoba biorąca udział w projekcie będzie mogła swobodnie przeczytać 
-umieszczone tutaj wytyczne – o wiele trudniej jest to osiągnąć przy pomocy fizycznej 
+Dzieki temu każda osoba biorąca udział w projekcie będzie mogła swobodnie przeczytać
+umieszczone tutaj wytyczne – o wiele trudniej jest to osiągnąć przy pomocy fizycznej
 papierowej książki.
 
 Podręcznik stylu SQL [Simona Holywella][simon] jest wydany na licencji
@@ -31,11 +31,11 @@ Międzynarodowe][licence]. Na podstawie pracy dostępnej pod adresem
 
 * Używaj spójnych oraz opisowych identyfikatorów i nazw.
 * Rozsądnie wykorzystuj białe znaki i wcięcia, tak aby ułatwić czytanie kodu.
-* Ze względu na przenośność kodu staraj się używać wyłącznie standardowych funkcji SQL 
 * Przechowuj informacje o czasie i dacie w formacie zgodnym z [ISO 8601][iso-8601]
   (`YYYY-MM-DDTHH:MM:SS.SSSSS`).
+* Ze względu na przenośność kodu staraj się używać wyłącznie standardowych funkcji SQL
   zamiast funkcji specyficznych dla danego dostawcy silnika bazodanowego.
-* Kod powinien być zwięzły i pozbawiony zbędnego kodu SQL, np. bez zbędnych cudzysłowów, 
+* Kod powinien być zwięzły i pozbawiony zbędnego kodu SQL, np. bez zbędnych cudzysłowów,
   nawiasów lub klauzul `WHERE`, które mogą być wyprowadzone w inny sposób.
 * Dodawaj komentarze do kodu SQL tam, gdzie jest to konieczne. Używaj komentarzy w stylu C,
   otwierając `/*` i zamykając `*/` je tam, gdzie jest to możliwe; w przeciwnym razie poprzedzaj
@@ -61,7 +61,7 @@ UPDATE file_system
 * Liczba mnoga – tam, gdzie jest to możliwe, używaj bardziej naturalnego określenia zbiorowego,
   np. `staff` zamiast `employees` lub `people` zamiast `individuals`.
 * Identyfikatory otoczone cudzysłowem/apostrofem – jeśli musisz ich używać, to w celu zachowania
-  przenośności kodu trzymaj się standardu SQL-92, czyli stosuj cudzysłów (w zależności od 
+  przenośności kodu trzymaj się standardu SQL-92, czyli stosuj cudzysłów (w zależności od
   dostawcy silnika bazodanowego być może będziesz musiał dodatkowo skonfigurować swój serwer
   SQL).
 * Zasady projektowania obiektowego nie powinny być stosowane do kodu SQL i struktur bazy danych.
@@ -70,9 +70,9 @@ UPDATE file_system
 
 ### Ogólne
 
-* Upewnij się, że nazwa jest unikalna i nie istnieje jako 
+* Upewnij się, że nazwa jest unikalna i nie istnieje jako
   [zastrzeżone słowo kluczowe][reserved-keywords].
-* Nazwa powinna mieć rozmiar maksymalnie 30 bajtów – w praktyce jest to 30 znaków, 
+* Nazwa powinna mieć rozmiar maksymalnie 30 bajtów – w praktyce jest to 30 znaków,
   chyba że używasz wielobajtowego zestawu znaków.
 * Nazwy muszą zaczynać się od litery i nie mogą kończyć się podkreślnikiem.
 * W nazwach należy używać tylko liter, cyfr i podkreślników.
@@ -88,13 +88,13 @@ SELECT first_name
 
 ### Tabele
 
-* Używaj nazwy zbiorowej lub, w najgorszym przypadku, formy liczby mnogiej. Na przykład 
+* Używaj nazwy zbiorowej lub, w najgorszym przypadku, formy liczby mnogiej. Na przykład
   (w kolejności preferencji) `staff` i `employees`.
-* Nie używaj przedrostka `tbl` ani żadnego innego opisowego przedrostka lub notacji 
+* Nie używaj przedrostka `tbl` ani żadnego innego opisowego przedrostka lub notacji
   węgierskiej.
 * Nigdy nie nadawaj tabeli tej samej nazwy co jedna z jej kolumn i vice versa.
-* Jeśli to możliwe, to unikaj konkatenacji nazw dwóch tabel w celu utworzenia nazwy 
-  tabeli odzwierciedlającej związek między tymi tabelami. Zamiast `cars_mechanics` 
+* Jeśli to możliwe, to unikaj konkatenacji nazw dwóch tabel w celu utworzenia nazwy
+  tabeli odzwierciedlającej związek między tymi tabelami. Zamiast `cars_mechanics`
   wybierz `services`.
 
 ### Kolumny
@@ -111,7 +111,7 @@ SELECT first_name
 * Ogólną zasadą jest, że nazwa aliasu powinna być pierwszą literą każdego słowa z nazwy obiektu.
 * Jeśli istnieje już alias o tej samej nazwie, to dodaj do nazwy numer.
 * Zawsze dołączaj słowo kluczowe `AS` – ułatwia to czytanie, ponieważ jawnie definiuje alias.
-* Dla danych wyliczanych (`SUM()` lub `AVG()`) używaj nazwy, którą nadałbyś tej kolumnie, 
+* Dla danych wyliczanych (`SUM()` lub `AVG()`) używaj nazwy, którą nadałbyś tej kolumnie,
   gdyby była zdefiniowana w schemacie.
 
 ```sql
@@ -128,13 +128,13 @@ SELECT SUM(s.monitor_tally) AS monitor_total
 ### Procedury składowane
 
 * Nazwa musi zawierać czasownik.
-* Nie należy jej poprzedzać przedrostkiem `sp_` ani żadnym innym podobnym przedrostkiem 
+* Nie należy jej poprzedzać przedrostkiem `sp_` ani żadnym innym podobnym przedrostkiem
   opisowym lub notacją węgierską.
 
 ### Jednolite przyrostki
 
-Poniższe przyrostki mają uniwersalne znaczenie, dzięki czemu można łatwo znaleźć kolumny 
-w kodzie SQL i zrozumieć ich przeznaczenie. Używaj właściwego przyrostka tam, gdzie jest 
+Poniższe przyrostki mają uniwersalne znaczenie, dzięki czemu można łatwo znaleźć kolumny
+w kodzie SQL i zrozumieć ich przeznaczenie. Używaj właściwego przyrostka tam, gdzie jest
 to stosowne.
 
 * `_id` – unikalny identyfikator, np. kolumna będąca kluczem głównym.
@@ -152,10 +152,10 @@ to stosowne.
 
 ### Słowa zastrzeżone
 
-Zawsze używaj dużych liter dla [zastrzeżonych słów kluczowych][reserved-keywords] takich jak 
+Zawsze używaj dużych liter dla [zastrzeżonych słów kluczowych][reserved-keywords] takich jak
 `SELECT` i `WHERE`.
 
-Najlepiej jest unikać skróconych słów kluczowych i używać ich pełnych nazw, oczywiście o ile 
+Najlepiej jest unikać skróconych słów kluczowych i używać ich pełnych nazw, oczywiście o ile
 są dostępne (preferuj `ABSOLUTE` zamiast `ABS`).
 
 Jeśli w specyfikacji ANSI SQL istnieje słowo kluczowe realizujące żądaną operację,
@@ -170,14 +170,14 @@ SELECT model_num
 
 ### Białe znaki
 
-Aby kod był łatwiejszy do odczytania, należy używać odpowiednich odstępów między 
+Aby kod był łatwiejszy do odczytania, należy używać odpowiednich odstępów między
 wyrażeniami. Nie zagęszczaj kodu ani nie usuwaj spacji, które występują w języku naturalnym.
 
 #### Spacje
 
 Spacje powinny być użyte do ułożenia kodu w taki sposób, aby główne słowa kluczowe kończyły
 się na tej samej granicy znaków. Tworzy to pośrodku kodu tzw. rzekę, ułatwiając oku czytelnika
-przeglądanie kodu i oddzielenie słów kluczowych od szczegółów implementacji. Rzeki zasadniczo 
+przeglądanie kodu i oddzielenie słów kluczowych od szczegółów implementacji. Rzeki zasadniczo
 są [złe w typografii][rivers], ale tutaj okazują się pomocne.
 
 ```sql
@@ -200,7 +200,7 @@ są [złe w typografii][rivers], ale tutaj okazują się pomocne.
   GROUP BY b.species_name, b.observation_date);
 ```
 
-Zauważ, że `SELECT`, `FROM` itp. są wyrównane do prawej, podczas gdy nazwy kolumn i szczegóły 
+Zauważ, że `SELECT`, `FROM` itp. są wyrównane do prawej, podczas gdy nazwy kolumn i szczegóły
 specyficzne dla implementacji są wyrównane do lewej.
 
 Choć nie jest to lista wyczerpująca, zawsze umieszczaj spacje:
@@ -227,7 +227,7 @@ Zawsze dodawaj nowe linie/odstęp pionowy:
 * po przecinku przy rozdzielaniu wielu kolumn na grupy logiczne,
 * aby rozdzielić kod na powiązane sekcje, co zwiększa czytelności dużych fragmentów kodu.
 
-Utrzymanie wszystkich słów kluczowych wyrównanych do prawej strony, a wartości wyrównanych 
+Utrzymanie wszystkich słów kluczowych wyrównanych do prawej strony, a wartości wyrównanych
 do lewej, tworzy jednolitą przerwę pośrodku zapytania. Ułatwia to również szybkie przeglądanie
 definicji zapytania.
 
@@ -274,8 +274,8 @@ SELECT r.last_name
 #### Podzapytania
 
 Podzapytania również powinny być wyrównane do prawej strony rzeki, a następnie ułożone w tym
-samym stylu, co każde inne zapytanie. Czasami można umieścić nawias zamykający w nowej linii, 
-na tej samej pozycji co towarzyszący mu nawias otwierający – ma to szczególne zastosowanie 
+samym stylu, co każde inne zapytanie. Czasami można umieścić nawias zamykający w nowej linii,
+na tej samej pozycji co towarzyszący mu nawias otwierający – ma to szczególne zastosowanie
 w przypadku podzapytań zagnieżdżonych.
 
 ```sql
@@ -296,9 +296,9 @@ SELECT r.last_name,
 
 * Używaj `BETWEEN` tam, gdzie jest to możliwe, zamiast łączyć wiele wyrażeń przy pomocy `AND`.
 * Podobnie używaj `IN()` zamiast wielu `OR`.
-* Używaj wyrażeń `CASE` zamiast skomplikowanych predykatów z dużą liczbą nawiasów. Wyrażenia 
+* Używaj wyrażeń `CASE` zamiast skomplikowanych predykatów z dużą liczbą nawiasów. Wyrażenia
   `CASE` mogą być zagnieżdżane w celu uzyskania bardziej złożonych struktur logicznych.
-* Unikaj stosowania klauzul `UNION` i tabel tymczasowych, o ile to możliwe. Jeśli schemat może 
+* Unikaj stosowania klauzul `UNION` i tabel tymczasowych, o ile to możliwe. Jeśli schemat może
   być zoptymalizowany tak, aby nie zależał od tych elementów SQL-a, to najprawdopodobniej
   powinien zostać zoptymalizowany.
 
@@ -315,16 +315,16 @@ SELECT CASE postcode
 
 ## Składnia tworzenia obiektów
 
-Podczas deklarowania informacji o schemacie ważne jest również zapewnienie czytelnego kodu. 
-Aby to uzyskać, upewnij się, że definicje kolumn są uporządkowane i pogrupowane razem 
+Podczas deklarowania informacji o schemacie ważne jest również zapewnienie czytelnego kodu.
+Aby to uzyskać, upewnij się, że definicje kolumn są uporządkowane i pogrupowane razem
 w tych miejscach, gdzie ma to sens.
 
 W poleceniu `CREATE` w definicjach kolumn stosuj cztery (4) spacje.
 
 ### Wybór typów danych
 
-* Jeśli to możliwe, nie używaj typów danych specyficznych dla dostawcy silnika 
-  bazodanowego – nie są one przenośne i mogą nie być dostępne w starszych wersjach 
+* Jeśli to możliwe, nie używaj typów danych specyficznych dla dostawcy silnika
+  bazodanowego – nie są one przenośne i mogą nie być dostępne w starszych wersjach
   oprogramowania tego samego dostawcy.
 * Używaj typów `REAL` lub `FLOAT` tylko wtedy, gdy jest to absolutnie konieczne dla obliczeń
   zmiennoprzecinkowych; w przeciwnym razie zawsze preferuj typy `NUMERIC` i `DECIMAL`. Błędy
@@ -356,9 +356,9 @@ starannie przemyślane, ponieważ będzie miało to wpływ na wydajność i inte
 4. Utrzymanie klucza tak prostego, jak to tylko możliwe, ale nie bójmy się używać kluczy
    złożonych, gdy jest to konieczne.
 
-Powyższe rozważania to uzasadnione i przemyślane działania, które należy wykonać podczas 
+Powyższe rozważania to uzasadnione i przemyślane działania, które należy wykonać podczas
 definiowania bazy danych i mają za zadanie rozważyć wszystkie za i przeciw. Jeśli wymagania
-będą w przyszłości się zmieniały, to możliwe jest wprowadzenie zmian w definicjach, tak aby 
+będą w przyszłości się zmieniały, to możliwe jest wprowadzenie zmian w definicjach, tak aby
 zachować ich aktualność.
 
 #### Definiowanie ograniczeń
@@ -369,18 +369,18 @@ wraz z weryfikowaniem wartości pól.
 ##### Ogólne
 
 * Tabele, aby były kompletne i użyteczne, muszą posiadać co najmniej jeden klucz.
-* Ograniczenia powinny mieć własną nazwę, z wyjątkiem `UNIQUE`, `PRIMARY KEY` i `FOREIGN KEY`, 
-  w których dostawca silnika bazy danych zazwyczaj automatycznie generuje wystarczająco 
+* Ograniczenia powinny mieć własną nazwę, z wyjątkiem `UNIQUE`, `PRIMARY KEY` i `FOREIGN KEY`,
+  w których dostawca silnika bazy danych zazwyczaj automatycznie generuje wystarczająco
   zrozumiałe nazwy.
 
 ##### Układ i kolejność
 
 * Określ klucz główny jako pierwszy zaraz po instrukcji `CREATE TABLE`.
-* Ograniczenia powinny być zdefiniowane bezpośrednio pod kolumną, której odpowiadają. 
+* Ograniczenia powinny być zdefiniowane bezpośrednio pod kolumną, której odpowiadają.
   Wyrównaj wcięciami ograniczenie tak, aby wyrównać do prawej strony nazwy kolumny.
 * Jeśli ograniczenie dotyczy wielu kolumn, rozważ umieszczenie go jak najbliżej definicji obu
   kolumn, a jeśli jest to trudne, to w ostateczności umieść je na końcu definicji `CREATE TABLE`.
-* Jeśli ograniczenie odnosi się do całej tabeli, to również powinno pojawić się na końcu 
+* Jeśli ograniczenie odnosi się do całej tabeli, to również powinno pojawić się na końcu
   definicji `CREATE TABLE`.
 * Użyj kolejności alfabetycznej, tak aby `ON DELETE` było przed `ON UPDATE`.
 * Jeśli ma to sens, to umieść każdy element zapytania na tej samej pozycji; np. wszystkie
@@ -416,14 +416,14 @@ CREATE TABLE staff (
 * Zasady projektowania obiektowego nie przekładają się efektywnie na projekty relacyjnych baz
   danych – unikaj tej pułapki.
 * Umieszczanie wartości w jednej kolumnie, a jednostek w drugiej. Kolumna powinna czynić jednostki
-  oczywistymi, dzięki czemu unikniemy wymogu ponownego łączenia kolumn w dalszej części 
+  oczywistymi, dzięki czemu unikniemy wymogu ponownego łączenia kolumn w dalszej części
   aplikacji. Używaj `CHECK()` aby upewnić się, że do kolumny są wstawiane poprawne dane.
 * Tabele typu [Encja-Atrybut-Wartość][eav] (ang. *Entity–Attribute–Value*, EAV) – zamiast tego
-  użyj specjalistycznego produktu przeznaczonego do obsługi tego typu danych, które nie 
+  użyj specjalistycznego produktu przeznaczonego do obsługi tego typu danych, które nie
   posiadają schematu.
-* Rozdzielanie danych, które powinny znajdować się w jednej tabeli, na wiele tabel z powodu 
-  arbitralnych decyzji, np. z powodu archiwizacji według czasu lub lokalizacji geograficznej w 
-  międzynarodowej organizacji. Późniejsze zapytania muszą wtedy pracować na wielu tabelach przy 
+* Rozdzielanie danych, które powinny znajdować się w jednej tabeli, na wiele tabel z powodu
+  arbitralnych decyzji, np. z powodu archiwizacji według czasu lub lokalizacji geograficznej w
+  międzynarodowej organizacji. Późniejsze zapytania muszą wtedy pracować na wielu tabelach przy
   pomocy `UNION`, zamiast po prostu odpytywać jedną tabelę.
 
 ## Dodatek

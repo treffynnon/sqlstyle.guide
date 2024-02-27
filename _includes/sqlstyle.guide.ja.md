@@ -2,9 +2,9 @@
 
 ***
 
-**日本語訳について**  
+**日本語訳について**
 
-日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][issue]または[pull request][pull]を使用するか、[Twitter][twitter-ja]でお知らせください。  
+日本語訳は誤訳や[原文の最新版][sqlstyleguide]に追随していない恐れがあります。誤訳や改善点があれば、GitHubの[issue][issue]または[pull request][pull]を使用するか、[Twitter][twitter-ja]でお知らせください。
 翻訳: 久利史之 [@nkuritw][twitter-ja]
 
 [twitter-ja]: https://twitter.com/nkuritw
@@ -13,11 +13,11 @@
 
 ## 概要
 
-このガイドラインは利用の他、[fork][fork]したり、自分自身のものに改変したりすることができます。ここで大事なのはスタイルを選択しそれを踏襲することです。変更の提案やバグの修正にはGitHubの[issue][]または[pull request][pull]を使用してください。 
+このガイドラインは利用の他、[fork][fork]したり、自分自身のものに改変したりすることができます。ここで大事なのはスタイルを選択しそれを踏襲することです。変更の提案やバグの修正にはGitHubの[issue][]または[pull request][pull]を使用してください。
 
-このガイドラインは『[Joe Celko's SQL Programming Style][celko]』と互換性があり、すでにその本を読んだことがあるチームにとっては適用が容易です。このガイドはより独断的な部分もあればより緩やかな部分もあります。Celkoの書籍は各ルールの背後にあるエピソードや根拠を詳細に掲載していますが、このガイドはより簡潔になっています。 
+このガイドラインは『[Joe Celko's SQL Programming Style][celko]』と互換性があり、すでにその本を読んだことがあるチームにとっては適用が容易です。このガイドはより独断的な部分もあればより緩やかな部分もあります。Celkoの書籍は各ルールの背後にあるエピソードや根拠を詳細に掲載していますが、このガイドはより簡潔になっています。
 
-このガイドの[Markdown版][dl-md]を活用すれば、紙の本では難しいプロジェクトのコード規約に含めたり、プロジェクトの参加者がその場で参照し自由に読んだりすることが容易になります。 
+このガイドの[Markdown版][dl-md]を活用すれば、紙の本では難しいプロジェクトのコード規約に含めたり、プロジェクトの参加者がその場で参照し自由に読んだりすることが容易になります。
 
 SQLスタイルガイド by [Simon Holywell][simon] は、[クリエイティブ・コモンズ 表示-継承4.0国際ライセンス][licence-ja]の下にあります。原本は[https://www.sqlstyle.guide][sqlstyleguide]です。
 
@@ -1200,7 +1200,7 @@ ZONE
 [rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference" 
+    "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity-attribute-value model"
 [sqlstyleguide]: https://www.sqlstyle.guide
