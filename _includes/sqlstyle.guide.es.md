@@ -2,7 +2,7 @@
 
 ## Descripción general
 
-Puedes utilizar este conjunto de pautas, [fork them][fork] o crear las tuyas propias. 
+Puedes utilizar este conjunto de pautas, [bifurcarlos][fork] o crea las tuyas propias. 
 La clave es elegir un estilo y ceñirte a él. Para sugerir cambios 
 o corregir errores, abre un [issue][issue] o una [pull request][pull] en GitHub.
 
