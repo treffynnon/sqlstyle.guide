@@ -28,7 +28,7 @@ if you need some help getting it setup.
 
 * [German/Deutsch](https://www.sqlstyle.guide/de/) by [AStasyK](https://github.com/AStasyK)
 * [French/Français](https://www.sqlstyle.guide/fr/) by [IdrissaD](https://github.com/IdrissaD)
-* [Spanish/Español](https://www.sqlstyle.guide/es/) by [OsvaldoGonzalezPy](https://github.com/OsvaldoGonzalezPy)
+* [Spanish/Español]([https://osvaldogonzalezpy.github.io/sqlstyle.guide/es]) by [OsvaldoGonzalezPy](https://github.com/OsvaldoGonzalezPy)
 * [Italian/Italiano](https://www.sqlstyle.guide/it/) by [robertopauletto](https://github.com/robertopauletto)
 * [Japanese/日本語](https://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
 * [Korean/한국어](https://www.sqlstyle.guide/ko/) by [Dokyeongyun](https://github.com/Dokyeongyun)
