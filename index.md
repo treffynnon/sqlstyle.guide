@@ -1,9 +1,5 @@
 ---
 layout: default
-lang: en
 ---
 
-* TOC
-{:toc}
-
-{% include sqlstyle.guide.md %}
+Welcome to the SQL Style Guide

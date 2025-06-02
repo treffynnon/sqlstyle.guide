@@ -1,0 +1,24 @@
+{%- assign page_version=page.version | split:"" -%}
+{%- assign versioned_path = "/v" | append: page_version[0] | append: "/" -%}
+{%- assign lpages=site.pages | where_exp:"page", "page contains 'lang'" | where_exp:"page","page.url contains versioned_path" | sort: 'lang' -%}
+{% if lpages.size > 1 %}
+    {%- if include.dropdown == true -%}
+        {%- assign content_template="layout_partials/languages/language_dropdown_option.html" -%}
+    {%- elsif include.rel_alternate == true -%}
+        {%- assign content_template="layout_partials/languages/language_rel_alternate.html" -%}
+    {%- else -%}
+        {%- assign content_template="layout_partials/languages/language_nav_links.html" -%}
+    {%- endif -%}
+
+    {% for l in lpages %}
+        {%- assign local=site.langs[l.lang][l.lang] -%}
+        {%- assign english=site.langs[l.lang]['en'] -%}
+        {%- assign iso=l.lang -%}
+        {%- assign url=l.url | absolute_url -%}
+        {%- capture full -%}
+            {{ local }}{% if l.lang_title %} ({{ english }}){% endif %}
+        {%- endcapture -%}
+
+        {% include {{ content_template }} %}
+    {% endfor %}
+{% endif %}

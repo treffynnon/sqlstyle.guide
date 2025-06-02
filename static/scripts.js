@@ -11,8 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   document.getElementById('language-drop').addEventListener('change', e => {
     var selected = e.target.selectedOptions[0].value + '/';
-    if (selected === 'en/') selected = '';
-    window.location.href = `{{ site.url }}/${selected.toLowerCase()}`;
+    if (selected.endsWith('en/')) {
+      version = /\/v\d\//.exec(selected)
+      selected = '';
+      if (version) {
+        selected = version[0];
+      }
+    };
+    window.location.href = `{{ site.url }}${selected.toLowerCase()}`;
   });
 
   /*

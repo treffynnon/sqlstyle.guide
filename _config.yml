@@ -24,6 +24,14 @@ plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
 
+versions:
+  - version: "v1"
+    title: "SQL style guide by Simon Holywell (version 1)"
+    latest: false
+  - version: "v2"
+    title: "SQL style guide by Simon Holywell (version 2)"
+    latest: true
+
 langs:
   de:
     de: Deutsch

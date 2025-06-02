@@ -93,8 +93,21 @@
             href="{{ site.url }}{{ page.url | replace:'index.html',''}}"
         />
         <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+        {% include layout_partials/languages/languages.html rel_alternate=true %}
     </head>
-    <body>
+    <body itemscope itemtype="http://schema.org/TechArticle">
+        <meta itemprop="wordCount" content="{{ content | number_of_words }}" />
+        <meta itemprop="about" content="{{ site.description }}" />
+        <meta itemprop="audience" content="SQL programmers" />
+        <meta
+            itemprop="license"
+            content="https://creativecommons.org/licenses/by-sa/4.0/"
+        />
+        <meta itemprop="version" content="1.0.1" />
+        <meta itemprop="proficiencyLevel" content="Beginner" />
+        <meta itemprop="dependencies" content="SQL knowledge" />
+        <meta itemprop="copyrightHolder" content="Simon Holywell" />
+        {% include layout_partials/v2/head.html %}
         <main
             class="article-body wrap"
             id="content"
@@ -103,6 +116,19 @@
         >
             {{ content }}
         </main>
-        
+        {% include layout_partials/v2/foot.html %}
+        <script>
+            !(function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            })(document, "script", "twitter-wjs");
+        </script>
+        <script src="{{ site.url }}/static/scripts.js"></script>
     </body>
 </html>
