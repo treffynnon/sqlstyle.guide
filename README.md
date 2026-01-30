@@ -28,7 +28,6 @@ if you need some help getting it setup.
 
 * [German/Deutsch](https://www.sqlstyle.guide/de/) by [AStasyK](https://github.com/AStasyK)
 * [French/Français](https://www.sqlstyle.guide/fr/) by [IdrissaD](https://github.com/IdrissaD)
-* [Spanish/Español](https://www.sqlstyle.guide/es/) by [OsvaldoGonzalezPy](https://github.com/OsvaldoGonzalezPy)
 * [Italian/Italiano](https://www.sqlstyle.guide/it/) by [robertopauletto](https://github.com/robertopauletto)
 * [Japanese/日本語](https://www.sqlstyle.guide/ja/) by [nkurigit](https://github.com/nkurigit)
 * [Korean/한국어](https://www.sqlstyle.guide/ko/) by [Dokyeongyun](https://github.com/Dokyeongyun)
@@ -36,6 +35,7 @@ if you need some help getting it setup.
 * [Portuguese (Brazil)/Português (BR)](https://www.sqlstyle.guide/pt-br/) by [pmarcus93](https://github.com/pmarcus93)
 * [Russian/Русский](https://www.sqlstyle.guide/ru/) by [denpatin](https://github.com/denpatin)
 * [Simplified Chinese/简体中文](https://www.sqlstyle.guide/zh/) by [wontoncoder](https://github.com/wontoncoder)
+* [Spanish/Español](https://www.sqlstyle.guide/es/) by [OsvaldoGonzalezPy](https://github.com/OsvaldoGonzalezPy)
 * [Traditional Chinese/正體中文](https://www.sqlstyle.guide/zh-tw/) by [Leon0824](https://github.com/Leon0824)
 * [Turkish/Türkçe](https://www.sqlstyle.guide/tr/) by [mrfade](https://github.com/mrfade)
 * [Ukrainian/Українська](https://www.sqlstyle.guide/ua/) by [yar-lukomsky](https://github.com/yar-lukomsky)
