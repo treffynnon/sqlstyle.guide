@@ -66,7 +66,7 @@ UPDATE file_system
 
 ### General
 
-* Asegúrese de que el nombre sea único y no exista como [palabra reservada][reserved-keywords].
+* Asegúrese de que el nombre sea único y no exista como [palabra reservada][referencia-de-palabras-clave-reservadas].
 * Mantenga la longitud máxima en 30 bytes; en la práctica, esto equivale a 30 caracteres,
   a menos que utilice un conjunto de caracteres multibyte.
 * Los nombres deben comenzar con una letra y no pueden terminar con un guion bajo.
@@ -144,7 +144,7 @@ sufijo correcto cuando sea apropiado.
 
 ### Palabras reservadas
 
-Siempre usa mayúsculas para las [palabras clave reservadas][reserved-keywords], 
+Siempre usa mayúsculas para las [palabras clave reservadas][referencia-de-palabras-clave-reservadas], 
 como `SELECT` y `WHERE`.
 
 Es mejor evitar las palabras clave abreviadas y usar las completas cuando estén
@@ -168,7 +168,7 @@ correcto de espaciado. No amontone el código ni elimine los espacios en blanco.
 Los espacios deben usarse para alinear el código de modo que las palabras clave 
 raíz terminen en el mismo límite de caracteres. Esto forma un río en el centro, 
 lo que facilita al lector examinar el código y separar las palabras clave de 
-los detalles de implementación. Los ríos son [malos en tipografía][ríos], pero 
+los detalles de implementación. Los ríos son malos en tipografía, pero 
 útiles en este caso.
 
 ```sql
