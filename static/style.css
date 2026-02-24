@@ -236,3 +236,23 @@ code {
     color: {{ primary_colour }};
     border: none;
 }
+
+
+/* RTL languages */
+main:lang(ar) {
+    direction: rtl;
+    text-align: right;
+
+    h3:before {
+        transform: scaleX(-1);
+        margin-left: 0.7em;
+        margin-right: -1.5em;
+    }
+
+    pre,
+    code {
+        direction: ltr;
+        unicode-bidi: embed;
+        text-align: left;
+    }
+}

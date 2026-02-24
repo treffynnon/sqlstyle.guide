@@ -25,6 +25,9 @@ plugins:
   - jekyll-sitemap
 
 langs:
+  ar:
+    ar: اَلْعَرَبِيَّةُ
+    en: Arabic
   de:
     de: Deutsch
     en: German
