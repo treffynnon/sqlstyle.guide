@@ -66,7 +66,7 @@ UPDATE file_system
 
 ### General
 
-* Asegúrese de que el nombre sea único y no exista como [palabra reservada][referencia-de-palabras-clave-reservadas].
+* Asegúrese de que el nombre sea único y no exista como [palabra reservada][#referencia-de-palabras-clave-reservadas].
 * Mantenga la longitud máxima en 30 bytes; en la práctica, esto equivale a 30 caracteres,
   a menos que utilice un conjunto de caracteres multibyte.
 * Los nombres deben comenzar con una letra y no pueden terminar con un guion bajo.
@@ -144,7 +144,7 @@ sufijo correcto cuando sea apropiado.
 
 ### Palabras reservadas
 
-Siempre usa mayúsculas para las [palabras clave reservadas][referencia-de-palabras-clave-reservadas], 
+Siempre usa mayúsculas para las [palabras clave reservadas][#referencia-de-palabras-clave-reservadas], 
 como `SELECT` y `WHERE`.
 
 Es mejor evitar las palabras clave abreviadas y usar las completas cuando estén
