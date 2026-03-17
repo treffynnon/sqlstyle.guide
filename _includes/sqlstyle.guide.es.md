@@ -66,7 +66,8 @@ UPDATE file_system
 
 ### General
 
-* Asegúrese de que el nombre sea único y no exista como [palabra reservada][referencia-de-palabras-clave-reservadas].
+* Asegúrese de que el nombre sea único y no exista como
+  [palabra reservada][referencia-de-palabras-clave-reservadas].
 * Mantenga la longitud máxima en 30 bytes; en la práctica, esto equivale a 30 caracteres,
   a menos que utilice un conjunto de caracteres multibyte.
 * Los nombres deben comenzar con una letra y no pueden terminar con un guion bajo.
@@ -100,7 +101,8 @@ SELECT first_name
 ### Alias o correlaciones
 
 * Deben tener alguna relación con el objeto o expresión al que están dando alias.
-* Como regla general, el nombre del alias debe ser la primera letra de cada palabra en el nombre del objeto.
+* Como regla general, el nombre del alias debe ser la primera letra de cada palabra en el
+  nombre del objeto.
 * Si ya existe una correlación con el mismo nombre, añade un número al final.
 * Incluye siempre la palabra clave `AS` — facilita la lectura al ser explícito.
 * Para datos calculados (`SUM()` o `AVG()`), usa el nombre que le darías si fuera una
@@ -427,10 +429,11 @@ CREATE TABLE staff (
   en la aplicación. Use `CHECK()` para garantizar que se inserten datos válidos en
   la columna.
 * Tablas [Entidad–Atributo–Valor][eav] (EAV): utilice un producto especializado para
-  gestionar este tipo de datos sin esquema. * Dividir los datos que deberían estar en
-  una tabla en varias tablas debido a consideraciones arbitrarias, como el archivado
-  basado en el tiempo o la ubicación en una organización multinacional. Las consultas
-  posteriores deben funcionar en varias tablas con `UNION`, en lugar de consultar solo una.
+  gestionar este tipo de datos sin esquema.
+* Dividir los datos que deberían estar en una tabla en varias tablas debido a consideraciones
+  arbitrarias, como el archivado basado en el tiempo o la ubicación en una organización
+  multinacional. Las consultas posteriores deben funcionar en varias tablas con `UNION`,
+  en lugar de consultar solo una.
 
 
 ## Apéndice
@@ -1328,8 +1331,8 @@ entre motores de bases de datos.
     "Wikipedia: ISO 8601"
 [rivers]: https://practicaltypography.com/one-space-between-sentences.html
     "Practical Typography: one space between sentences"
-[reserved-keywords]: #reserved-keyword-reference
-    "Reserved keyword reference"
+[referencia-de-palabras-clave-reservadas]: #referencia-de-palabras-clave-reservadas
+    "Referencia de palabras clave reservadas"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
 [sqlstyleguide]: https://www.sqlstyle.guide/
