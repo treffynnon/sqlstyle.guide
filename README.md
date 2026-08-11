@@ -2,23 +2,19 @@
 
 ## Overview
 
-You can use this set of guidelines, [fork them][fork] or make your own - the
-key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][issue] or [pull request][pull] on GitHub.
+Official SQL coding guidelines for BU Advancement Business Intelligence team.
+The key here is for the whole team to stick to it. 
 
-These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams who have already read that book
-easier. This guide is a little more opinionated in some areas and in others a
-little more relaxed. It is certainly more succinct where [Celko's book][celko]
-contains anecdotes and reasoning behind each rule as thoughtful prose.
+To suggest changes or fix bugs:<br>
+* For actual changes to the rules, please create a new branch + pull request so it 
+can be peer-reviewed before it becomes "official".<br>
+* For truly trivial stuff (like ixing a typo/broken link/formatting glitch), please 
+edit directly on the branch in GitHub by clicking the pencil icon in the top 
+right corner of the README section.
 
-It is easy to include this guide in [Markdown format][dl-md] as a part of a
-project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book.
+These guidelines are based on Simon Holywell's [SQL Style Guide][sqlstyleguide] 
+and references dbt Labs' SQL style guide [SQLFluff][sqlfluff].
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
-Attribution-ShareAlike 4.0 International License][licence].
-Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
 
 ## General
 
@@ -36,107 +32,108 @@ Based on a work at [https://www.sqlstyle.guide/][sqlstyleguide].
   closing `*/` where possible otherwise precede comments with `--` and finish
   them with a new line.
 
-```sql
-SELECT file_hash  -- stored ssdeep hash
-  FROM file_system
- WHERE file_name = '.vimrc';
-```
-```sql
-/* Updating the file record after writing to the file */
-UPDATE file_system
-   SET file_modified_date = '1980-02-22 13:19:01.00000',
-       file_size = 209732
- WHERE file_name = '.vimrc';
-```
-
 ### Avoid
 
 * camelCase—it is difficult to scan quickly.
 * Descriptive prefixes or Hungarian notation such as `sp_` or `tbl`.
 * Plurals—use the more natural collective term where possible instead. For example
   `staff` instead of `employees` or `people` instead of `individuals`.
-* Quoted identifiers—if you must use them then stick to SQL-92 double quotes for
-  portability (you may need to configure your SQL server to support this depending
-  on vendor).
-* Object-oriented design principles should not be applied to SQL or database
-  structures.
+* Quoted identifiers such as `"First Name"` or `[my_column]`—if you must use them then 
+  stick to SQL-92 double quotes for portability.
+* <p style="font-weight: bold;"> Object-oriented design principles should not be applied 
+  to SQL or database structures. </p>
 
 ## Naming conventions
 
 ### General
 
-* Ensure the name is unique and does not exist as a
+* BBEC Data Warehouse uses ALLCAPNOSPACE style. When referening a vendor table/column, 
+  write it exactly like BBEC stores it (`DIM_CONSTITUENT`, `OPPORTUNITYSTATUS`) because that's the real identifier in the database.
+<br>
+<br>
+* Elsewise, when naming an object:
+  - Ensure the name is unique and does not exist as a
   [reserved keyword][reserved-keywords].
-* Keep the length to a maximum of 30 bytes—in practice this is 30 characters
+  - Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using a multi-byte character set.
-* Names must begin with a letter and may not end with an underscore.
-* Only use letters, numbers and underscores in names.
-* Avoid the use of multiple consecutive underscores—these can be hard to read.
-* Use underscores where you would naturally include a space in the name (first
-  name becomes `first_name`).
-* Avoid abbreviations and if you have to use them make sure they are commonly
+  - Use snake_case for readability, contrast with source, and easier AI parsing. Keep the same root word BBEC uses (`EVENTSTARTDATEDIMID` becomes `event_start_date_dimid`).
+    - Names must begin with a letter and may not end with an underscore.
+    - Only use letters, numbers and underscores in names.
+    - Avoid the use of multiple consecutive underscores—these can be hard to read.
+    - Use underscores where you would naturally include a space in the name.
+    - Always use lowercase except where it may make sense not to such as proper nouns.
+  - Avoid abbreviations and if you have to use them make sure they are commonly
   understood.
 
 ```sql
-SELECT first_name
-  FROM staff;
+SELECT evn.EVENTSTARTDATEDIMID AS event_start_date_dimid
+  FROM BBDW.DIM_EVENT devn;
 ```
 
 ### Tables
 
+* Always prefix with `FACT_` or `DIM_` to encode a table's structural role in the star schema. Do not prefix with any other descriptive prefix or Hungarian notation.
+* Never give a table the same name as one of its columns and vice versa.
 * Use a collective name or, less ideally, a plural form. For example (in order of
   preference) `staff` and `employees`.
-* Do not prefix with `tbl` or any other such descriptive prefix or Hungarian
-  notation.
-* Never give a table the same name as one of its columns and vice versa.
 * Avoid, where possible, concatenating two table names together to create the name
   of a relationship table. Rather than `cars_mechanics` prefer `services`.
 
 ### Columns
 
 * Always use the singular name.
-* Where possible avoid simply using `id` as the primary identifier for the table.
+* Where possible avoid simply using `id` as the primary identifier for the table, specify as `constituent_dimid` instead.
 * Do not add a column with the same name as its table and vice versa.
-* Always use lowercase except where it may make sense not to such as proper nouns.
 
 ### Aliasing or correlations
 
-* Should relate in some way to the object or expression they are aliasing.
+* Should relate to the object or expression they are aliasing.
 * As a rule of thumb the correlation name should be the first letter of each word
-  in the object's name.
+  in the object's name. Following this rule, tables always start with `f` or `d`, or `t` for temp tables.
 * If there is already a correlation with the same name then append a number.
 * Always include the `AS` keyword—makes it easier to read as it is explicit.
 * For computed data (`SUM()` or `AVG()`) use the name you would give it were it
   a column defined in the schema.
 
 ```sql
-SELECT first_name AS fn
-  FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
+SELECT s.first_name AS fn
+INTO #temp_roster
+FROM staff AS s
+INNER JOIN students AS s2
+  ON s2.mentor_id = s.staff_num;
+...
+FROM #temp_roster AS tr
+...;
 ```
 ```sql
-SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
+SELECT COUNT(DISTINCT dcg.CONSTITUENTGROUPDIMID) AS household_count
+FROM BBDW.DIM_CONSTITUENTGROUP AS dcg
+INNER JOIN BBDW.FACT_CONSTITUENTGROUPMEMBER AS fcgm
+  ON dcg.CONSTITUENTGROUPDIMID = fcgm.CONSTITUENTGROUPDIMID
+WHERE dcg.GROUPTYPE = 'Household'
+  AND dcg.ISDISSOLVED = 0
+  AND fcgm.ISCURRENT = 1;
 ```
 
 ### Stored procedures
 
 * The name must contain a verb.
-* Do not prefix with `sp_` or any other such descriptive prefix or Hungarian
-  notation.
+* Prefix with `sp_`.
+```sql
+sys.sp.add_agent_parameter
+```
 
 ### Uniform suffixes
 
 The following suffixes have a universal meaning ensuring the columns can be read
 and understood easily from SQL code. Use the correct suffix where appropriate.
 
-* `_id`—a unique identifier such as a column that is a primary key.
+* `_id` or `_dimid`—a unique identifier such as a column that is a primary key.
 * `_status`—flag value or some other status of any type such as
   `publication_status`.
 * `_total`—the total or sum of a collection of values.
 * `_num`—denotes the field contains any kind of number.
-* `_name`—signifies a name such as `first_name`.
+* `_name`—signifies a name such as `constituent_first_name`.
 * `_seq`—contains a contiguous sequence of values.
 * `_date`—denotes a column that contains the date of something.
 * `_tally`—a count.
@@ -158,9 +155,14 @@ Do not use database server specific keywords where an ANSI SQL keyword already
 exists performing the same function. This helps to make the code more portable.
 
 ```sql
-SELECT model_num
-  FROM phones AS p
- WHERE p.release_date > '2014-09-30';
+SELECT 
+  fca.CONSTITUENTADDRESSSYSTEMID AS address_guid
+  ,fca.CONSTITUENTADDRESSDIMID AS address_dimid
+FROM BBDW.FACT_CONSTITUENTADDRESS AS fca
+INNER JOIN BBDW.DIM_CONSTITUENTADDRESSFLAG AS dcaf
+  ON dcaf.CONSTITUENTADDRESSFLAGDIMID = fca.CONSTITUENTADDRESSFLAGDIMID
+  AND dcaf.ISCURRENT = 1
+ORDER BY dcaf.ISPRIMARY DESC, fca.HISTORICALSTARTDATE DESC;
 ```
 
 ### White space
@@ -170,134 +172,102 @@ spacing is used. Do not crowd code or remove natural language spaces.
 
 #### Spaces
 
-Spaces should be used to line up the code so that the root keywords all end on
-the same character boundary. This forms a river down the middle making it easy for
-the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
+In general, all elements are separated by a single space character.<br>
+* Use leading commas: Commas (`,`) are placed at the start of the following line, not at the end of the preceding line. No space follows a leading comma — the column reference immediately follows it.
+* Although not exhaustive always include spaces:
+  - before and after equals (`=`)
+  - surrounding apostrophes (`'`) where not within parentheses or with a semicolon.
 
 ```sql
-(SELECT f.species_name,
-        AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
-   FROM flora AS f
-  WHERE f.species_name = 'Banksia'
-     OR f.species_name = 'Sheoak'
-     OR f.species_name = 'Wattle'
-  GROUP BY f.species_name, f.observation_date)
-
-  UNION ALL
-
-(SELECT b.species_name,
-        AVG(b.height) AS average_height, AVG(b.diameter) AS average_diameter
-   FROM botanic_garden_flora AS b
-  WHERE b.species_name = 'Banksia'
-     OR b.species_name = 'Sheoak'
-     OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date);
-```
-
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation-specific details are left aligned.
-
-Although not exhaustive always include spaces:
-
-* before and after equals (`=`)
-* after commas (`,`)
-* surrounding apostrophes (`'`) where not within parentheses or with a trailing
-  comma or semicolon.
-
-```sql
-SELECT a.title, a.release_date, a.recording_date
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+  de.CONSTITUENTDIMID
+  ,de.EDUCATIONDIMID
+INTO BBDW.DIM_EDUCATION AS de
+WHERE de.EDUCATIONINSTITUTIONISAFFLIATED = 1 
+  AND de.EDUCATIONCONSTITUENCYSTATUS = 'Graduated';
 ```
 
 #### Line spacing
 
-Always include newlines/vertical space:
+Use enough line breaks so the line length doesn't become excessive.<br>
+Always use line breaks:
 
 * before `AND` or `OR`
 * after semicolons to separate queries for easier reading
 * after each keyword definition
-* after a comma when separating multiple columns into logical groups
+* before a leading comma when separating multiple columns into logical groups
 * to separate code into related sections, which helps to ease the readability of
   large chunks of code.
 
-Keeping all the keywords aligned to the righthand side and the values left aligned
-creates a uniform gap down the middle of the query. It also makes it much easier to
-to quickly scan over the query definition.
-
-```sql
-INSERT INTO albums (title, release_date, recording_date)
-VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
-       ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
-```
-
-```sql
-UPDATE albums
-   SET release_date = '1990-01-01 01:01:01.00000'
- WHERE title = 'The New Danger';
-```
-
-```sql
-SELECT a.title,
-       a.release_date, a.recording_date, a.production_date -- grouped dates together
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
-```
+Use blank lines between CTEs.
 
 ### Indentation
 
-To ensure that SQL is readable it is important that standards of indentation
-are followed.
+SQL is not whitespace sentitive, therefore indentation should be treated as a hint to the reader of the structure of the code. So at the end of the day, use your best judgement.<br>
 
-#### Joins
-
-Joins should be indented to the other side of the river and grouped with a new
-line where necessary.
+Adopt the relative/nesting-depth indentation style:<br>
+* Nested elements should be indented one step from the outer elements. 
+* Elements with the same level in a nested structure should have the same indentation, at least with regards to their local surroundings.
 
 ```sql
-SELECT r.last_name
-  FROM riders AS r
-       INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engine_tally > 2
-
-       INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+SELECT
+   nested_within_select AS first_column,
+   some_function(
+      nested_within_function,
+      also_nested_within_function
+   ) AS indented_the_same_as_opening_bracket
+FROM indented_the_same_as_select
+```
+```sql
+SELECT
+  r.last_name,
+  ,(SELECT MAX(YEAR(c.championship_date))
+    FROM champions AS c
+    WHERE c.last_name = r.last_name
+      AND c.confirmed = 'Y') AS last_championship_year
+FROM riders AS r
+WHERE r.last_name IN
+  (SELECT c.last_name
+    FROM champions AS c
+    WHERE c.championship_date >= '2009-01-01'
+      AND c.confirmed = 'Y');
 ```
 
-The exception to this is when using just the `JOIN` keyword where it should be
-before the river.
+### Comment Indents
+
+#### Block comments (`/* like this */`)
+* They cannot share a line with any code elements (so in effect they must start on their own new line)
+* They cannot be followed by any code elements on the same line (and so in effect must be followed by a newline to avoid trailing whitespace). 
+* None of the lines within the block comment may have an indent less than the first line of the block comment (although additional indentation within a comment is allowed), and that first line should be aligned with the first code element following the block comment.
 
 ```sql
-SELECT r.last_name
-  FROM riders AS r
-  JOIN bikes AS b
-    ON r.bike_vin_num = b.vin_num
+SELECT
+   /* This is a block comment starting on a new line
+   which contains a newline (continuing with at least
+   the same indent.
+      - potentially containing greater indents
+      - having no other code following it in the same line
+      - and aligned with the line of code following it */
+   this_column AS what_we_align_the_column_to
+FROM my_table
 ```
 
-#### Subqueries
-
-Subqueries should also be aligned to the right side of the river and then laid
-out using the same style as any other query. Sometimes it will make sense to have
-the closing parenthesis on a new line at the same character position as its
-opening partner—this is especially true where you have nested subqueries.
+#### Inline comments (`-- like this`)
+* They can be on the same line as other code, but are subject to the same line-length restrictions. 
+* If they don’t fit on the same line, they can also be the only element on a line. In this case, they should be aligned with the first code element following the comment.
 
 ```sql
-SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
-         WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
-  FROM riders AS r
- WHERE r.last_name IN
-       (SELECT c.last_name
-          FROM champions AS c
-         WHERE YEAR(championship_date) > '2008'
-           AND c.confirmed = 'Y');
+SELECT
+   -- This is fine
+   this_column AS what_we_align_to
+   ,another_column AS something_short  -- Is ok
+   ,CASE
+      -- This is aligned correctly with below
+      WHEN indented THEN take_care
+      ELSE try_harder
+   END AS the_general_guidance
+-- Even here we align with the line below
+FROM my_table
 ```
 
 ### Preferred formalisms
@@ -312,14 +282,15 @@ SELECT r.last_name,
   likely should be.
 
 ```sql
-SELECT CASE postcode
-       WHEN 'BN1' THEN 'Brighton'
-       WHEN 'EH1' THEN 'Edinburgh'
-       END AS city
-  FROM office_locations
- WHERE country = 'United Kingdom'
-   AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
+SELECT 
+  CASE postcode
+  WHEN 'BN1' THEN 'Brighton'
+  WHEN 'EH1' THEN 'Edinburgh'
+  END AS city
+FROM office_locations
+WHERE country = 'United Kingdom'
+  AND opening_time BETWEEN 8 AND 9
+  AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1');
 ```
 
 ## Create syntax
@@ -1311,19 +1282,9 @@ These are some suggested column data types to use for maximum compatibility betw
 * INTERVAL
 * XML
 
-
-[simon]: https://www.simonholywell.com/?utm_source=sqlstyle.guide&utm_medium=link&utm_campaign=md-document
-    "SimonHolywell.com"
-[issue]: https://github.com/treffynnon/sqlstyle.guide/issues
-    "SQL style guide issues on GitHub"
-[fork]: https://github.com/treffynnon/sqlstyle.guide/fork
-    "Fork SQL style guide on GitHub"
-[pull]: https://github.com/treffynnon/sqlstyle.guide/pulls/
-    "SQL style guide pull requests on GitHub"
-[celko]: https://www.amazon.com/gp/product/0120887975/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=treffynnon-20&linkId=9c88eac8cd420e979675c815771313d5
-    "Joe Celko's SQL Programming Style (The Morgan Kaufmann Series in Data Management Systems)"
-[dl-md]: https://raw.githubusercontent.com/treffynnon/sqlstyle.guide/gh-pages/_includes/sqlstyle.guide.md
-    "Download the guide in Markdown format"
+[sqlstyleguide]: https://www.sqlstyle.guide/
+    "SQL style guide by Simon Holywell"
+[sqlfluff]: https://docs.sqlfluff.com/en/stable/
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
 [rivers]: https://practicaltypography.com/one-space-between-sentences.html
@@ -1332,7 +1293,5 @@ These are some suggested column data types to use for maximum compatibility betw
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[sqlstyleguide]: https://www.sqlstyle.guide/
-    "SQL style guide by Simon Holywell"
 [licence]: https://creativecommons.org/licenses/by-sa/4.0/
     "Creative Commons Attribution-ShareAlike 4.0 International License"
