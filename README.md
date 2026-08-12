@@ -49,8 +49,7 @@ and references dbt Labs' SQL style guide [SQLFluff][sqlfluff].
 
 * BBEC Data Warehouse uses ALLCAPNOSPACE style. When referening a vendor table/column, 
   write it exactly like BBEC stores it (`DIM_CONSTITUENT`, `OPPORTUNITYSTATUS`) because that's the real identifier in the database.
-<br>
-<br>
+
 * Elsewise, when naming an object:
   - Ensure the name is unique and does not exist as a
   [reserved keyword][reserved-keywords].
@@ -381,12 +380,12 @@ constraints along with field value validation.
 
 ```sql
 CREATE TABLE staff (
-    PRIMARY KEY (staff_num),
-    staff_num      INT(5)       NOT NULL,
-    first_name     VARCHAR(100) NOT NULL,
-    pens_in_drawer INT(2)       NOT NULL,
-                   CONSTRAINT pens_in_drawer_range
-                   CHECK(pens_in_drawer BETWEEN 1 AND 99)
+  PRIMARY KEY (staff_num)
+  ,staff_num INT(5) NOT NULL
+  ,first_name VARCHAR(100) NOT NULL
+  ,pens_in_drawer INT(2) NOT NULL
+  ,CONSTRAINT pens_in_drawer_range
+    CHECK(pens_in_drawer BETWEEN 1 AND 99)
 );
 ```
 
@@ -394,11 +393,13 @@ CREATE TABLE staff (
 
 * Object-oriented design principles do not effectively translate to relational
   database designs—avoid this pitfall.
+  - OO's inheritance hierarchies produce wide, join-heavy tables with lots of nullable columns. The better solution is the relational answer, such as one `DIM_CONSTITUENT` table with a `CONSTITUENT_TYPE` column and only the attributes that are genuinely common, with type-specific detail split into its own DIM table only if it's queried separately.
+  - OO's encapsulation (the bundling of data and methods into a single unit) hides data behind a fixed shape instead of exposing it for joins. A relational table should do the opposite—expose normalized facts. As an example, instead of adding a calculated column like `FUNDRAISERNAME` into the `FACT` table, the relational answer is to normalize the attribute into `DIM_FUNDRAISER` ane let a join or a DAX measure produce a value at query time. Similarly, keep `OPPORTUNITYTYPE` only in `DIM_OPPORTUNITY` avoid duplicating it in `FACT`.
 * Placing the value in one column and the units in another column. The column
   should make the units self-evident to prevent the requirement to combine
   columns again later in the application. Use `CHECK()` to ensure valid data is
   inserted into the column.
-* [Entity–Attribute–Value][eav] (EAV) tables—use a specialist product intended for
+* [Entity–Attribute–Value][eav] (EAV) tables destorys indexing, type safety, and query performance—use a specialist product intended for
   handling such schema-less data instead.
 * Splitting up data that should be in one table across many tables because of
   arbitrary concerns such as time-based archiving or location in a multinational
@@ -1287,11 +1288,7 @@ These are some suggested column data types to use for maximum compatibility betw
 [sqlfluff]: https://docs.sqlfluff.com/en/stable/
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
     "Wikipedia: ISO 8601"
-[rivers]: https://practicaltypography.com/one-space-between-sentences.html
-    "Practical Typography: one space between sentences"
 [reserved-keywords]: #reserved-keyword-reference
     "Reserved keyword reference"
 [eav]: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
     "Wikipedia: Entity–attribute–value model"
-[licence]: https://creativecommons.org/licenses/by-sa/4.0/
-    "Creative Commons Attribution-ShareAlike 4.0 International License"
