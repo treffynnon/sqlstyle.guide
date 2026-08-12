@@ -189,6 +189,9 @@ WHERE de.EDUCATIONINSTITUTIONISAFFLIATED = 1
 #### Line spacing
 
 Use enough line breaks so the line length doesn't become excessive.<br>
+Use line breaks to separate code into related sections, which ensures large chunks 
+of code are structured in a way that's easy to read and comment out.
+
 Always use line breaks:
 
 * before `AND` or `OR`
@@ -197,6 +200,7 @@ Always use line breaks:
 * before a leading comma when separating multiple columns into logical groups
 * to separate code into related sections, which helps to ease the readability of
   large chunks of code.
+* after any one complete condition in the WHERE clause
 
 Use blank lines between CTEs.
 
@@ -210,11 +214,12 @@ Adopt the relative/nesting-depth indentation style:<br>
 
 ```sql
 SELECT
-   nested_within_select AS first_column,
-   some_function(
+   nested_within_select AS first_column
+   ,some_function(
       nested_within_function,
       also_nested_within_function
-   ) AS indented_the_same_as_opening_bracket
+      ) AS indented_the_same_as_opening_bracket
+   ,some_other_function...
 FROM indented_the_same_as_select
 ```
 ```sql
@@ -223,7 +228,8 @@ SELECT
   ,(SELECT MAX(YEAR(c.championship_date))
     FROM champions AS c
     WHERE c.last_name = r.last_name
-      AND c.confirmed = 'Y') AS last_championship_year
+      AND c.confirmed = 'Y'
+    ) AS last_championship_year
 FROM riders AS r
 WHERE r.last_name IN
   (SELECT c.last_name
@@ -235,6 +241,7 @@ WHERE r.last_name IN
 ### Comment Indents
 
 #### Block comments (`/* like this */`)
+Block comments are not used to comment out a section of code unless the whole block of code need to be run occasionally.
 * They cannot share a line with any code elements (so in effect they must start on their own new line)
 * They cannot be followed by any code elements on the same line (and so in effect must be followed by a newline to avoid trailing whitespace). 
 * None of the lines within the block comment may have an indent less than the first line of the block comment (although additional indentation within a comment is allowed), and that first line should be aligned with the first code element following the block comment.
@@ -252,6 +259,8 @@ FROM my_table
 ```
 
 #### Inline comments (`-- like this`)
+Inline comments can be used to add a one-line description or comment out a section of code.<br>
+`Ctrl + K` and `Ctrl + C` by default creates inline comments. 
 * They can be on the same line as other code, but are subject to the same line-length restrictions. 
 * If they don’t fit on the same line, they can also be the only element on a line. In this case, they should be aligned with the first code element following the comment.
 
